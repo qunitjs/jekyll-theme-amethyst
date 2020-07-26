@@ -1,45 +1,53 @@
-# Welcome to Jekyll!
+# Site settings
 #
-# This config file is meant for settings that affect your whole site.
-# These values are expected to rarely change. If you are editing this file
-# very often, consider using Jekyll's data files feature.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-## Site settings
-## https://jekyllrb.com/docs/configuration/
-
-title: QUnit
-description: "The powerful, easy-to-use JavaScript testing framework."
-# the base hostname and protocol for your site
-url: "https://qunitjs.com"
-# the subpath of your site, e.g. /blog
+# https://jekyllrb.com/docs/configuration/
+title: Site Title
+description: "An amazing website."
+# The canonical hostname for your site
+url:
+# The subpath of the canonical address (leave as "" if not in a subdirectory)
 baseurl: ""
-
-plugins:
-  # https://help.github.com/articles/redirects-on-github-pages/
-  - jekyll-redirect-from
-
-# Theme
-# We have a custom theme so the Jekyll is ignored.
-# But, the default theme setting for github-pages is 'primer',
-# which Jekyll would still try to compile. This is a problem because
-# since at least 2015, the combination of Jekyll/Sass/Primer is
-# broken and simply doesn't compile out of-the-box.
-#
+# This a custom theme so the native Jekyll theme system is ignored.
+# But, we use github-pages which has a default theme of 'primer'.
+# This is a problem because, even if we ignore its output file,
+# the combination of Jekyll/Sass/Primer has compile errors:
 # - https://github.com/jekyll/jekyll/issues/7426
 # - https://github.com/jekyll/jekyll/issues/4268
 # - https://github.com/sindresorhus/gulp-ruby-sass/issues/232
-# - etc.
+# Workaround by disabling this. – https://github.com/github/pages-gem/issues/613
+theme: null
+
+# Theme settings
 #
-# Workaround by using the 'minima' for this no-op setting,
-# which does compile an (unused) file without issue.
-theme: minima
+# https://github.com/qunitjs/jekyll-theme-amethyst
 amethyst:
-  twitter: qunitjs
-  github: qunitjs
-  gitter: qunitjs/qunit
+  header_logo:
+    src:
+    width:
+    height:
+  # Twitter.com username (without "@")
+  twitter:
+  # GitHub.com organisation or username
+  github:
+  # Gitter.im room (e.g. "qunitjs/qunit")
+  gitter:
+  # Frontend search powered by Algolia
+  algolia:
+    search_only_api_key:
+    # Default: `algolia.application_id`.
+    application_id:
+    # Which indexes to use as autocomplete source
+    # For example, to support multiple sources:
+    #
+    # ```
+    # sources:
+    #  - index: qunitjs-api
+    #    base: https://api.qunitjs.com
+    #  - index: qunitjs
+    # ```
+    #
+    # Default: Single source based on`algolia.index_name`.
+    sources:
 
 # Conversion
 highlighter: rouge
@@ -48,27 +56,19 @@ kramdown:
   input: GFM
   toc_levels: "1,2"
 
-# Search
+# Backend search index
+#
+# This applies to the 'jekyll algolia' command.
+# Requires the ALGOLIA_API_KEY secret environment variable.
+# For an example, see <https://github.com/qunitjs/qunitjs.com>.
+#
+# See <https://github.com/algolia/jekyll-algolia>.
 algolia:
-  application_id: HOJ487LP0L
-  # Which index the Travis job will create/update
-  # with the content of the current Jekyll site.
-  # The auth key for this is injected as secure env variable.
-  index_name: qunitjs
+  application_id:
+  # Which index to submit content to
+  index_name:
+  # Which markdown pages to ignore
   files_to_exclude:
-    # Index destination instead of intermediary
-    - guides.md
-  # Auth key for client-side search queries.
-  search_only_api_key: aed00982db05bd21dd05310be057bda8
-
-# Input files
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - README.md
-  - CONTRIBUTING.md
-  - CNAME
-  - vendor
 
 # Output
-permalink: title/
+permalink: :title/

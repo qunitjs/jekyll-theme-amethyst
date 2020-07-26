@@ -15,9 +15,14 @@ Remember to use the 'defer' attribute.
 <script defer src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js" integrity="sha256-YVWQosorZnr6fALvOW9VALYuInld27RkSPkElGBdCaU=" crossorigin="anonymous"></script>
 <script type="module">
     window.addEventListener('DOMContentLoaded', function setupSearch() {
-        const client = algoliasearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}');
-        const indexMain = client.initIndex('{{ site.algolia.index_name }}');
-        const indexApi = client.initIndex('qunitjs-api');
+        const client = algoliasearch('{{ site.amethyst.algolia.application_id | default: site.algolia.application_id }}', '{{ site.amethyst.algolia.search_only_api_key }}');
+        {% if site.amethyst.algolia.sources -%}
+        const indexSources = {{ site.amethyst.algolia.sources | jsonify }};
+        {%- elsif site.algolia.index_name -%}
+        const indexSources = [{ index: {{ site.algolia.index_name | jsonify }} }];
+        {%- else -%}
+        const indexSources = [];
+        {%- endif %}
         const autocompleteOptions = {
             hint: false,
             ariaLabel: 'search input',
@@ -50,42 +55,23 @@ Remember to use the 'defer' attribute.
                     });
             };
         }
-        const autocompleteSources = [
-            {
-                source: newHitsSource(indexApi, { hitsPerPage: 5 }),
-                displayKey: '',
-                templates: {
-                    suggestion(suggestion) {
-                        const title = [ suggestion.title ].concat(suggestion.headings || []).join(' › ');
-                        const content = suggestion._highlightResult.content && suggestion._highlightResult.content.value || '';
-                        suggestion._href = 'https://api.qunitjs.com' + formatURL(suggestion);
-                        return `
-                            <a href="${suggestion._href}" tabindex="-1">
-                                <p class="aa-suggestion_title">${title}</p>
-                                <p class="aa-suggestion_content">${content}</p>
-                            </a>
-                        `;
-                    }
-                }
-            },
-            {
-                source: newHitsSource(indexMain, { hitsPerPage: 5 }),
-                displayKey: '',
-                templates: {
-                    suggestion(suggestion) {
-                        const title = [ suggestion.title ].concat(suggestion.headings || []).join(' › ');
-                        const content = suggestion._highlightResult.content && suggestion._highlightResult.content.value || '';
-                        suggestion._href = formatURL(suggestion);
-                        return `
-                            <a href="${suggestion._href}" tabindex="-1">
-                                <p class="aa-suggestion_title">${title}</p>
-                                <p class="aa-suggestion_content">${content}</p>
-                            </a>
-                        `;
-                    }
+        const autocompleteSources = indexSources.map(source => ({
+            source: newHitsSource(client.initIndex(source.index), { hitsPerPage: 5 }),
+            displayKey: '',
+            templates: {
+                suggestion(suggestion) {
+                    const title = [ suggestion.title ].concat(suggestion.headings || []).join(' › ');
+                    const content = suggestion._highlightResult.content && suggestion._highlightResult.content.value || '';
+                    suggestion._href = (source.base || '') + formatURL(suggestion);
+                    return `
+                        <a href="${suggestion._href}" tabindex="-1">
+                            <p class="aa-suggestion_title">${title}</p>
+                            <p class="aa-suggestion_content">${content}</p>
+                        </a>
+                    `;
                 }
             }
-        ];
+        }));
         autocomplete('#aa-search-input', autocompleteOptions, autocompleteSources)
             .on('autocomplete:selected', (event, suggestion) => location.href = suggestion._href || suggestion.url);
     });

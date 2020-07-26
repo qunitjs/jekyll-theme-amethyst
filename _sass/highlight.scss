@@ -1,18 +1,3 @@
-pre.highlight {
-    border: 1px solid #ddd;
-    border-left: 4px solid $color-brand;
-    border-radius: 4px;
-    margin: 0;
-    margin-bottom: $size-spacing;
-    padding: 0.5rem 1rem;
-    font-size: 95%;
-    line-height: 140%;
-    overflow-x: auto;
-}
-.highlight code {
-    line-height: 150%;
-    background: transparent;
-}
 .highlight .hll { background-color: #ffffcc }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */

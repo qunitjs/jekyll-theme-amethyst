@@ -127,12 +127,6 @@ That's all the markup you need to start writing tests. Let's add a test for a hy
 
 This code defines a test module for the `add` function and then a single test verifying the result of adding two numbers.
 
-If you open this up in the browser you'll see the following:
-
-<iframe title="The test code running in the browser" src="/resources/example-index.html" style="height:254px;"></iframe>
-
-A detailed report of the tests that run and their assertions, as well as a bunch of options for filtering and re-running the tests.
-
 Congrats! You just wrote and executed your first QUnit test!
 
 Next, you should try writing a test for some of your own code and then check out the [API documentation](https://api.qunitjs.com) to discover more of QUnit's features.
@@ -140,9 +134,3 @@ Next, you should try writing a test for some of your own code and then check out
 ### Support Policy
 
 QUnit currently supports <a href="https://jquery.com/browser-support/" target="_blank">the same browsers as jQuery 3.x</a>. For legacy browser support, including Internet Explorer versions lower than IE9, please use the 1.x series of QUnit.
-
----
-
-## Further Reading
-
-* [Introdution to JavaScript Unit Testing](https://coding.smashingmagazine.com/2012/06/introduction-to-javascript-unit-testing/)

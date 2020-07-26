@@ -4,14 +4,23 @@ layout: wrapper
 
 <section class="hero">
     <div class="wrapper">
-        <h1 class="hero-title"><img src="/img/logo-text.svg" alt="QUnit"></h1>
-        <h2 class="hero-description">{{ site.description | escape }}</h2>
-
-        <a class="hero-button button" href="{% link intro.md %}">Get Started</a>
-        <a class="hero-button button secondary" href="https://api.qunitjs.com">View the Docs</a>
+        <h1 class="hero-title">
+        	{%- if page.home_img -%}
+        	<img src="{{ page.home_img | escape }}" alt="{{ page.home_title | default: site.title | escape }}">
+        	{%- else -%}
+        	{{ page.home_title | default: site.title | escape }}
+        	{%- endif -%}
+        </h1>
+        <h2 class="hero-description">{{ page.home_description | default: site.description | escape }}</h2>
+        {%- if page.home_primary_btn %}
+        <a class="hero-button button" href="{{ page.home_primary_btn.href | escape }}">{{ page.home_primary_btn.name | escape }}</a>
+        {%- endif -%}
+        {%- if page.home_secondary_btn %}
+        <a class="hero-button button secondary" href="{{ page.home_secondary_btn.href | escape }}">{{ page.home_secondary_btn.name | escape }}</a>
+        {%- endif %}
     </div>
 </section>
 
-<div id="home" class="main wrapper">
+<div class="main wrapper layout-home">
     {{ content }}
 </div>

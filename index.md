@@ -1,5 +1,20 @@
 ---
 layout: home
+
+# Defaults to: site.title
+home_title:
+# Defaults to: site.description
+home_description:
+# Optional
+home_img:
+# Optional
+home_primary_btn:
+  name: Get Started
+  href: /intro/
+# Optional
+home_secondary_btn:
+  name: View the Docs
+  href: https://api.qunitjs.com
 ---
 
 <section class="highlights">
@@ -23,6 +38,13 @@ layout: home
 
 ## A Quick Example
 
+
+<div class="example-results" markdown="1">
+
+<div class="example-result" markdown="1">
+
+### Test suite
+
 ```js
 const add = (a, b) => a + b;
 QUnit.module('add', function() {
@@ -31,14 +53,6 @@ QUnit.module('add', function() {
   });
 });
 ```
-
-<div class="example-results" markdown="1">
-
-<div class="example-result" markdown="1">
-
-### Browser Result
-
-<iframe title="The example test code running in the browser" src="/resources/example-add.html"></iframe>
 
 </div>
 

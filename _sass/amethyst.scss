@@ -9,12 +9,6 @@ $size-5: 3.157rem;
 $size-spacing: $size-2;
 $box-spacing: $size-1;
 
-$color-brand: #666; // primary (vibrant)
-$color-accent: #222; // darker
-$color-medium: #555; // lighter
-$color-bright: #ddd; // nearly white
-@import "variables";
-
 $color-white: #fff;
 $color-light: #f4f4f4;
 $color-off-white: #cdcdcd;
@@ -25,8 +19,6 @@ $screen-s: 480px;
 $screen-m: 768px;
 $screen-l: 992px;
 $screen-xl: 1200px;
-
-@import "highlight";
 
 * {
     box-sizing: border-box;
@@ -61,7 +53,7 @@ p {
 }
 
 a {
-    color: $color-brand;
+    color: $color-vibrant;
     text-decoration: none;
 
     &:active,
@@ -72,14 +64,33 @@ a {
     }
 }
 
-code {
+pre, code {
     // Menlo – macOS 10.6+. Preferred instead of Monaco which doesn't do bolding very well.
     // Consolas – Windows Vista & newer
     // DejaVu Sans Mono – Ubuntu, Fedora
     font-family: Menlo, Consolas, DejaVu Sans Mono, monospace;
-    font-size: 95%;
+}
+
+code {
+    font-size: 90%;
     background: $color-light;
     padding: 0.2em 0.4em;
+}
+
+pre.highlight {
+    border: 1px solid #ddd;
+    border-left: 4px solid $color-vibrant;
+    border-radius: 4px;
+    margin: 0;
+    margin-bottom: $size-spacing;
+    padding: 0.5rem 1rem;
+    font-size: 95%;
+    line-height: 140%;
+    overflow-x: auto;
+}
+.highlight code {
+    padding: 0;
+    background: transparent;
 }
 
 hr {
@@ -113,7 +124,7 @@ iframe {
     background-color: #fff;
     border: 1px solid #fff;
     border-radius: 4px;
-    color: $color-brand;
+    color: $color-vibrant;
     display: inline-block;
     margin: 0.5rem;
     padding: 0.5rem 1rem;
@@ -388,7 +399,7 @@ iframe {
     &:hover,
     &.aa-cursor {
         background: $color-bright;
-        border-left: 2px solid $color-brand;
+        border-left: 2px solid $color-vibrant;
     }
 }
 
@@ -445,14 +456,14 @@ iframe {
 }
 
 .opened .icon {
-    fill: $color-brand;
+    fill: $color-vibrant;
 }
 
-/* Home Page Hero */
+/* Hero header */
 
 .hero {
     background-color: $color-medium;
-    background-image: linear-gradient(135deg, $color-medium, $color-brand );
+    background-image: linear-gradient(135deg, $color-medium, $color-vibrant );
     padding: ($size-4 * 2) 0;
     text-align: center;
 }
@@ -477,9 +488,9 @@ iframe {
     margin-top: $size-4;
 }
 
-/* Home Page Highlights */
+/* Home page layout */
 
-#home {
+.layout-home {
     h2, h3 {
         text-align: center;
         font-weight: 300;
@@ -519,29 +530,6 @@ iframe {
     text-align: center;
 }
 
-/* Plugins Page */
-
-#plugins {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: $size-spacing;
-    margin: $size-spacing 0;
-
-    @media (min-width: $screen-m) {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-.plugin {
-    border-bottom: 1px solid $color-off-white;
-
-    h3 {
-        margin-bottom: 0;
-    }
-}
-
 /* Site Footer */
 
 .site-footer {
@@ -566,8 +554,8 @@ iframe {
 }
 
 .cta .button {
-    background-color: $color-brand;
-    border-color: $color-brand;
+    background-color: $color-vibrant;
+    border-color: $color-vibrant;
     color: white;
     font-weight: 100;
 }

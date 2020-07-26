@@ -1,4 +1,5 @@
-Copyright OpenJS Foundation and other contributors, https://openjsf.org/
+Copyright (c) 2020 Timo Tijhof
+Copyright (c) 2018 Trent Willis
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

@@ -4,21 +4,23 @@
 <title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.ico">
-<link rel="stylesheet" href="/css/styles.css" media="screen">
+<link rel="stylesheet" href="/assets/styles.css" media="screen">
 {% include opengraph.html -%}
 <body>
-    <!-- <a class="a11y" href="#main">skip to content</a> -->
-
     <header class="site-header" role="banner">
         <div class="site-header-wrapper wrapper">
             <a class="site-logo" href="/">
-                <img src="/img/logo-with-colored-text.svg" alt="QUnit Logo" width="250" height="72">
+                {% if site.amethyst.header_logo.src -%}
+                <img src="{{ site.amethyst.header_logo.src | escape }}" alt="{{ site.title | escape }}" width="{{ site.amethyst.header_logo.width | escape }}" height="{{ site.amethyst.header_logo.height | escape }}">
+                {%- else -%}
+                {{ site.title | escape }}
+                {%- endif %}
             </a>
-
+            {% if site.amethyst.algolia.search_only_api_key -%}
             <div class="site-search">
                 {% include search.html %}
             </div>
-
+            {%- endif %}
             <nav class="site-nav"><ul class="site-nav-list">
                 {%- for item in site.data.sitenav %}
                     <li class="site-nav-item{%- if item.sub %} has-sub-list{% endif %}">
@@ -26,15 +28,15 @@
                         {%- if item.sub %}
                         <ul class="site-nav-sub-list">
                             {%- for sub in item.sub %}
-                            <li><a class="site-sub-nav-link" href="{{ sub.href | escape }}">{{ sub.name }}</a></li>
+                            <li><a class="site-sub-nav-link" href="{{ sub.href | escape }}">{{ sub.name | escape }}</a></li>
                             {%- endfor %}
                         </ul>
                         {%- endif %}
                     </li>
                 {%- endfor %}
             </ul></nav>
-
             <div class="site-toggles">
+                {% if site.amethyst.algolia.search_only_api_key -%}
                 <button class="search-toggle toggle" data-opens=".site-search" aria-expanded="false">
                     <span class="screen-reader-text">Search</span>
                     <svg class="icon aa-input-icon" aria-hidden="true" viewBox="654 -372 1664 1664">
@@ -52,7 +54,7 @@
                     searchToggleOpens.setAttribute('aria-expanded', !state);
                 });
                 </script>
-
+                {%- endif %}
                 <button class="nav-toggle toggle" data-opens=".site-nav" aria-expanded="false">
                     <span class="screen-reader-text">Menu</span>
                     <svg class="icon icon-nav-toggle" aria-hidden="true" viewBox="0 0 100 100">
@@ -82,14 +84,17 @@
         <div class="wrapper">
             <p class="external-links">
                 <a href="https://github.com/{{ site.amethyst.github | escape }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                {%- if site.amethyst.twitter %}
                 <a href="https://twitter.com/{{ site.amethyst.twitter | escape }}" target="_blank" rel="noopener noreferrer">Twitter</a>
+                {%- endif -%}
+                {%- if site.amethyst.gitter %}
                 <a href="https://gitter.im/{{ site.amethyst.gitter | escape }}" target="_blank" rel="noopener noreferrer">Chat</a>
+                {%- endif %}
             </p>
 
             <p class="copyright">Copyright &copy; 2020 <a href="https://openjsf.org/" target="_blank" rel="noopener noreferrer">OpenJS Foundation</a> and contributors</p>
         </div>
     </footer>
-
     <script type="module">
         window.addEventListener('DOMContentLoaded', function setupSubNav() {
             const itemWithSubNav = document.querySelector('.site-nav-item.has-sub-list');
