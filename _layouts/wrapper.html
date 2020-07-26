@@ -97,20 +97,24 @@
     </footer>
     <script type="module">
         window.addEventListener('DOMContentLoaded', function setupSubNav() {
-            const itemWithSubNav = document.querySelector('.site-nav-item.has-sub-list');
-            const closeSubNav = () => itemWithSubNav.classList.remove('is-open');
-            itemWithSubNav.addEventListener('click', (event) => {
+            const siteNav = document.querySelector('.site-nav-list');
+            const closeSubNav = () => {
+                const prevSub = siteNav.querySelector('.is-open');
+                if (prevSub) {
+                    prevSub.classList.remove('is-open');
+                }
+            }
+            siteNav.addEventListener('click', (event) => {
                 if (event.target.classList.contains('has-sub-list')) {
                     event.preventDefault();
-                }
-
-                if (itemWithSubNav.classList.contains('is-open')) {
-                    closeSubNav();
-                    document.removeEventListener('click', closeSubNav);
-                } else {
-                    itemWithSubNav.classList.add('is-open');
-                    document.addEventListener('click', closeSubNav);
                     event.stopPropagation();
+
+                    if (event.target.parentNode.classList.contains('is-open')) {
+                        closeSubNav();
+                    } else {
+                        closeSubNav();
+                        event.target.parentNode.classList.add('is-open');
+                    }
                 }
             });
         });
