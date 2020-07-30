@@ -3,22 +3,26 @@ layout: page
 title: About
 ---
 
-<p class="lead">QUnit is a powerful, easy-to-use JavaScript testing framework.</p>
+<p class="lead">An amazing website.</p>
 
 ## Philosophy
 
-QUnit's philosophy as a test framework boils down to three primary tenants: _Easy_, _Universal_, and _Extensible_.
+Muffin I love sesame snaps icing candy cotton candy donut pie I love. I love soufflé sweet.
 
-### Easy
+### Hue
 
-QUnit should be easy-to-use from start to finish. Setting up your first test with should be super simple, requiring as little overhead as possible. Then, as you're developing, when a test or assertion fails, QUnit should provide feedback to you as fast as possible, with enough detail to quickly figure out the underlying issue. And it should do so without interrupting or corrupting other tests.
+Cupcake I love I love. Dragée fruitcake biscuit chocolate wafer powder I love bear claw icing. Pastry sweet roll jelly I love dragée fruitcake.
 
-Additionally, QUnit should be fast to make it easy for developers to have confidence that putting their tests on their critical path won't slow them down.
+Pastry lemon drops chocolate sugar plum oat cake brownie chupa chups toffee.
 
-### Univeral
+### Mineral
 
-QUnit should be universally applicable for testing JavaScript code and support many different environments. JavaScript can run in the browser, in worker threads, and on the server, and so should QUnit so that you can test your code in the same environment where it will be running; the environment where you need to have confidence it works.
+Gummi bears donut chupa chups. Sweet roll chocolate cupcake pudding gummi bears donut. Muffin donut carrot cake sesame snaps lollipop chocolate powder.
 
-### Extensible
+Danish I love apple pie chocolate. Chocolate cake gummi bears caramels fruitcake sugar plum powder jelly-o jelly-o sweet roll.
 
-QUnit should be opinionated with a lean API to support being easy-to-use, but it should also be highly extensible. There are many different approaches to testing and many different types of tests that users may want to write, and while we can not support all of these out of the box, we can support APIs to enable the community to extend QUnit to meet their needs.
+### Quartz
+
+Lemon drops carrot cake dessert. Liquorice macaroon chocolate I love. Lollipop topping I love bonbon I love brownie powder. Jelly-o chocolate cheesecake sugar plum gummies sweet candy jujubes macaroon. Pie candy candy lollipop powder chocolate cake.
+
+Jujubes candy lemon drops. Sesame snaps pie macaroon croissant liquorice sesame snaps powder. Cupcake topping gingerbread carrot cake sweet roll bonbon.

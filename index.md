@@ -19,18 +19,18 @@ home_secondary_btn:
 
 <section class="highlights">
   <div class="highlight">
-    <h2>Easy</h2>
-    <p>Easy, zero configuration setup for any Node.js project and minimal configuration for Browser-based projects.</p>
+    <h2>Hue</h2>
+    <p>Cupcake ipsum dolor sit amet jujubes marzipan liquorice.</p>
   </div>
 
   <div class="highlight">
-    <h2>Universal</h2>
-    <p>Tests can be run anywhere; Node, your browser, even inside a Web Worker. Test your code where it runs.</p>
+    <h2>Mineral</h2>
+    <p>Gummi bears dessert icing carrot cake. Jelly I love wafer I love powder croissant I love.</p>
   </div>
 
   <div class="highlight">
-    <h2>Extensible</h2>
-    <p>Flexible APIs for custom assertions, runners, and reporters mean you can extend QUnit to fit your needs.</p>
+    <h2>Quartz</h2>
+    <p>Lemon drops powder oat cake tiramisu powder. I love biscuit I love donut.</p>
   </div>
 </section>
 

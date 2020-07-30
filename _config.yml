@@ -1,7 +1,7 @@
 # Site settings
 #
 # https://jekyllrb.com/docs/configuration/
-title: Site Title
+title: Amethyst
 description: "An amazing website."
 # The canonical hostname for your site
 url:
@@ -28,9 +28,9 @@ amethyst:
   # Twitter.com username (without "@")
   twitter:
   # GitHub.com organisation or username
-  github:
+  github: qunitjs
   # Gitter.im room (e.g. "qunitjs/qunit")
-  gitter:
+  gitter: qunitjs/qunit
   # Frontend search powered by Algolia
   algolia:
     search_only_api_key:
