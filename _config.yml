@@ -33,9 +33,12 @@ amethyst:
   gitter: qunitjs/qunit
   # Frontend search powered by Algolia
   algolia:
-    search_only_api_key:
-    # Default: `algolia.application_id`.
-    application_id:
+    # Key for client-side search queries (required)
+    search_only_api_key: demo
+
+    # Defaults to `algolia.application_id`.
+    application_id: demo
+
     # Which indexes to use as autocomplete source
     # For example, to support multiple sources:
     #
@@ -46,8 +49,9 @@ amethyst:
     #  - index: qunitjs
     # ```
     #
-    # Default: Single source based on`algolia.index_name`.
+    # Defaults to a single source based on `algolia.index_name`.
     sources:
+      - index: demo
 
 # Conversion
 highlighter: rouge

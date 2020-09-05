@@ -23,6 +23,7 @@ Remember to use the 'defer' attribute.
         {%- else -%}
         const indexSources = [];
         {%- endif %}
+        const escapeText = autocomplete.escapeHighlightedString;
         const autocompleteOptions = {
             hint: false,
             ariaLabel: 'search input',
@@ -31,7 +32,7 @@ Remember to use the 'defer' attribute.
             templates: {
                 // https://github.com/algolia/autocomplete.js/issues/248
                 empty(query) {
-                    return `No results for "${query.query}".`;
+                    return `No results for "${escapeText(query.query)}".`;
                 }
             }
         };
