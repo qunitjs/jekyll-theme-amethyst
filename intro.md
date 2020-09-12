@@ -67,3 +67,12 @@ When getting started with QUnit in the browser, start by creating a new HTML fil
 ```
 
 QUnit currently supports <a href="https://jquery.com/browser-support/" target="_blank">the same browsers as jQuery 3.x</a>.
+
+---
+
+## Table
+
+| Sequence | 1 | 2 | 3 | 4
+|--|--
+| Foobar | Foo | Bar | Baz | Quux
+| Lorem ipsum | Lorem | Ipsum | Dolor | Sit

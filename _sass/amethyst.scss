@@ -156,6 +156,47 @@ iframe {
     }
 }
 
+/* Content table */
+
+table {
+    /* Reset */
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    padding: 0;
+    margin-bottom: $size-spacing;
+
+    @media (max-width: $screen-m) {
+        display: block;
+        overflow: auto;
+    }
+}
+tr {
+    border-top: 1px solid $color-off-white;
+    background-color: $color-white;
+    margin: 0;
+    padding: 0;
+}
+tr th,
+tr td {
+    text-align: left;
+    margin: 0;
+    padding: 0.3em 0.4em;
+    border: 1px solid $color-off-white;
+}
+tr th {
+    background: $color-light;
+    font-weight: bold;
+}
+tr th :first-child,
+tr td :first-child {
+    margin-top: 0;
+}
+tr th :last-child,
+tr td :last-child {
+    margin-bottom: 0;
+}
+
 .screen-reader-text {
     clip: rect(1px, 1px, 1px, 1px);
     position: absolute !important;
