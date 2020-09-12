@@ -120,6 +120,20 @@ iframe {
     font-size: $size-2;
 }
 
+.note {
+    padding: 0.5em $box-spacing;
+    margin: $box-spacing;
+
+    background: #fff;
+    border: 1px solid #5293e6;
+    border-left-width: 4px;
+    border-radius: 4px;
+}
+.note--warning {
+    background-color: #fdf5c5;
+    border-color: #e6d252;
+}
+
 .button {
     background-color: #fff;
     border: 1px solid #fff;
