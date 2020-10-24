@@ -25,6 +25,8 @@ amethyst:
     src:
     width:
     height:
+  # Mastodon account URL (e.g. "https://mastodon.technology/@qunitjs")
+  mastodon:
   # Twitter.com username (without "@")
   twitter:
   # GitHub.com organisation or username

@@ -16,6 +16,9 @@
 <meta property="og:description" content="{{ excerpt | strip_html | truncate: 200 | normalize_whitespace | escape }}">
 {% endif -%}
 
+{%- if site.amethyst.mastodon -%}
+<link rel="me" href="{{ site.amethyst.mastodon | escape }}">
+{% endif -%}
 {%- if site.amethyst.twitter -%}
 <meta name="twitter:creator" content="@{{ site.amethyst.twitter | escape }}">
 <meta name="twitter:site" content="@{{ site.amethyst.twitter | escape }}">
