@@ -17,18 +17,18 @@ home_secondary_btn:
   href: https://api.qunitjs.com
 ---
 
-<section class="highlights">
-  <div class="highlight">
+<section class="grid grid--small home-highlights">
+  <div>
     <h2>Hue</h2>
     <p>Cupcake ipsum dolor sit amet jujubes marzipan liquorice.</p>
   </div>
 
-  <div class="highlight">
+  <div>
     <h2>Mineral</h2>
     <p>Gummi bears dessert icing carrot cake. Jelly I love wafer I love powder croissant I love.</p>
   </div>
 
-  <div class="highlight">
+  <div>
     <h2>Quartz</h2>
     <p>Lemon drops powder oat cake tiramisu powder. I love biscuit I love donut.</p>
   </div>
@@ -39,7 +39,7 @@ home_secondary_btn:
 ## A Quick Example
 
 
-<div class="example-results" markdown="1">
+<div class="grid grid--split" markdown="1">
 
 <div class="example-result" markdown="1">
 
