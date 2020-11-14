@@ -305,6 +305,7 @@ tr td :last-child {
     @media (min-width: $screen-m) {
         display: inline-block;
         border-bottom: 0;
+        position: relative;
     }
 }
 
@@ -343,6 +344,17 @@ tr td :last-child {
 
     @media (min-width: $screen-m) {
         position: absolute;
+        // Align right so that when a submenu item is wider
+        // than its main parent, it can overflow to the left
+        // instead of causing horizontal page overflow.
+        right: 0;
+        left: auto;
+        // Avoid line breaks, if possible
+        // (This is like 'white-space: nowrap' but with fallback
+        // to wrap if the screen is not wide enough)
+        width: max-content;
+        max-width: 90vw;
+
         padding: 0.5rem 1rem;
         margin-top: 6px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
