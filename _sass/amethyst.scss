@@ -162,16 +162,18 @@ iframe {
     grid-template-columns: 1fr;
 }
 
-// upto three tiles per row
-.grid--small {
-    @media (min-width: $screen-m) {
+@media (min-width: $screen-m) {
+    .grid--small {
+        // upto three tiles per row
         grid-template-columns: 1fr 1fr 1fr;
     }
-}
+    .grid--small > :last-child:nth-child(3n+4) {
+        // if last item is lonely, center it
+        grid-column: 2 / span 2;
+    }
 
-// upto two large columns
-.grid--split {
-    @media (min-width: $screen-m) {
+    .grid--split {
+        // upto two large columns
         grid-template-columns: 1fr 1fr;
     }
 }
