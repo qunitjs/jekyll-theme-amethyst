@@ -119,6 +119,9 @@ iframe {
 .lead {
     font-size: $size-2;
 }
+.lead--center {
+    text-align: center;
+}
 
 .note {
     padding: 0.5em $box-spacing;
@@ -583,6 +586,9 @@ tr td :last-child {
     h2, h3 {
         text-align: center;
         font-weight: 300;
+        + .lead {
+            margin-top: -$size-spacing;
+        }
     }
 }
 
@@ -593,15 +599,6 @@ tr td :last-child {
 .example-result iframe,
 .example-result pre {
     height: 360px;
-}
-
-#current-release {
-    margin-bottom: 0;
-}
-
-.current-release {
-    font-size: $size-2;
-    text-align: center;
 }
 
 /* Site Footer */

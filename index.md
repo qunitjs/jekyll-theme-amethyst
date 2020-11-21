@@ -78,7 +78,7 @@ ok 1 add > should add two numbers
 
 ## Current Release
 
-<p class="current-release">v2.10.1 (<a href="https://github.com/qunitjs/qunit/blob/2.10.1/History.md">changelog</a>)</p>
+<p class="lead lead--center">v2.10.1 (<a href="https://github.com/qunitjs/qunit/blob/2.10.1/History.md">changelog</a>)</p>
 
 These are the officially supported download channels for QUnit releases:
 
