@@ -24,6 +24,8 @@ amethyst:
   # Base URI for "Edit this page" links.
   # When set, this is combined with the relative path to the Markdown file in the repo.
   edituri_base: https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/
+  # Defaults to "/favicon.svg"
+  favicon:
   header_logo:
     src:
     width:

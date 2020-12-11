@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="/favicon.ico">
+<link rel="icon" href="{{ site.amethyst.favicon | default: '/favicon.svg' }}">
 <link rel="stylesheet" href="/assets/styles.css" media="screen">
 {% include opengraph.html -%}
 <body>
