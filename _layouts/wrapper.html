@@ -16,10 +16,8 @@
                 {{ site.title | escape }}
                 {%- endif %}
             </a>
-            {% if site.amethyst.algolia.search_only_api_key -%}
-            <div class="site-search">
-                {% include search.html %}
-            </div>
+            {%- if site.amethyst.algolia.search_only_api_key %}
+{% include search.html %}
             {%- endif %}
             <nav class="site-nav"><ul class="site-nav-list">
                 {%- for item in site.data.sitenav %}
