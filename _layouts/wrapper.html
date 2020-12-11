@@ -10,31 +10,31 @@
     <header class="site-header" role="banner">
         <div class="site-header-wrapper wrapper">
             <a class="site-logo" href="/">
-                {% if site.amethyst.header_logo.src -%}
+                {%- if site.amethyst.header_logo.src -%}
                 <img src="{{ site.amethyst.header_logo.src | escape }}" alt="{{ site.title | escape }}" width="{{ site.amethyst.header_logo.width | escape }}" height="{{ site.amethyst.header_logo.height | escape }}">
                 {%- else -%}
                 {{ site.title | escape }}
-                {%- endif %}
+                {%- endif -%}
             </a>
-            {%- if site.amethyst.algolia.search_only_api_key %}
+            {%- if site.amethyst.algolia.search_only_api_key -%}
 {% include search.html %}
-            {%- endif %}
+            {%- endif -%}
             <nav class="site-nav"><ul class="site-nav-list">
-                {%- for item in site.data.sitenav %}
+                {%- for item in site.data.sitenav -%}
                     <li class="site-nav-item{%- if item.sub %} has-sub-list{% endif %}">
                         <a class="site-nav-link{%- if item.sub %} has-sub-list{% endif %}" href="{{ item.href | escape }}">{{ item.name }}</a>
-                        {%- if item.sub %}
+                        {%- if item.sub -%}
                         <ul class="site-nav-sub-list">
-                            {%- for sub in item.sub %}
+                            {%- for sub in item.sub -%}
                             <li><a class="site-sub-nav-link" href="{{ sub.href | escape }}">{{ sub.name | escape }}</a></li>
-                            {%- endfor %}
+                            {%- endfor -%}
                         </ul>
-                        {%- endif %}
+                        {%- endif -%}
                     </li>
-                {%- endfor %}
+                {%- endfor -%}
             </ul></nav>
             <div class="site-toggles">
-                {% if site.amethyst.algolia.search_only_api_key -%}
+                {%- if site.amethyst.algolia.search_only_api_key -%}
                 <button class="search-toggle toggle" data-opens=".site-search" aria-expanded="false">
                     <span class="screen-reader-text">Search</span>
                     <svg class="icon aa-input-icon" aria-hidden="true" viewBox="654 -372 1664 1664">
@@ -52,7 +52,7 @@
                     searchToggleOpens.setAttribute('aria-expanded', !state);
                 });
                 </script>
-                {%- endif %}
+                {%- endif -%}
                 <button class="nav-toggle toggle" data-opens=".site-nav" aria-expanded="false">
                     <span class="screen-reader-text">Menu</span>
                     <svg class="icon icon-nav-toggle" aria-hidden="true" viewBox="0 0 100 100">
@@ -75,24 +75,21 @@
             </div>
         </div>
     </header>
-
     {{ content }}
-
     <footer class="site-footer">
         <div class="wrapper">
             <p class="external-links">
                 <a href="https://github.com/{{ site.amethyst.github | escape }}" target="_blank" rel="noopener noreferrer">GitHub</a>
-                {%- if site.amethyst.mastodon %}
+                {%- if site.amethyst.mastodon -%}
                 <a href="{{ site.amethyst.mastodon | escape }}" target="_blank" rel="noopener noreferrer">Mastodon</a>
                 {%- endif -%}
-                {%- if site.amethyst.twitter %}
+                {%- if site.amethyst.twitter -%}
                 <a href="https://twitter.com/{{ site.amethyst.twitter | escape }}" target="_blank" rel="noopener noreferrer">Twitter</a>
                 {%- endif -%}
-                {%- if site.amethyst.gitter %}
+                {%- if site.amethyst.gitter -%}
                 <a href="https://gitter.im/{{ site.amethyst.gitter | escape }}" target="_blank" rel="noopener noreferrer">Chat</a>
-                {%- endif %}
+                {%- endif -%}
             </p>
-
             <p class="copyright">Copyright <a href="https://openjsf.org/" target="_blank" rel="noopener noreferrer">OpenJS Foundation</a> and contributors.
                 {%- if site.amethyst.edituri_base -%}
                 <br/><a href="{{ site.amethyst.edituri_base | escape  }}{{ page.path | escape }}">Edit this page</a>
@@ -101,28 +98,28 @@
         </div>
     </footer>
     <script type="module">
-        window.addEventListener('DOMContentLoaded', function setupSubNav() {
-            const siteNav = document.querySelector('.site-nav-list');
-            const closeSubNav = () => {
-                const prevSub = siteNav.querySelector('.is-open');
-                if (prevSub) {
-                    prevSub.classList.remove('is-open');
+    window.addEventListener('DOMContentLoaded', function setupSubNav() {
+        const siteNav = document.querySelector('.site-nav-list');
+        const closeSubNav = () => {
+            const prevSub = siteNav.querySelector('.is-open');
+            if (prevSub) {
+                prevSub.classList.remove('is-open');
+            }
+        }
+        siteNav.addEventListener('click', (event) => {
+            if (event.target.classList.contains('has-sub-list')) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                if (event.target.parentNode.classList.contains('is-open')) {
+                    closeSubNav();
+                } else {
+                    closeSubNav();
+                    event.target.parentNode.classList.add('is-open');
                 }
             }
-            siteNav.addEventListener('click', (event) => {
-                if (event.target.classList.contains('has-sub-list')) {
-                    event.preventDefault();
-                    event.stopPropagation();
-
-                    if (event.target.parentNode.classList.contains('is-open')) {
-                        closeSubNav();
-                    } else {
-                        closeSubNav();
-                        event.target.parentNode.classList.add('is-open');
-                    }
-                }
-            });
         });
+    });
     </script>
 </body>
 </html>

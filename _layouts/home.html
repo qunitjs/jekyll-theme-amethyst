@@ -12,15 +12,14 @@ layout: wrapper
         	{%- endif -%}
         </h1>
         <h2 class="hero-description">{{ page.home_description | default: site.description | escape }}</h2>
-        {%- if page.home_primary_btn %}
+        {%- if page.home_primary_btn -%}
         <a class="hero-button button" href="{{ page.home_primary_btn.href | escape }}">{{ page.home_primary_btn.name | escape }}</a>
         {%- endif -%}
-        {%- if page.home_secondary_btn %}
+        {%- if page.home_secondary_btn -%}
         <a class="hero-button button secondary" href="{{ page.home_secondary_btn.href | escape }}">{{ page.home_secondary_btn.name | escape }}</a>
-        {%- endif %}
+        {%- endif -%}
     </div>
 </section>
-
 <div class="main wrapper layout-home">
     {{ content }}
 </div>

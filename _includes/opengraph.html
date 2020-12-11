@@ -1,26 +1,26 @@
-{%- comment %}
+{%- comment -%}
     See https://ogp.me/
-{% endcomment -%}
+{%- endcomment -%}
 
 <meta property="og:title" content="{% if page.title %}{{ page.title | escape }} - {% endif %}{{ site.title | escape }}">
 
 {%- if page.excerpt -%}
-    {% assign excerpt = page.excerpt %}
+    {%- assign excerpt = page.excerpt -%}
 {%- elsif page.layout == "home" -%}
-    {% assign excerpt = site.description %}
+    {%- assign excerpt = site.description -%}
 {%- else -%}
-    {% assign excerpt = "" %}
+    {%- assign excerpt = "" -%}
 {%- endif -%}
-{% if excerpt and excerpt != empty %}
+{%- if excerpt and excerpt != empty -%}
 <meta name="description" content="{{ excerpt | strip_html | truncate: 200 | normalize_whitespace | escape }}">
 <meta property="og:description" content="{{ excerpt | strip_html | truncate: 200 | normalize_whitespace | escape }}">
-{% endif -%}
+{%- endif -%}
 
 {%- if site.amethyst.mastodon -%}
 <link rel="me" href="{{ site.amethyst.mastodon | escape }}">
-{% endif -%}
+{%- endif -%}
 {%- if site.amethyst.twitter -%}
 <meta name="twitter:creator" content="@{{ site.amethyst.twitter | escape }}">
 <meta name="twitter:site" content="@{{ site.amethyst.twitter | escape }}">
-{% endif -%}
+{%- endif -%}
 <meta name="twitter:card" content="summary_large_image">

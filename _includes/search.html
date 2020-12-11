@@ -7,7 +7,7 @@
 </svg>
 </form>
 
-{%- comment %}
+{%- comment -%}
 For releases and integrity hashes (SRI), see:
 * https://www.jsdelivr.com/package/npm/algoliasearch
 * https://www.jsdelivr.com/package/npm/autocomplete.js
@@ -16,105 +16,104 @@ We use type="module" as a natural way to cut the mustard,
 executing the script only on modern browsers with ES6 support,
 and causing no errors on older browsers.
 See https://responsivenews.co.uk/post/18948466399/cutting-the-mustard
-{% endcomment %}
+{%- endcomment -%}
 <script type="module">
-    const loadSearch = () => Promise.all([
-        new Promise((resolve) => document.body.append(Object.assign(document.createElement('script'), {
-            crossOrigin: 'anonymous',
-            integrity: 'sha256-YuyfhK9VEyfW6ejFiPbfOX2SELbFrgFU/8tU3MHuh60=',
-            src: 'https://cdn.jsdelivr.net/npm/algoliasearch@4.3.1/dist/algoliasearch-lite.umd.js',
-            onload: resolve
-        }))),
-        new Promise((resolve) => document.body.append(Object.assign(document.createElement('script'), {
-            crossOrigin: 'anonymous',
-            integrity: 'sha256-YVWQosorZnr6fALvOW9VALYuInld27RkSPkElGBdCaU=',
-            src: 'https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js',
-            onload: resolve
-        })))
-    ]);
-    let restoreFocus = false;
-    async function setupSearch(e) {
-        // Remember if first input happened, to restore focus as-needed since
-        // autocomplete.js will replace the input element.
-        // This is before "once" check, to account for input between start and end of preload
-        restoreFocus = restoreFocus || (e && (e.type === 'click' || e.type === 'focus'));
+const loadSearch = () => Promise.all([
+    new Promise((resolve) => document.body.append(Object.assign(document.createElement('script'), {
+        crossOrigin: 'anonymous',
+        integrity: 'sha256-YuyfhK9VEyfW6ejFiPbfOX2SELbFrgFU/8tU3MHuh60=',
+        src: 'https://cdn.jsdelivr.net/npm/algoliasearch@4.3.1/dist/algoliasearch-lite.umd.js',
+        onload: resolve
+    }))),
+    new Promise((resolve) => document.body.append(Object.assign(document.createElement('script'), {
+        crossOrigin: 'anonymous',
+        integrity: 'sha256-YVWQosorZnr6fALvOW9VALYuInld27RkSPkElGBdCaU=',
+        src: 'https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js',
+        onload: resolve
+    })))
+]);
+let restoreFocus = false;
+async function setupSearch(e) {
+    // Remember if first input happened, to restore focus after autocomplete.js
+    // replaces the input element.
+    // This is before "once" check, to account for input between start and end of preload
+    restoreFocus = restoreFocus || (e && (e.type === 'click' || e.type === 'focus'));
 
-        // Enforce "once" for loading scripts and configuring search field
-        if (setupSearch.setup) return;
-        setupSearch.setup = 1;
-        await loadSearch();
+    // Enforce "once" for loading scripts and configuring search field
+    if (setupSearch.setup) return;
+    setupSearch.setup = 1;
+    await loadSearch();
 
-        const client = algoliasearch('{{ site.amethyst.algolia.application_id | default: site.algolia.application_id }}', '{{ site.amethyst.algolia.search_only_api_key }}');
-        {% if site.amethyst.algolia.sources -%}
-        const indexSources = {{ site.amethyst.algolia.sources | jsonify }};
-        {%- elsif site.algolia.index_name -%}
-        const indexSources = [{ index: {{ site.algolia.index_name | jsonify }} }];
-        {%- else -%}
-        const indexSources = [];
-        {%- endif %}
-        const escapeText = autocomplete.escapeHighlightedString;
-        const autocompleteOptions = {
-            hint: false,
-            ariaLabel: 'search input',
-            // Set debug to true to allow inspecting the dropdown
-            debug: true,
-            // Upon focus restore (see below), load suggestions if input is non-empty
-            openOnFocus: true,
-            templates: {
-                // https://github.com/algolia/autocomplete.js/issues/248
-                empty(query) {
-                    return `No results for "${escapeText(query.query)}".`;
-                }
-            }
-        };
-        function formatURL(suggestion) {
-            if (suggestion.anchor && suggestion.url.indexOf('#') === -1) {
-                return suggestion.url + '#' + suggestion.anchor;
-            } else {
-                return suggestion.url;
+    const client = algoliasearch('{{ site.amethyst.algolia.application_id | default: site.algolia.application_id }}', '{{ site.amethyst.algolia.search_only_api_key }}');
+    {% if site.amethyst.algolia.sources -%}
+    const indexSources = {{ site.amethyst.algolia.sources | jsonify }};
+    {%- elsif site.algolia.index_name -%}
+    const indexSources = [{ index: {{ site.algolia.index_name | jsonify }} }];
+    {%- else -%}
+    const indexSources = [];
+    {%- endif %}
+    const escapeText = autocomplete.escapeHighlightedString;
+    const autocompleteOptions = {
+        hint: false,
+        ariaLabel: 'search input',
+        // Set debug to true to allow inspecting the dropdown
+        debug: true,
+        // Upon focus restore (see below), load suggestions if input is non-empty
+        openOnFocus: true,
+        templates: {
+            // https://github.com/algolia/autocomplete.js/issues/248
+            empty(query) {
+                return `No results for "${escapeText(query.query)}".`;
             }
         }
-        function newHitsSource(index, params) {
-            return function doSearch(query, cb) {
-                index
-                    .search(query, params)
-                    .then(function(res) {
-                        cb(res.hits, res);
-                    })
-                    .catch(function(err) {
-                        console.error(err);
-                        cb([]);
-                    });
-            };
+    };
+    function formatURL(suggestion) {
+        if (suggestion.anchor && suggestion.url.indexOf('#') === -1) {
+            return suggestion.url + '#' + suggestion.anchor;
+        } else {
+            return suggestion.url;
         }
-        const autocompleteSources = indexSources.map(source => ({
-            source: newHitsSource(client.initIndex(source.index), { hitsPerPage: 5 }),
-            displayKey: '',
-            templates: {
-                suggestion(suggestion) {
-                    const title = [ suggestion.title ].concat(suggestion.headings || []).join(' › ');
-                    const content = suggestion._highlightResult.content && suggestion._highlightResult.content.value || '';
-                    suggestion._href = (source.base || '') + formatURL(suggestion);
-                    return `
-                        <a href="${suggestion._href}" tabindex="-1">
-                            <p class="aa-suggestion_title">${title}</p>
-                            <p class="aa-suggestion_content">${content}</p>
-                        </a>
-                    `;
-                }
-            }
-        }));
-        const $input = autocomplete('#aa-search-input', autocompleteOptions, autocompleteSources)
-            .on('autocomplete:selected', (e, suggestion) => location.href = suggestion._href || suggestion.url);
-        if (restoreFocus) $input.focus();
-
-        // Disable fallback form
-        document.querySelector('#site-search-form').addEventListener('submit', (e) => e.preventDefault());
     }
+    function newHitsSource(index, params) {
+        return function doSearch(query, cb) {
+            index.search(query, params)
+                .then(res => {
+                    cb(res.hits, res);
+                })
+                .catch(err => {
+                    cb([]);
+                    console.error(err);
+                });
+        };
+    }
+    const autocompleteSources = indexSources.map(source => ({
+        source: newHitsSource(client.initIndex(source.index), { hitsPerPage: 5 }),
+        displayKey: '',
+        templates: {
+            suggestion(suggestion) {
+                const title = [ suggestion.title ].concat(suggestion.headings || []).join(' › ');
+                const content = suggestion._highlightResult.content && suggestion._highlightResult.content.value || '';
+                suggestion._href = (source.base || '') + formatURL(suggestion);
+                return `
+                    <a href="${suggestion._href}" tabindex="-1">
+                        <p class="aa-suggestion_title">${title}</p>
+                        <p class="aa-suggestion_content">${content}</p>
+                    </a>
+                `;
+            }
+        }
+    }));
+    const $input = autocomplete('#aa-search-input', autocompleteOptions, autocompleteSources)
+        .on('autocomplete:selected', (e, suggestion) => location.href = suggestion._href || suggestion.url);
+    if (restoreFocus) $input.focus();
 
-    // Lazyload
-    document.querySelector('#aa-search-input').addEventListener('focus', setupSearch, { once: true });
-    document.querySelector('#site-search-form').addEventListener('click', setupSearch, { once: true });
-    // Preload
-    window.addEventListener('load', () => setTimeout(setupSearch, 7000));
+    // Disable fallback form
+    document.querySelector('#site-search-form').addEventListener('submit', (e) => e.preventDefault());
+}
+
+// Lazyload
+document.querySelector('#aa-search-input').addEventListener('focus', setupSearch, { once: true });
+document.querySelector('#site-search-form').addEventListener('click', setupSearch, { once: true });
+// Preload
+window.addEventListener('load', () => setTimeout(setupSearch, 7000));
 </script>

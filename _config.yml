@@ -70,6 +70,12 @@ kramdown:
   input: GFM
   toc_levels: "1,2"
 
+# Sass
+# https://jekyllrb.com/docs/assets/#sassscss
+sass:
+  style: compressed
+  sourcemap: never
+
 # Backend search index
 #
 # This applies to the 'jekyll algolia' command.
