@@ -48,7 +48,7 @@ async function setupSearch(e) {
     {% if site.amethyst.algolia.sources -%}
     const indexSources = {{ site.amethyst.algolia.sources | jsonify }};
     {%- elsif site.algolia.index_name -%}
-    const indexSources = [{ index: {{ site.algolia.index_name | jsonify }} }];
+    const indexSources = [{ index: {{ site.algolia.index_name | jsonify }}, base: {{ '' | relative_url | jsonify }} }];
     {%- else -%}
     const indexSources = [];
     {%- endif %}

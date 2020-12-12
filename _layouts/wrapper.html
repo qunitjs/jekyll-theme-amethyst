@@ -9,7 +9,7 @@
 <body>
     <header class="site-header" role="banner">
         <div class="site-header-wrapper wrapper">
-            <a class="site-logo" href="/">
+            <a class="site-logo" href="{{ '/' | relative_url }}">
                 {%- if site.amethyst.header_logo.src -%}
                 <img src="{{ site.amethyst.header_logo.src | relative_url | escape }}" alt="{{ site.title | escape }}" width="{{ site.amethyst.header_logo.width | escape }}" height="{{ site.amethyst.header_logo.height | escape }}">
                 {%- else -%}
