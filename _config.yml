@@ -38,10 +38,10 @@ amethyst:
   # Frontend search powered by Algolia
   algolia:
     # Key for client-side search queries (required)
-    search_only_api_key: f492bec49e061a41cb8f57128483fd16
+    search_only_api_key: f37678e47d7730bbf340e904a81fbbbd
 
     # Defaults to `algolia.application_id`.
-    application_id: EQYECMT6Q0
+    application_id:
 
     # Which indexes to use as autocomplete source
     # For example, to support multiple sources:
@@ -54,11 +54,6 @@ amethyst:
     # ```
     #
     # Defaults to a single source based on `algolia.index_name`.
-    sources:
-      - index: qunitjs
-        base: https://qunitjs.com
-      - index: qunitjs-api
-        base: https://api.qunitjs.com
 
 # Conversion
 highlighter: rouge
@@ -81,8 +76,8 @@ sass:
 #
 # See <https://github.com/algolia/jekyll-algolia>.
 algolia:
-  application_id:
+  application_id: 4HMKKPGKKN
   # Which index to submit content to
-  index_name:
+  index_name: amethyst-demo
   # Which markdown pages to ignore
   files_to_exclude:

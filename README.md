@@ -2,6 +2,11 @@
 
 This repository houses the Amethyst theme for Jekyll.
 
+## Getting started
+
+To create a new site, use the [Getting started](docs/getting-started.md) guide,
+or browse the minimal example in the [example](https://github.com/qunitjs/jekyll-theme-amethyst/tree/example) branch.
+
 ## Credits
 
 The theme was designed by [Trent Willis](https://github.com/trentmwillis/) in 2018 for the [qunitjs.com](https://qunitjs.com/) website ([qunitjs/qunitjs.com#151](https://github.com/qunitjs/qunitjs.com/issues/151#issuecomment-655154878)).
