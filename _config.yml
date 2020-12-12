@@ -1,0 +1,109 @@
+# Site settings
+#
+# https://jekyllrb.com/docs/configuration/
+title: Amethyst Demo
+description: An amazing website.
+permalink: :title/
+
+plugins:
+  # https://help.github.com/articles/redirects-on-github-pages/
+  # https://github.com/jekyll/jekyll-redirect-from
+  - jekyll-redirect-from
+
+# Theme
+theme: null
+remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@415a52b
+amethyst:
+  edituri_base: https://github.com/qunitjs/jekyll-theme-amethyst/blob/example/
+  # Defaults to "/favicon.svg"
+  favicon:
+  # Horizontal logo with text (SVG, or PNG that is at least 140px tall, for 70px@2x).
+  # Set width/height for aspect ratio.
+  #
+  # Example:
+  #
+  # ```
+  # header_logo:
+  #   src: /assets/logo-with-text.svg
+  #   width: 250
+  #   height: 70
+  # ```
+  header_logo:
+  # Mastodon account URL (e.g. "https://mastodon.technology/@qunitjs")
+  mastodon:
+  # Twitter.com username (without "@")
+  twitter:
+  # GitHub.com organisation or username
+  github: qunitjs
+  # Gitter.im room (e.g. "qunitjs/qunit")
+  gitter:
+  # Frontend search powered by Algolia
+  algolia:
+    # Key for client-side search queries (32-character hex token)
+    search_only_api_key:
+
+    # Defaults to `algolia.application_id` (see below)
+    application_id:
+
+    # Which indexes to use as autocomplete source
+    #
+    # Defaults to a single source based on `algolia.index_name`,
+    # which means the current site only.
+    #
+    # If there are multiple relates sites that you want to give
+    # a unified search experience (e.g. qunitjs.com and api.qunitjs.com)
+    # then use this option to explicitly specify the sources.
+    # In that case, be sure to set `base` for the "other" sites
+    # as the indexes not aware of their full url (indexing happens
+    # at built time in CI). Include the "current" site index name as
+    # well, but without any `base` so that its results are linked
+    # relative, and thus work as expected when testing the site
+    # locally, for example.
+    #
+    # Example: Multiple sources
+    #
+    # ```
+    # sources:
+    #  - index: qunitjs-api
+    #    base: https://api.qunitjs.com
+    #  - index: qunitjs
+    # ```
+    sources:
+
+# Conversion
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  toc_levels: "1,2"
+
+# Sass
+# https://jekyllrb.com/docs/assets/#sassscss
+sass:
+  style: compressed
+  sourcemap: never
+
+# Backend search index
+#
+# This applies to the 'jekyll algolia' command.
+# Requires the ALGOLIA_API_KEY secret environment variable.
+# This is invoked by CI to populate the search index.
+#
+# See <https://github.com/algolia/jekyll-algolia>.
+algolia:
+  application_id:
+  # Which index_name the Travis job will create or replace
+  # with the content of this site.
+  index_name:
+  # Pages not to suggest in search, e.g. if they are overviews
+  # that only point to other pages and have no original content.
+  files_to_exclude:
+    # - something-overview.md
+
+# Don't serve from the web
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CONTRIBUTING.md
+  - CNAME
