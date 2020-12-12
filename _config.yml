@@ -1,20 +1,21 @@
 # Site settings
 #
 # https://jekyllrb.com/docs/configuration/
-title: Amethyst
+title: Amethyst Demo
 description: "An amazing website."
 # The canonical hostname for your site
 url:
 # The subpath of the canonical address (leave as "" if not in a subdirectory)
 baseurl: ""
-# This a custom theme so the native Jekyll theme system is ignored.
-# But, we use github-pages which has a default theme of 'primer'.
-# This is a problem because, even if we ignore its output file,
-# the combination of Jekyll/Sass/Primer has compile errors:
+permalink: :title/
+# Disable theme inheritance since this repo contains its own theme top-level theme.
+# This isn't needed for plain Jekyll, but because we use github-pages as basis
+# we otherwise inherit from the 'primer' theme.
+# This is a problem because, Jekyll/Sass/Primer fails to compile by default, yay.
 # - https://github.com/jekyll/jekyll/issues/7426
 # - https://github.com/jekyll/jekyll/issues/4268
 # - https://github.com/sindresorhus/gulp-ruby-sass/issues/232
-# Workaround by disabling this. – https://github.com/github/pages-gem/issues/613
+# Workaround. – https://github.com/github/pages-gem/issues/613
 theme: null
 
 # Theme settings
@@ -89,6 +90,3 @@ algolia:
   index_name:
   # Which markdown pages to ignore
   files_to_exclude:
-
-# Output
-permalink: :title/

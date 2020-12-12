@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 // Amethyst theme for Jekyll
 
 $size-1: 1rem;
@@ -434,7 +435,7 @@ tr td :last-child {
     @media (min-width: $screen-m) {
         border-radius: 3px;
         &:not(:focus) {
-            background: $color-medium;
+            background: lighten($color-accent, 12%);
             color: $color-white;
         }
     }
@@ -548,14 +549,14 @@ tr td :last-child {
 }
 
 .opened .icon {
-    fill: $color-vibrant;
+    fill: $color-white;
 }
 
 /* Hero header */
 
 .hero {
-    background-color: $color-medium;
-    background-image: linear-gradient(135deg, $color-medium, $color-vibrant );
+    background-color: darken($color-vibrant, 12%);
+    background-image: linear-gradient(135deg, darken($color-vibrant, 12%), $color-vibrant );
     padding: ($size-4 * 2) 0;
     text-align: center;
 }

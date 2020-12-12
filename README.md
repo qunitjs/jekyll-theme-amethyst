@@ -8,7 +8,7 @@ The theme was designed by [Trent Willis](https://github.com/trentmwillis/) in 20
 
 Thanks to [Leo Balter](https://github.com/leobalter) for initiating the use of Markdown-based static sites for QUnit in 2015 ([qunitjs/api.qunitjs.com#150](https://github.com/qunitjs/api.qunitjs.com/pull/150)).
 
-## Development
+## Contributing
 
 Requirements:
 
