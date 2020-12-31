@@ -134,12 +134,12 @@ iframe {
     border-radius: 4px;
 }
 .note--warning {
-    background-color: #fdf5c5;
+    background: #fdf5c5;
     border-color: #e6d252;
 }
 
 .button {
-    background-color: #fff;
+    background: #fff;
     border: 1px solid #fff;
     border-radius: 4px;
     color: $color-vibrant;
@@ -150,7 +150,7 @@ iframe {
     transition: box-shadow 0.3s;
 
     &.secondary {
-        background-color: transparent;
+        background: transparent;
         color: white;
         font-weight: 100;
     }
@@ -199,7 +199,7 @@ table {
 }
 tr {
     border-top: 1px solid $color-off-white;
-    background-color: $color-white;
+    background: $color-white;
     margin: 0;
     padding: 0;
 }
@@ -345,7 +345,7 @@ tr td :last-child {
     padding: 0;
     margin: 0;
     list-style: none;
-    background-color: $color-white;
+    background: $color-white;
     border-radius: 3px;
 
     @media (min-width: $screen-m) {
@@ -458,10 +458,10 @@ tr td :last-child {
 }
 
 .aa-dropdown-menu {
-    background-color: $color-white;
+    background: $color-white;
     border-top: 1px solid $color-off-white;
     width: 100%;
-    max-height: 50vh;
+    max-height: 60vh;
     overflow: auto;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
@@ -470,6 +470,52 @@ tr td :last-child {
         border-top: none;
         min-width: 500px;
         margin-top: $size-spacing;
+    }
+}
+
+.aa-footer {
+    // A sticky element is normally at the start of the content,
+    // but since this is a footer, the space of the sticky element
+    // is naturally preserved at the end of the list and thus won't
+    // overlap the last suggestion.
+    // If this were a ::before or -header instead, then this would need:
+    //   .aa-header {
+    //     margin-top: -2.4rem;
+    //   }
+    //
+    // and
+    //
+    //   .aa-dropdown-menu::after {
+    //     display: block;
+    //     content: "";
+    //     height: 2.4rem;
+    //   }
+    position: sticky;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 6px rgba(0,0,0,0.19);
+
+    top: calc(100% - 2.4rem);
+    padding: 0.8rem 1rem;
+    font-size: 0.8rem;
+    line-height: 1;
+
+    color: $color-darkgrey;
+    text-align: right;
+
+    .aa-logo {
+        // Replace alt text with image
+        line-height: 0;
+        font-size: 0;
+    }
+    .aa-logo::after {
+        content: '';
+        display: inline-block;
+        vertical-align: top;
+        // Nominal size is 485x120
+        background: url(./logo-algolia.svg);
+        height: 0.8rem;
+        width: (485 / 120) * 0.8rem;
     }
 }
 
@@ -497,6 +543,7 @@ tr td :last-child {
 }
 
 .ais-Highlight {
+    font-style: normal;
     font-weight: bold;
 }
 
@@ -628,7 +675,7 @@ tr td :last-child {
 }
 
 .cta .button {
-    background-color: $color-vibrant;
+    background: $color-vibrant;
     border-color: $color-vibrant;
     color: white;
     font-weight: 100;

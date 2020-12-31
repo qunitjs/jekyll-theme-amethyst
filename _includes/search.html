@@ -65,6 +65,8 @@ async function setupSearch(e) {
             empty(query) {
                 return `No results for "${escapeText(query.query)}".`;
             }
+            {%- if site.amethyst.algolia.branding != "none" %},
+            footer: '<div class="aa-footer">Search by <a class="aa-logo" href="https://algolia.com" target="_blank">Algolia</a></div>'{% endif %}
         }
     };
     function formatURL(suggestion) {

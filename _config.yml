@@ -43,6 +43,11 @@ amethyst:
     # Defaults to `algolia.application_id`.
     application_id:
 
+    # Defaults to "on" in accordance with the terms of the
+    # Community and Free Plan, <https://www.algolia.com/press/?section=brand-guidelines>.
+    # When set to "none", branding is omitted.
+    branding:
+
     # Which indexes to use as autocomplete source
     # For example, to support multiple sources:
     #
