@@ -82,8 +82,7 @@ pre.highlight {
     border: 1px solid #ddd;
     border-left: 4px solid $color-vibrant;
     border-radius: 4px;
-    margin: 0;
-    margin-bottom: $size-spacing;
+    margin: 0 0 $size-spacing 0;
     padding: 0.5rem 1rem;
     font-size: 95%;
     line-height: 140%;
@@ -185,49 +184,44 @@ iframe {
 /* Content table */
 
 table {
-    /* Reset */
+    // Reset
     border-collapse: collapse;
     border-spacing: 0;
 
-    padding: 0;
+    background: $color-white;
     margin-bottom: $size-spacing;
 
     @media (max-width: $screen-m) {
         display: block;
         overflow: auto;
     }
-}
-tr {
-    border-top: 1px solid $color-off-white;
-    background: $color-white;
-    margin: 0;
-    padding: 0;
-}
-tr th,
-tr td {
-    text-align: left;
-    margin: 0;
-    padding: 0.3em 0.4em;
-    border: 1px solid $color-off-white;
-}
-tr th {
-    background: $color-light;
-    font-weight: bold;
-}
-tr th :first-child,
-tr td :first-child {
-    margin-top: 0;
-}
-tr th :last-child,
-tr td :last-child {
-    margin-bottom: 0;
+
+    th,
+    td {
+        border: 1px solid $color-off-white;
+        text-align: left;
+        padding: 0.3em 0.4em;
+    }
+    th {
+        background: $color-light;
+        font-weight: bold;
+    }
+    // Collapse margin from paragraph (or other block) with the cell padding
+    th :first-child,
+    td :first-child {
+        margin-top: 0;
+    }
+    th :last-child,
+    td :last-child {
+        margin-bottom: 0;
+    }
 }
 
 .screen-reader-text {
     clip: rect(1px, 1px, 1px, 1px);
     position: absolute !important;
-    height: 1px;
     width: 1px;
+    height: 1px;
     overflow: hidden;
 }
 
@@ -257,8 +251,8 @@ tr td :last-child {
     transition: color 0.3s;
 
     img {
-        height: $size-4;
         width: auto;
+        height: $size-4;
         margin-right: $size-spacing / 2;
     }
 }
@@ -353,8 +347,8 @@ tr td :last-child {
         // Align right so that when a submenu item is wider
         // than its main parent, it can overflow to the left
         // instead of causing horizontal page overflow.
-        right: 0;
         left: auto;
+        right: 0;
         // Avoid line breaks, if possible
         // (This is like 'white-space: nowrap' but with fallback
         // to wrap if the screen is not wide enough)
@@ -442,8 +436,8 @@ tr td :last-child {
 }
 
 .aa-input-icon {
-    height: 16px;
     width: 16px;
+    height: 16px;
     position: absolute;
     top: 50%;
     right: 16px;
@@ -514,8 +508,8 @@ tr td :last-child {
         vertical-align: top;
         // Nominal size is 485x120
         background: url(./logo-algolia.svg);
-        height: 0.8rem;
         width: (485 / 120) * 0.8rem;
+        height: 0.8rem;
     }
 }
 
@@ -528,7 +522,6 @@ tr td :last-child {
     cursor: pointer;
     border-top: 1px solid $color-off-white;
     border-left: 2px solid transparent;
-    border-right: 2px solid transparent;
 
     a {
         // reset default link style
@@ -620,7 +613,7 @@ tr td :last-child {
 
 .hero-description {
     font-weight: 100;
-    text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.24);
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.24);
 }
 
 .hero-button {
