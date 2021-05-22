@@ -1,3 +1,5 @@
+[![Build Status: spider-check](https://github.com/qunitjs/jekyll-theme-amethyst/actions/workflows/spider-check.yaml/badge.svg)](https://github.com/qunitjs/jekyll-theme-amethyst/actions/workflows/spider-check.yaml)
+
 # Amethyst theme
 
 This repository houses the Amethyst theme for Jekyll.
