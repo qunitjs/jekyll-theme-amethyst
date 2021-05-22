@@ -48,4 +48,4 @@ To contribute:
 
 ---
 
-<p class="cta">What are you waiting for? <a href="{% link intro.md %}" class="button">Get started!</a></p>
+<p class="cta">What are you waiting for? <a href="{{ '/intro/' | relative_url }}" class="button">Get started!</a></p>

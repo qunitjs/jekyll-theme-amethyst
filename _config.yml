@@ -3,7 +3,8 @@
 # https://jekyllrb.com/docs/configuration/
 title: Amethyst Demo
 description: "An amazing website."
-permalink: :title/
+permalink: /:title/
+baseurl: /jekyll-theme-amethyst
 # Disable theme inheritance since this repo contains its own theme top-level theme.
 # This isn't needed for plain Jekyll, but because we use github-pages as basis
 # we otherwise inherit from the 'primer' theme.
