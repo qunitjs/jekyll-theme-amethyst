@@ -84,5 +84,10 @@ algolia:
   application_id: 4HMKKPGKKN
   # Which index to submit content to
   index_name: amethyst-demo
+  # By default only HTML paragraphs are indexed (and headings, albeit through a different mechanism).
+  # * Include list items (similar to paragraphs).
+  # * Include tables (index per row for better excerpts).
+  # * Include <pre> (typically code examples, omit if it "poisons" results too much).
+  nodes_to_index: 'p,li,tr,pre'
   # Which markdown pages to ignore
   files_to_exclude:
