@@ -435,31 +435,46 @@ table {
     }
 }
 
-.site-search:not(:focus-within) .aa-input-search::placeholder {
-    color: $color-bright;
-    opacity: 0.6;
+// On wide viewports, when the search field is not focussed,
+// the search field has a dark background. Override the default
+// user agent styles for placeholders (which are often mid-grey,
+// and thus blend into the background too much) to use a bright
+// color instead.
+//
+// When focussed, or when toggling on narrow viewports, the search
+// field has a bright background, so don't apply this there!
+@media (min-width: $screen-m) {
+    .site-search:not(:focus-within) .aa-input-search::placeholder {
+        color: $color-bright;
+        opacity: 0.6;
+    }
 }
 
-// Only displayed when the optional JS code was supported
-// in the current browser and run to completion.
+// Only displayed when the optional JS code was supported in the current browser
+// and run to completion. Also, don't show on narrow viewports (e.g. mobile)
+// where keyboard shortcuts are typically not used.
+// Avoid using device type or pointer support, because one can have a large
+// "mobile"-like device with external keyboard.
 .site-search--bound:not(:focus-within):after {
-    content: '/';
-    display: inline-block;
+    @media (min-width: $screen-m) {
+        content: '/';
+        display: inline-block;
 
-    font-size: 60%;
-    line-height: 2.5;
-    text-align: center;
-    width: 2.5em;
-    height: 2.5em;
-    position: absolute;
-    top: 50%;
-    right: 48px;
-    transform: translateY(-50%);
+        font-size: 60%;
+        line-height: 2.5;
+        text-align: center;
+        width: 2.5em;
+        height: 2.5em;
+        position: absolute;
+        top: 50%;
+        right: 48px;
+        transform: translateY(-50%);
 
-    border-radius: 3px;
-    border: 1px solid $color-bright;
-    color: $color-bright;
-    opacity: 0.6;
+        border-radius: 3px;
+        border: 1px solid $color-bright;
+        color: $color-bright;
+        opacity: 0.6;
+    }
 }
 
 .aa-input-icon {
