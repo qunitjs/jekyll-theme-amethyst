@@ -435,6 +435,33 @@ table {
     }
 }
 
+.site-search:not(:focus-within) .aa-input-search::placeholder {
+    color: $color-bright;
+    opacity: 0.6;
+}
+
+// Only displayed when the optional JS code was supported
+// in the current browser and run to completion.
+.site-search--bound:not(:focus-within):after {
+    content: '/';
+    display: inline-block;
+
+    font-size: 60%;
+    line-height: 2.5;
+    text-align: center;
+    width: 2.5em;
+    height: 2.5em;
+    position: absolute;
+    top: 50%;
+    right: 48px;
+    transform: translateY(-50%);
+
+    border-radius: 3px;
+    border: 1px solid $color-bright;
+    color: $color-bright;
+    opacity: 0.6;
+}
+
 .aa-input-icon {
     width: 16px;
     height: 16px;
