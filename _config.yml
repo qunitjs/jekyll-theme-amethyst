@@ -97,3 +97,8 @@ algolia:
 exclude:
     # Exclude repo docs from site output and search index
     - docs
+    # Avoid the following on GitHub CI:
+    # > Error: could not read file vendor/bundle/ruby/2.7.0/gems/jekyll-3.9.0/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb:
+    # > Invalid date '<%= Time.now.strftime('%Y-%m-%d %H:%M:%S %z') %>':
+    # > Document does not have a valid date in the YAML front matter.
+    - vendor
