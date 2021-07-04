@@ -36,13 +36,13 @@ const input = document.querySelector('#aa-search-input');
 const form = document.querySelector('#site-search-form');
 let restoreFocus = false;
 async function setupSearch(e) {
+    {% comment -%}
     // Whether to restore focus after autocomplete.js replaces the input element.
-    // This is before "once" check, to account for input between start and end of preload.
+    // This is before the setup check to account for input before load ends.
+    {%- endcomment -%}
     restoreFocus = restoreFocus || (e && (e.type === 'click' || e.type === 'focus'));
-
-    // Enforce doing script loading and configuring search field only once.
     if (setupSearch.setup) return;
-    setupSearch.setup = 1;
+    setupSearch.setup = true;
     await loadSearch();
 
     const client = algoliasearch('{{ site.amethyst.algolia.application_id | default: site.algolia.application_id }}', '{{ site.amethyst.algolia.search_only_api_key }}');
@@ -53,40 +53,32 @@ async function setupSearch(e) {
     {%- else -%}
     const indexSources = [];
     {%- endif %}
-    const escapeText = autocomplete.escapeHighlightedString;
+    const escapeString = autocomplete.escapeHighlightedString;
     const autocompleteOptions = {
+        // Debug allows inspecting the suggestions
+        debug: true,
+        // (Re)open suggestions on (re)focus when input is non-empty
+        openOnFocus: true,
         hint: false,
         ariaLabel: 'search input',
-        // Debugs allows inspecting the dropdown
-        debug: true,
-        // Upon (re)focus, always show suggestions if input is non-empty
-        openOnFocus: true,
         templates: {
             // https://github.com/algolia/autocomplete.js/issues/248
             empty(query) {
-                return `No results for "${escapeText(query.query)}".`;
+                return `No results for "${escapeString(query.query)}".`;
             }
             {%- if site.amethyst.algolia.branding != "none" %},
             footer: '<div class="aa-footer">Search by <a class="aa-logo" href="https://algolia.com" target="_blank">Algolia</a></div>'{% endif %}
         }
     };
     function formatURL(suggestion) {
-        if (suggestion.anchor && suggestion.url.indexOf('#') === -1) {
-            return suggestion.url + '#' + suggestion.anchor;
-        } else {
-            return suggestion.url;
-        }
+        return (suggestion.anchor && !suggestion.url.includes('#')) ? suggestion.url + '#' + suggestion.anchor : suggestion.url;
     }
     function newHitsSource(index, params) {
-        return function doSearch(query, cb) {
-            index.search(query, params)
-                .then(res => {
-                    cb(res.hits, res);
-                })
-                .catch(err => {
-                    cb([]);
-                    console.error(err);
-                });
+        return function(query, cb) {
+            index.search(query, params).then(
+                res => { cb(res.hits, res); },
+                err => { cb([]); console.error(err); }
+            );
         };
     }
     const autocompleteSources = indexSources.map(source => ({
@@ -97,8 +89,7 @@ async function setupSearch(e) {
                 const title = [ suggestion.title ].concat(suggestion.headings || []).join(' › ');
                 const content = suggestion._highlightResult.content && suggestion._highlightResult.content.value || '';
                 suggestion._href = (source.base || '') + formatURL(suggestion);
-                return `
-                <a href="${suggestion._href}" tabindex="-1">
+                return `<a href="${suggestion._href}" tabindex="-1">
                     <p class="aa-suggestion_title">${title}</p>
                     <p class="aa-suggestion_content">${content}</p>
                 </a>`;
@@ -107,23 +98,21 @@ async function setupSearch(e) {
     }));
     const $input = autocomplete('#aa-search-input', autocompleteOptions, autocompleteSources)
         .on('autocomplete:selected', (e, suggestion) => location.href = suggestion._href || suggestion.url);
+
     if (restoreFocus) $input.focus();
 
     // Disable fallback form
-    form.addEventListener('submit', (e) => e.preventDefault());
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+    });
 }
-
 document.addEventListener('keydown', (e) => {
-    if (e.key === '/' && !(document.activeElement && /^(input|textarea)$/.test(document.activeElement.nodeName.toLowerCase()))) {
+    if (e.key === '/' && !(document.activeElement && /^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName))) {
         input.focus();
         e.preventDefault();
     }
 });
-form.classList.add('site-search--bound');
-
-// Lazyload
 input.addEventListener('focus', setupSearch, { once: true });
 form.addEventListener('click', setupSearch, { once: true });
-// Preload
-window.addEventListener('load', () => setTimeout(setupSearch, 7000));
+form.classList.add('site-search--bound');
 </script>
