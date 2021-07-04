@@ -92,3 +92,8 @@ algolia:
   nodes_to_index: 'p,li,tr,pre'
   # Which markdown pages to ignore
   files_to_exclude:
+
+# Input files
+exclude:
+    # Exclude repo docs from site output and search index
+    - docs
