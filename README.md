@@ -2,7 +2,7 @@
 
 # Amethyst theme
 
-This repository houses the Amethyst theme for Jekyll.
+This repository houses the Amethyst theme for Jekyll. Test
 
 ## Getting started
 
