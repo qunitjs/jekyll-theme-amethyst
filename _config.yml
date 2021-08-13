@@ -1,6 +1,16 @@
+# Configuration for the Amethyst development site
+#
+# DO NOT COPY
+#
+# To create your own site with this theme, use the example branch as
+# your clean and minimal starting point:
+# https://github.com/qunitjs/jekyll-theme-amethyst/tree/example
+#
+# -------
+
 # Site settings
 #
-# https://jekyllrb.com/docs/configuration/
+# Docs: https://jekyllrb.com/docs/configuration/
 title: Amethyst Demo
 description: "An amazing website."
 permalink: /:title/
@@ -12,93 +22,60 @@ baseurl: /jekyll-theme-amethyst
 # - https://github.com/jekyll/jekyll/issues/7426
 # - https://github.com/jekyll/jekyll/issues/4268
 # - https://github.com/sindresorhus/gulp-ruby-sass/issues/232
-# Workaround. – https://github.com/github/pages-gem/issues/613
+# – Workaround: https://github.com/github/pages-gem/issues/613
 theme: null
+# Files that will not be converted or published
+exclude:
+  # Exclude repo docs from site output and search index
+  - docs
+  # Avoid the following on GitHub CI:
+  # > Error: could not read file
+  # > vendor/jekyll/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb:
+  # > Invalid date '<%= Time.now.strftime('%Y-%m-%d %H:%M:%S %z') %>':
+  # > Document does not have a valid date in the YAML front matter.
+  - vendor
+
 
 # Theme settings
 #
-# https://github.com/qunitjs/jekyll-theme-amethyst
+# Amethyst theme options are documented at:
+# https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/config.md
+#
 amethyst:
-  # Base URI for "Edit this page" links.
-  # When set, this is combined with the relative path to the Markdown file in the repo.
   edituri_base: https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/
-  # Defaults to "/favicon.svg"
-  favicon:
-  header_logo:
-    src:
-    width:
-    height:
-  # Mastodon account URL (e.g. "https://mastodon.technology/@qunitjs")
-  mastodon:
-  # Twitter.com username (without "@")
-  twitter:
-  # GitHub.com organisation or username
+  release_base: https://github.com/qunitjs/qunit/releases/tag/
   github: qunitjs
-  # Gitter.im room (e.g. "qunitjs/qunit")
   gitter: qunitjs/qunit
-  # Frontend search powered by Algolia
+  # https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/getting-started.md#enable-algolia-search
   algolia:
-    # Key for client-side search queries (required)
     search_only_api_key: f37678e47d7730bbf340e904a81fbbbd
 
-    # Defaults to `algolia.application_id`.
-    application_id:
 
-    # Defaults to "on" in accordance with the terms of the
-    # Community and Free Plan, <https://www.algolia.com/press/?section=brand-guidelines>.
-    # When set to "none", branding is omitted.
-    branding:
-
-    # Which indexes to use as autocomplete source
-    # For example, to support multiple sources:
-    #
-    # ```
-    # sources:
-    #  - index: qunitjs-api
-    #    base: https://api.qunitjs.com
-    #  - index: qunitjs
-    # ```
-    #
-    # Defaults to a single source based on `algolia.index_name`.
-
-# Conversion
+# Conversion settings
+#
 highlighter: rouge
 markdown: kramdown
 kramdown:
   input: GFM
   toc_levels: "1,2"
 
-# Sass
-# https://jekyllrb.com/docs/assets/#sassscss
+
+# Sass settings
+#
+# Docs: https://jekyllrb.com/docs/assets/#sassscss
 sass:
   style: compressed
   sourcemap: never
 
-# Backend search index
+
+# Backend search settings
 #
-# This applies to the 'jekyll algolia' command.
-# Requires the ALGOLIA_API_KEY secret environment variable.
-# For an example, see <https://github.com/qunitjs/qunitjs.com>.
-#
-# See <https://github.com/algolia/jekyll-algolia>.
+# Docs: https://github.com/algolia/jekyll-algolia
 algolia:
   application_id: 4HMKKPGKKN
-  # Which index to submit content to
   index_name: amethyst-demo
   # By default only HTML paragraphs are indexed (and headings, albeit through a different mechanism).
   # * Include list items (similar to paragraphs).
   # * Include tables (index per row for better excerpts).
   # * Include <pre> (typically code examples, omit if it "poisons" results too much).
-  nodes_to_index: 'p,li,tr,pre'
-  # Which markdown pages to ignore
-  files_to_exclude:
-
-# Input files
-exclude:
-    # Exclude repo docs from site output and search index
-    - docs
-    # Avoid the following on GitHub CI:
-    # > Error: could not read file vendor/bundle/ruby/2.7.0/gems/jekyll-3.9.0/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb:
-    # > Invalid date '<%= Time.now.strftime('%Y-%m-%d %H:%M:%S %z') %>':
-    # > Document does not have a valid date in the YAML front matter.
-    - vendor
+  nodes_to_index: "p,li,tr,pre"

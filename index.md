@@ -14,7 +14,7 @@ home_primary_btn:
 # Optional
 home_secondary_btn:
   name: View the Docs
-  href: https://api.qunitjs.com
+  href: /api/
 ---
 
 <section class="grid grid--small home-highlights">

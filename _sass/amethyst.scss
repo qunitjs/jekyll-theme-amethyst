@@ -2,6 +2,7 @@
 
 // Amethyst theme for Jekyll
 
+$size-sm: 0.8rem;
 $size-1: 1rem;
 $size-2: 1.333rem;
 $size-3: 1.777rem;
@@ -25,7 +26,14 @@ $screen-xl: 1200px;
     box-sizing: border-box;
 }
 
+html {
+    // This is the background for the footer.
+    // Set here in order to fill any empty space after the footer, on short pages.
+    background: $color-light;
+}
+
 body {
+    background: $color-white;
     color: $color-black;
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     line-height: 1.5;
@@ -38,15 +46,12 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
     margin-bottom: $size-spacing;
 }
-h1 { font-size: $size-5; }
-h2 {
-    color: $color-accent;
-    font-size: $size-4;
-}
-h3 { font-size: $size-3; }
-h4 { font-size: $size-2; }
-h5 { font-size: $size-1; }
-h6 { font-size: $size-1; }
+h1 { font-size: $size-4; color: $color-accent; }
+h2 { font-size: $size-3; }
+h3 { font-size: $size-2; color: $color-darkgrey; }
+h4 { font-size: $size-1; color: $color-darkgrey; }
+h5 { font-size: $size-1; color: $color-darkgrey; }
+h6 { font-size: $size-1; color: $color-darkgrey; }
 
 p {
     margin: 0;
@@ -60,8 +65,26 @@ a {
     &:active,
     &:hover,
     &:focus {
-        color: $color-accent;
         text-decoration: underline;
+    }
+}
+.content a:not(.button) {
+    border-bottom: 0.1em solid currentColor;
+
+    &:active,
+    &:hover,
+    &:focus {
+        text-decoration: none;
+
+        box-shadow: 0px 0px 0px 4px #fbdbfb;
+        background-color: $color-bright;
+        color: $color-accent;
+        border-bottom-color: $color-vibrant;
+        border-bottom-width: 0.13em;
+
+        code {
+            background-color: transparent;
+        }
     }
 }
 
@@ -113,7 +136,34 @@ iframe {
 
 .main {
     padding: $size-spacing;
-    padding-top: ($size-spacing * 2);
+}
+
+// Allow layouts to have a sidebar
+.sidebar {
+    display: none;
+}
+@media (min-width: $screen-m) {
+    .main--columns {
+        display: flex;
+    }
+    .content {
+        // Take up available space even if the lines of text are short.
+        // This affects where right-floated boxes go, such as on page-api.
+        width: 100%;
+        // Fix a quirk with scrollable overflow in content children,
+        // such as <table> or <pre>.
+        // Because content is a flex child, without 'min-width: 0',
+        // we have 'min-width: auto', which causes the viewport to
+        // get a needless vertical scrollbar.
+        // Test plan: Page with page-api layout and some <pre> code
+        // that is wider than your window.
+        min-width: 0;
+    }
+    .sidebar {
+        display: block;
+        flex: 0 0 220px;
+        margin-right: 20px;
+    }
 }
 
 .lead {
@@ -124,6 +174,8 @@ iframe {
 }
 
 .note {
+    // Clear float to avoid clash with `.version-details` box
+    clear: both;
     padding: 0.5em $box-spacing;
     margin: $box-spacing;
 
@@ -225,7 +277,7 @@ table {
     overflow: hidden;
 }
 
-/* Site Header */
+/* Site header */
 
 .site-header {
     background: $color-accent;
@@ -261,7 +313,7 @@ table {
     color: $color-white;
 }
 
-/* Site Navigation */
+/* Site navigation */
 
 .site-nav {
     display: none;
@@ -533,7 +585,7 @@ table {
 
     top: calc(100% - 2.4rem);
     padding: 0.8rem 1rem;
-    font-size: 0.8rem;
+    font-size: $size-sm;
     line-height: 1;
 
     color: $color-darkgrey;
@@ -595,11 +647,11 @@ table {
     color: $color-accent;
 }
 .aa-suggestion_content {
-    font-size: 0.8rem;
+    font-size: $size-sm;
     color: $color-darkgrey;
 }
 
-/* Mobile Toggle Controls */
+/* Site header: Mobile toggle controls */
 
 .site-toggles {
     display: flex;
@@ -634,9 +686,48 @@ table {
     fill: $color-white;
 }
 
-/* Hero header */
+/* Sidebar */
+
+.sidebar h4 {
+    font-size: $size-1;
+    margin: $size-spacing 0 #{$box-spacing / 2} 0;
+    padding-left: 4px;
+}
+
+.sidebar-list {
+    margin-top: 0;
+    padding: 0;
+    list-style: none;
+}
+.sidebar-item {
+    border-left: 4px solid transparent;
+}
+.sidebar-item-active {
+    border-left-color: $color-vibrant;
+}
+
+.sidebar-item a {
+    border-left: 1px solid $color-bright;
+    // Larger and more consistent click target
+    display: block;
+
+    padding: $box-spacing / 2 $box-spacing / 2;
+
+    color: $color-accent;
+    text-decoration: none;
+}
+.sidebar-item-active a,
+.sidebar-item a:active,
+.sidebar-item a:hover,
+.sidebar-item a:focus {
+    background: $color-bright;
+    text-decoration: none;
+}
+
+/* Layout: page */
 
 .hero {
+    margin-bottom: $size-spacing;
     background-color: darken($color-vibrant, 12%);
     background-image: linear-gradient(135deg, darken($color-vibrant, 12%), $color-vibrant );
     padding: ($size-4 * 2) 0;
@@ -663,7 +754,28 @@ table {
     margin-top: $size-4;
 }
 
-/* Home page layout */
+/* Layout: page-api */
+
+.version-details {
+    font-size: $size-sm;
+    font-weight: bold;
+    padding: 0.2em 0.4em;
+
+    @media (min-width: $screen-m) {
+        clear: right;
+        float: right;
+        margin-left: 1.333rem;
+        text-align: left;
+        border-width: 1px;
+        border-style: solid;
+    }
+}
+.version-details:not(.note--warning) {
+    background: $color-light;
+    border-color: $color-off-white;
+}
+
+/* Layout: home */
 
 .layout-home {
     h2, h3 {
@@ -684,7 +796,7 @@ table {
     height: 360px;
 }
 
-/* Site Footer */
+/* Site footer */
 
 .site-footer {
     border-top: 1px solid $color-off-white;

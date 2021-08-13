@@ -19,7 +19,7 @@ npm install --save-dev qunit
 
 <p class="note note--warning" markdown="1">For legacy reasons, you may have to read this sentence.</p>
 
-Create a file for your test at `test/add.js` and include the following:
+Create a `test/add.js` file and call [`QUnit.test()`](https://api.qunitjs.com/QUnit/test/), like so:
 
 ```js
 QUnit.module('add', function() {

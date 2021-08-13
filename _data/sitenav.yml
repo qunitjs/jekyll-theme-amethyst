@@ -4,6 +4,6 @@
     - name: Getting Started
       href: /intro/
 - name: Documentation
-  href: https://api.qunitjs.com
+  href: /api/
 - name: About
   href: /about/

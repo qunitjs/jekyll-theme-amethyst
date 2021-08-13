@@ -1,0 +1,77 @@
+{%- comment -%}
+
+Parameters:
+
+* blocks:
+  Key in `site.data` corresponding to a `_data/*.yml` file.
+
+Block data:
+
+* type: [Default: "group"]
+  What type of block to add to the sidebar.
+  - "group" to query a list of pages from a page group.
+  - "list" to specify your own custom list.
+
+* title: [Default: group_page.title or ""]
+  For a "group" block this defaults to the title of the group index page.
+  For a custom "list" block, this is required.
+
+* url: [Default: group_page.url or null]
+  For a "group" block this defaults to the URL of the group index page.
+  If null, the block title will not be linked.
+
+* group:
+  When using a "group" block, the ID of the group to query for.
+
+* list:
+  When using a "list" block, an array of objects with "title"
+  and "url" properties.
+
+* expand: [Default: active]
+  Whether a block should be expanded.
+  - true: Always expanded.
+  - false: Never expanded.
+  - active: Expand when the current page is in the list.
+
+{%- endcomment -%}
+<section class="sidebar">
+{% for block in site.data[include.blocks] -%}
+	{%- assign block_type = block.type | default: "group" -%}
+	{%- assign block_title = block.title -%}
+	{%- assign block_url = block.url -%}
+	{%- assign block_contents = block.list -%}
+	{%- assign block_expand = block.expand -%}
+	{%- if block_expand != true and block_expand != false -%}
+		{%- assign block_expand = "active" -%}
+	{%- endif -%}
+
+	{%- if block_type == "group" -%}
+		{%- assign group_page = site.pages | where: "layout", "group" | where: "group", block.group | first -%}
+		{%- assign block_title = block.title | default: group_page.title | default: block.group -%}
+		{%- assign block_url = block.url | default: group_page.url -%}
+		{%- assign block_contents = site.pages | where: 'groups', block.group | sort_natural: 'title' -%}
+	{%- elsif block_type == "recent" -%}
+		{%- assign block_contents = site.posts | slice: 0, 5 -%}
+	{%- endif -%}
+
+	{%- if block_expand == "active" -%}
+		{%- assign self_in_contents = block_contents | where: 'url', page.url | size -%}
+		{%- if page.url == block_url or self_in_contents > 0 -%}
+			{%- assign block_expand = true -%}
+		{%- else -%}
+			{%- assign block_expand = false -%}
+		{%- endif -%}
+	{%- endif %}
+
+	<h4{% if block_expand %} class="sidebar-title-open"{% endif %}>{% if block_url %}<a href="{{ block_url | relative_url }}">{{ block_title }}</a>{% else %}{{ block_title }}{% endif %}</h4>
+	{%- if block_expand -%}
+	<ul class="sidebar-list">
+	{%- for entry in block_contents %}
+	<li class="sidebar-item{% if page.url == entry.url %} sidebar-item-active{% endif %}">
+		<a href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+	</li>
+	{%- endfor -%}
+	</ul>
+	{%- endif -%}
+{% endfor %}
+</section>

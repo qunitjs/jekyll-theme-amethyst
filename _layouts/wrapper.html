@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="utf-8">
-<title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
+<title>{% if page.url != '/' and page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="{{ site.amethyst.favicon | default: '/favicon.svg' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}" media="screen">
@@ -9,7 +9,7 @@
 <body>
     <header class="site-header" role="banner">
         <div class="site-header-wrapper wrapper">
-            <a class="site-logo" href="{{ '/' | relative_url }}">
+            <a class="site-logo" href="{{ site.amethyst.home_href | default: '/' | relative_url }}">
                 {%- if site.amethyst.header_logo.src -%}
                 <img src="{{ site.amethyst.header_logo.src | relative_url | escape }}" alt="{{ site.title | escape }}" width="{{ site.amethyst.header_logo.width | escape }}" height="{{ site.amethyst.header_logo.height | escape }}">
                 {%- else -%}

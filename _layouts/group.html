@@ -1,0 +1,14 @@
+---
+layout: page-api
+---
+{{ content }}
+
+{%- assign pages = site.pages | where: 'groups', page.group | sort_natural: 'title' -%}
+{% for page in pages %}
+<h2 id="{{ page.title | slugify }}"><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h2>
+<p>
+	{%- if page.version_removed %}<strong>REMOVED</strong> {% endif -%}
+	{%- if page.version_removed == nil and page.version_deprecated %}<strong>DEPRECATED</strong> {% endif -%}
+	{{ page.excerpt -}}
+</p>
+{% endfor -%}

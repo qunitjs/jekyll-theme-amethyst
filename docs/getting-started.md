@@ -31,7 +31,7 @@ For the end-result, see [Amethyst Demo](https://qunitjs.github.io/jekyll-theme-a
 Some ideas for what to do next:
 
 * Edit the [Home](https://github.com/qunitjs/jekyll-theme-amethyst/blob/example/index.md) page, and create other Markdown files.
-* Change the [config](https://github.com/qunitjs/jekyll-theme-amethyst/blob/example/_config.yml), e.g. to set the name and tagline of your site.
+* Change the [_config](https://github.com/qunitjs/jekyll-theme-amethyst/blob/example/_config.yml) file, e.g. to set the name and tagline of your site. See also [Amethyst theme configuration](./config.md) documentation.
 * Change colors in [amethyst-variables.scss](https://github.com/qunitjs/jekyll-theme-amethyst/blob/example/_sass/amethyst-variables.scss).
 * Change the top navigation links via [sitenav.yml](https://github.com/qunitjs/jekyll-theme-amethyst/blob/example/_data/sitenav.yml).
 * Add a LICENSE to your repository.
@@ -45,8 +45,8 @@ Some ideas for what to do next:
    - `algolia.application_id`: Application ID.
    - `amethyst.algolia.search_only_api_key`: Search-Only API Key.
    - `algolia.index_name`: make up a unique lowercase name for the current static site.
-4. Set the following secure environment variable in the CI build for the main branch.
-   E.g. via Travis CI or otherwise.
+4. Set the following secure environment variable in a CI build for commits pushed to the main branch.
+   E.g. via GitHub Actions. ([Example workflow YAML](https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/.github/workflows/doc-search.yaml))
    - `ALGOLIA_API_KEY`: Admin API Key.
 5. Done! The settings in `_config.yml` instruct the theme to display a search field. The next CI build will populate the search index with your content.
 
