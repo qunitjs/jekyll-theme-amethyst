@@ -36,7 +36,7 @@ amethyst:
   # Base URI for "Edit this page" link in the footer.
   # When set, this is combined with the relative path to the Markdown file in the repo.
   #
-  # Example: https://github.com/qunitjs/jekyll-theme-amethyst/blob/example/
+  # Example: https://github.com/qunitjs/qunitjs.com/blob/main/
   edituri_base:
   # Base URI for version links (e.g. "version added") on page-api layouts.
   #
