@@ -4,6 +4,7 @@ ruby RUBY_VERSION
 gem "jekyll", "~> 4.2.0"
 gem "kramdown-parser-gfm", "1.1.0"
 gem "jekyll-redirect-from", "~> 0.16.0", group: :jekyll_plugins
+gem "jekyll-relative-links", "~> 0.6.1", group: :jekyll_plugins
 gem "jekyll-remote-theme", "~> 0.4.3", group: :jekyll_plugins
 
 # Blog
