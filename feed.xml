@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/jekyll-theme-amethyst/feed.xml" rel="self" type="application/atom+xml" /><link href="/jekyll-theme-amethyst/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-08-23T02:21:11+00:00</updated><id>/jekyll-theme-amethyst/feed.xml</id><title type="html">Amethyst Demo</title><subtitle>An amazing website.</subtitle><entry><title type="html">Hello, World!</title><link href="/jekyll-theme-amethyst/2011/04/01/hello-world/" rel="alternate" type="text/html" title="Hello, World!" /><published>2011-04-01T00:00:00+00:00</published><updated>2011-04-01T00:00:00+00:00</updated><id>/jekyll-theme-amethyst/2011/04/01/hello-world</id><content type="html" xml:base="/jekyll-theme-amethyst/2011/04/01/hello-world/">&lt;p&gt;Lorem ipsum &lt;a href=&quot;https://en.wikipedia.org/wiki/Lorem_ipsum&quot;&gt;dolor sit amet&lt;/a&gt;, consectetur adipiscing elit.&lt;/p&gt;
+
+&lt;h3 id=&quot;duis-fringilla&quot;&gt;Duis fringilla&lt;/h3&gt;
+
+&lt;p&gt;Aliquam efficitur &lt;em&gt;arcu a nisl&lt;/em&gt; egestas molestie. Nulla ut neque quis ante tristique vehicula ut sit amet sem. Aliquam turpis enim, elementum volutpat auctor in, scelerisque sed quam. Morbi vulputate mattis vehicula. Etiam volutpat fringilla arcu, in vehicula lorem facilisis sed. In gravida enim arcu. Mauris &lt;strong&gt;elit&lt;/strong&gt; purus, congue id dignissim a, vestibulum auctor neque.&lt;/p&gt;
+
+&lt;h2 id=&quot;cras-maximus&quot;&gt;Cras maximus&lt;/h2&gt;
+
+&lt;p&gt;Mi ac semper maximus. Ut eget libero accumsan, vestibulum nibh at, rhoncus erat. Donec nibh lorem, elementum  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lacini()&lt;/code&gt;, laoreet eget risus.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;elem1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;maximus&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;elem2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lacini&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;donec-ut&quot;&gt;Donec ut&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In a augue accumsan, dictum libero at, fringilla erat.&lt;/li&gt;
+  &lt;li&gt;Quisque ante massa, rutrum et scelerisque eu, varius sed orci.&lt;/li&gt;
+  &lt;li&gt;Fusce eget erat lacinia, fringilla tellus et.&lt;/li&gt;
+  &lt;li&gt;Sed a massa leo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cras-venenatis&quot;&gt;Cras venenatis&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sed vel erat sapien. (&lt;a href=&quot;https://qunitjs.com/&quot;&gt;QUnit&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Phasellus et convallis quam.  (&lt;a href=&quot;https://eslint.org/&quot;&gt;ESLint&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Pellentesque sed nulla ipsum, posuere nisi. (&lt;a href=&quot;https://jquery.com/&quot;&gt;jQuery&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;nunc-tristique&quot;&gt;Nunc tristique&lt;/h2&gt;
+
+&lt;p&gt;Integer et tempus lectus. Vivamus risus tellus, porta in aliquet ac, egestas sed risus. Aliquam bibendum ac dui eu tempus. Mauris rutrum et enim a viverra. Nunc ac sapien dolor. Vestibulum ultrices nibh vel tortor congue, nec tempus lacus sagittis. Cras a turpis eros. Nulla facilisi. Aenean ac lobortis libero. Quisque sagittis ultricies congue. Proin id velit sit amet ipsum euismod laoreet quis ac lacus. Praesent ut pellentesque ex. Sed dolor nulla, consectetur ac arcu id, placerat pharetra justo.&lt;/p&gt;</content><author><name>Alice Fitzgerald</name></author><category term="event" /><summary type="html">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</summary></entry><entry><title type="html">Announcing the blog!</title><link href="/jekyll-theme-amethyst/2006/01/26/announcing-the-blog/" rel="alternate" type="text/html" title="Announcing the blog!" /><published>2006-01-26T00:00:00+00:00</published><updated>2006-01-26T00:00:00+00:00</updated><id>/jekyll-theme-amethyst/2006/01/26/announcing-the-blog</id><content type="html" xml:base="/jekyll-theme-amethyst/2006/01/26/announcing-the-blog/">&lt;p&gt;Nulla ut neque quis ante tristique vehicula ut sit amet sem.&lt;/p&gt;
+
+&lt;h2 id=&quot;integer-et-tempus&quot;&gt;Integer et tempus&lt;/h2&gt;
+
+&lt;p&gt;Vivamus risus tellus, porta in aliquet ac, egestas sed risus. Aliquam bibendum ac dui eu tempus. Mauris rutrum et enim a viverra. Nunc ac sapien dolor. Vestibulum ultrices nibh vel tortor congue, nec tempus lacus sagittis. Cras a turpis eros. Nulla facilisi. Aenean ac lobortis libero. Quisque sagittis ultricies congue. Proin id velit sit amet ipsum euismod laoreet quis ac lacus. Praesent ut pellentesque ex. Sed dolor nulla, consectetur ac arcu id, placerat pharetra justo.&lt;/p&gt;</content><author><name>Alice Fitzgerald</name></author><category term="event" /><summary type="html">Nulla ut neque quis ante tristique vehicula ut sit amet sem.</summary></entry></feed>
