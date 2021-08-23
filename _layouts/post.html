@@ -1,0 +1,37 @@
+---
+layout: wrapper
+---
+
+<div class="main main--columns wrapper">
+{% include sidebar.html blocks="sidebar_blog" %}
+<div class="content">
+	<article class="content">
+	<header>
+		<h1>{{ page.title | escape }}</h1>
+		{%- assign date_format = site.amethyst.date_format | default: "%e %B %Y" -%}
+		<p class="post-meta byline">Posted on <time itemprop="pubdate" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>{% if page.author %} by <span class="vcard"><span class="fn n" rel="author">{{ page.author | escape }}</span>{% endif %}</p>
+	</header>
+	{{ content }}
+	</article>
+{%- comment -%}
+Support basic read-only rendering of imported comments.
+
+Docs: <https://en.gravatar.com/site/implement/images/>
+{%- endcomment -%}
+{%- if page.amethyst.comments.size > 0 -%}
+<div id="comments" class="comments">
+<h2 id="comments-title">{{ page.amethyst.comments.size }} archived comment{% if page.amethyst.comments.size != 1 %}s{% endif %}</h2>
+<ol class="comment-list">
+	{%- for comment in page.amethyst.comments -%}
+	<li class="comment" id="comment-{{ forloop.index }}">
+		<div class="comment-meta">
+			<img alt="" src="https://gravatar.com/avatar/{{ comment.gravatar | default: 'none' }}?s=68&amp;d=mm&amp;r=g" srcset="https://gravatar.com/avatar/{{ comment.gravatar | default: 'none' }}?s=136&amp;d=mm&amp;r=g 2x" class="comment-avatar" loading="lazy" width="68" height="68">
+			<span class="comment-author">{{ comment.author | escape }}</span> on <a href="#comment-{{ forloop.index }}"><time datetime="{{ comment.date | date_to_xmlschema }}">{{ comment.date | date: date_format }}</time></a> said:</div>
+		<div class="comment-content">{{ comment.content | markdownify }}</div>
+	</li>
+	{%- endfor -%}
+</ol>
+</div>
+{%- endif -%}
+</div>
+</div>

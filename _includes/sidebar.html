@@ -11,6 +11,8 @@ Block data:
   What type of block to add to the sidebar.
   - "group" to query a list of pages from a page group.
   - "list" to specify your own custom list.
+  - "archive" to query a list of chronological pages based on their layout.
+  - "tags" to query a list of alphabetical pages based on their layout.
 
 * title: [Default: group_page.title or ""]
   For a "group" block this defaults to the title of the group index page.
@@ -52,6 +54,10 @@ Block data:
 		{%- assign block_contents = site.pages | where: 'groups', block.group | sort_natural: 'title' -%}
 	{%- elsif block_type == "recent" -%}
 		{%- assign block_contents = site.posts | slice: 0, 5 -%}
+	{%- elsif block_type == "archive" -%}
+		{%- assign block_contents = site.pages | where: "layout", "posts-year" | sort_natural: 'date' | reverse  -%}
+	{%- elsif block_type == "tags" -%}
+		{%- assign block_contents = site.pages | where: "layout", "posts-tag" | sort_natural: 'title'  -%}
 	{%- endif -%}
 
 	{%- if block_expand == "active" -%}
@@ -68,7 +74,13 @@ Block data:
 	<ul class="sidebar-list">
 	{%- for entry in block_contents %}
 	<li class="sidebar-item{% if page.url == entry.url %} sidebar-item-active{% endif %}">
-		<a href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+		<a href="{{ entry.url | relative_url }}">
+			{%- assign entry_title = entry.title -%}
+			{%- if entry.title == nil and entry.date -%}
+				{%- assign entry_title = entry.date | date: '%Y' -%}
+			{%- endif -%}
+			{{- entry_title -}}
+		</a>
 	</li>
 	{%- endfor -%}
 	</ul>

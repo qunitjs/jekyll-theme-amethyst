@@ -1,6 +1,16 @@
 # Amethyst theme configuration
 
 ```yaml
+# Site settings
+#
+# Docs: https://jekyllrb.com/docs/configuration/
+title: Amethyst Demo
+description: "An amazing website."
+# For pages (not blog posts) this is equivalant to /:title/
+permalink: /:year/:month/:day/:title/
+lang: en
+timezone: UTC
+
 # Theme settings
 #
 # Amethyst theme options are documented at:
@@ -96,5 +106,16 @@ algolia:
   # that only point to other pages and have no original content.
   files_to_exclude:
     # - something-overview.md
+
+
+# Blog archives
+#
+# Docs: https://github.com/jekyll/jekyll-archives/
+jekyll-archives:
+  enabled:
+    - year
+  layout: posts-year
+  permalinks:
+    year: "/:year/"
 
 ```

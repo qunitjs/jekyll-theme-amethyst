@@ -1,9 +1,28 @@
+{%- assign feed_page = site.pages | where: 'url', '/feed.xml' | first -%}
+{%- if feed_page -%}
+<link rel="alternate" type="application/rss+xml" href="{{ feed_page.url | relative_url | escape }}" title="{{ site.title | escape }}">
+{% endif -%}
+
+{%- assign page_title = page.title -%}
+{%- if page_title == nil and page.date -%}
+    {%- comment -%}
+    Deal with jekyll-archives refusing to add, or facilitate addition of, a title to archive pages.
+    {%- endcomment -%}
+    {%- if page.type == "year" -%}
+        {%- assign page_title = page.date | date: '%Y' -%}
+    {%- elsif page.type == "month" -%}
+        {%- assign page_title = page.date | date: '%B %Y' -%}
+    {%- endif -%}
+{%- endif -%}
+
+<title>{% if page.url != '/' and page_title %}{{ page_title | escape }} | {% endif %}{{ site.title | escape }}</title>
+
 {%- comment -%}
     See https://ogp.me/
-{%- endcomment -%}
-{% capture meta %}
+{%- endcomment %}
+{% capture opengraph %}
 
-<meta property="og:title" content="{% if page.title %}{{ page.title | escape }} - {% endif %}{{ site.title | escape }}">
+<meta property="og:title" content="{{ page_title | default: site.title | escape }}">
 
 {% if page.excerpt %}
     {%- assign excerpt = page.excerpt %}
@@ -27,4 +46,4 @@
 <meta name="twitter:card" content="summary_large_image">
 
 {% endcapture -%}
-{{ meta | strip_newlines }}
+{{ opengraph | strip_newlines }}

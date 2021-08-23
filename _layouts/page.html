@@ -2,11 +2,16 @@
 layout: wrapper
 ---
 
+{%- unless page.amethyst.hero == false %}
 <section class="hero">
     <div class="wrapper">
         <h1 class="hero-title">{{ page.title }}</h1>
     </div>
 </section>
+{% endunless -%}
 <div class="main wrapper content">
+{%- if page.amethyst.hero == false -%}
+    <h1>{{ page.title }}</h1>
+{%- endif -%}
     {{ content }}
 </div>

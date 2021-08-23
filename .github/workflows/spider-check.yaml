@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: qunitjs/hydra-link-checker
+          repository: jquery/hydra-link-checker
           ref: v1.0.2
 
       - name: Run hydra-link-checker

@@ -1,0 +1,17 @@
+---
+layout: wrapper
+---
+
+<div class="main main--columns wrapper">
+{% include sidebar.html blocks="sidebar_blog" %}
+{%- assign date_format = site.amethyst.date_format | default: "%e %B %Y" -%}
+{%- assign posts = site.posts -%}
+<div class="posts content">
+	<h1>{{ page.title }}</h1>
+	<ul>
+	{% for post in posts -%}
+		<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>, <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>.</li>
+	{%- endfor -%}
+	</ul>
+</div>
+</div>

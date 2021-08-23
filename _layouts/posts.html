@@ -1,0 +1,28 @@
+---
+layout: wrapper
+---
+
+<div class="main main--columns wrapper">
+{% include sidebar.html blocks="sidebar_blog" %}
+{%- assign date_format = site.amethyst.date_format | default: "%e %B %Y" -%}
+{%- assign posts = site.posts | slice: 0, 10 -%}
+<div class="posts content">
+	<h1>{{ page.title }}</h1>
+	{% for post in posts -%}
+	<div class="post-row">
+		<h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+		<p class="post-meta">Posted on <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>{% if post.author %} by {{ post.author | escape }}{% endif %}</p>
+		<div class="post">
+			{{- post.excerpt -}}
+			{%- if post.excerpt != post.content %}
+			<a class="screen-reader-text" href="{{ post.url | relative_url }}">Continue reading "{{ post.title | escape }}".</a>
+			{%- endif -%}
+		</div>
+	</div>
+	{%- endfor -%}
+	{%- assign archive_page = site.pages | where: "layout", "posts-archive" | first -%}
+	{%- if site.posts.size > 10 and archive_page %}
+		<a href="{{ archive_page.url | relative_url }}">Older posts</a>
+	{%- endif -%}
+</div>
+</div>

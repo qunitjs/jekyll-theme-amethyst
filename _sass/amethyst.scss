@@ -76,7 +76,7 @@ a {
     &:focus {
         text-decoration: none;
 
-        box-shadow: 0px 0px 0px 4px #fbdbfb;
+        box-shadow: 0px 0px 0px 4px $color-bright;
         background-color: $color-bright;
         color: $color-accent;
         border-bottom-color: $color-vibrant;
@@ -794,6 +794,80 @@ table {
 .example-result iframe,
 .example-result pre {
     height: 360px;
+}
+
+/* Layout: post, posts */
+
+article > header {
+    border-bottom: 4px solid $color-off-white;
+    margin-bottom: $size-spacing;
+}
+
+.post-meta,
+.comment-meta {
+    font-size: $size-sm;
+    color: $color-darkgrey;
+}
+
+.comments {
+    margin-top: $size-spacing;
+    border-top: 4px solid $color-off-white;
+    padding-top: $size-spacing;
+}
+
+.comment-list {
+    margin: 0;
+    padding: 0;
+}
+
+.comment {
+    border: 1px solid $color-off-white;
+    border-radius: 1em;
+    background: $color-light;
+    padding: $size-1 $size-1 0 $size-1;
+    margin: 0 0 $size-1 102px;
+
+    position: relative;
+    min-height: 68px;
+
+    list-style: none;
+}
+
+.comment:before {
+    position: absolute;
+    top: 1px;
+    left: -25px;
+    height: $size-spacing;
+    width: $size-spacing;
+    border-radius: 100%;
+    background: $color-light;
+
+    color: $color-darkgrey;
+    font-size: $size-sm;
+    line-height: $size-spacing;
+    text-align: center;
+
+    counter-increment: li;
+    content: counter(li);
+}
+
+.comment-avatar {
+    position: absolute;
+    top: 0;
+    left: -102px;
+    border: 1px solid $color-light;
+    border-radius: 3px;
+}
+
+/* Layout: posts */
+
+
+.post-row h2 {
+    margin-bottom: $size-1;
+}
+
+.post-row .post-meta {
+    margin-bottom: $size-sm;
 }
 
 /* Site footer */
