@@ -90,7 +90,12 @@
                 {% endif -%}
             </p>
             <p class="copyright">Copyright <a href="https://openjsf.org/" target="_blank" rel="noopener noreferrer">OpenJS Foundation</a> and contributors.
-                {%- if site.amethyst.edituri_base -%}
+                {%- comment -%}
+                Ignore non-markdown source paths, which are likely generated and thus
+                don't have a corresponding file in the repository (e.g. an archive page)
+                {%- endcomment -%}
+                {%- assign pathext = page.path | split: '.' | last -%}
+                {%- if site.amethyst.edituri_base and pathext == 'md' -%}
                 <br><a href="{{ site.amethyst.edituri_base | escape }}{{ page.path | escape }}">Edit this page</a>
                 {%- endif -%}
             </p>
