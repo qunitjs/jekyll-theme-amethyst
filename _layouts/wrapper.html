@@ -16,7 +16,7 @@
                 {%- endif -%}
             </a>
             {%- if site.amethyst.algolia.search_only_api_key -%}
-{% include search.html %}
+                {%- include search.html -%}
             {%- endif -%}
             <nav class="site-nav"><ul class="site-nav-list">
                 {%- for item in site.data.sitenav -%}
@@ -33,7 +33,7 @@
                 {%- endfor -%}
             </ul></nav>
             <div class="site-toggles">
-                {%- if site.amethyst.algolia.search_only_api_key -%}
+                {%- if site.amethyst.algolia.search_only_api_key %}
                 <button class="search-toggle toggle" data-opens=".site-search" aria-expanded="false">
                     <span class="screen-reader-text">Search</span>
                     <svg class="icon aa-input-icon" aria-hidden="true" viewBox="654 -372 1664 1664" height="20">
@@ -51,7 +51,7 @@
                     searchToggleOpens.setAttribute('aria-expanded', !state);
                 });
                 </script>
-                {%- endif -%}
+                {%- endif %}
                 <button class="nav-toggle toggle" data-opens=".site-nav" aria-expanded="false">
                     <span class="screen-reader-text">Menu</span>
                     <svg class="icon icon-nav-toggle" aria-hidden="true" viewBox="0 0 100 100" height="20">
@@ -87,7 +87,7 @@
                 {% endif -%}
                 {%- if site.amethyst.gitter %}
                 <a href="https://gitter.im/{{ site.amethyst.gitter | escape }}" target="_blank" rel="noopener noreferrer">Chat</a>
-                {% endif -%}
+                {%- endif %}
             </p>
             <p class="copyright">Copyright <a href="https://openjsf.org/" target="_blank" rel="noopener noreferrer">OpenJS Foundation</a> and contributors.
                 {%- comment -%}
@@ -101,29 +101,32 @@
             </p>
         </div>
     </footer>
-    <script type="module">
-    window.addEventListener('DOMContentLoaded', function setupSubNav() {
-        const siteNav = document.querySelector('.site-nav-list');
-        const closeSubNav = () => {
-            const prevSub = siteNav.querySelector('.is-open');
-            if (prevSub) {
-                prevSub.classList.remove('is-open');
+{%- if site.amethyst.algolia.search_only_api_key -%}
+    {%- include search-js.html -%}
+{%- endif -%}
+<script type="module">
+window.addEventListener('DOMContentLoaded', function setupSubNav() {
+    const siteNav = document.querySelector('.site-nav-list');
+    const closeSubNav = () => {
+        const prevSub = siteNav.querySelector('.is-open');
+        if (prevSub) {
+            prevSub.classList.remove('is-open');
+        }
+    }
+    siteNav.addEventListener('click', (event) => {
+        if (event.target.classList.contains('has-sub-list')) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (event.target.parentNode.classList.contains('is-open')) {
+                closeSubNav();
+            } else {
+                closeSubNav();
+                event.target.parentNode.classList.add('is-open');
             }
         }
-        siteNav.addEventListener('click', (event) => {
-            if (event.target.classList.contains('has-sub-list')) {
-                event.preventDefault();
-                event.stopPropagation();
-
-                if (event.target.parentNode.classList.contains('is-open')) {
-                    closeSubNav();
-                } else {
-                    closeSubNav();
-                    event.target.parentNode.classList.add('is-open');
-                }
-            }
-        });
     });
-    </script>
+});
+</script>
 </body>
 </html>
