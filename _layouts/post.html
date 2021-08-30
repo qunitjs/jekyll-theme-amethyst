@@ -9,7 +9,7 @@ layout: wrapper
 	<header>
 		<h1>{{ page.title | escape }}</h1>
 		{%- assign date_format = site.amethyst.date_format | default: "%e %B %Y" -%}
-		<p class="post-meta byline">Posted on <time itemprop="pubdate" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>{% if page.author %} by <span class="vcard"><span class="fn n" rel="author">{{ page.author | escape }}</span></span>{% endif %}</p>
+		<p class="post-meta byline">Posted on <a href="{{ page.url | relative_url }}" rel="bookmark"><time itemprop="pubdate" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time></a>{% if page.author %} by <span class="vcard"><span class="fn n" rel="author">{{ page.author | escape }}</span></span>{% endif %}</p>
 	</header>
 	{{ content }}
 	</article>
