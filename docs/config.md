@@ -6,6 +6,7 @@
 # Docs: https://jekyllrb.com/docs/configuration/
 title: Amethyst Demo
 description: "An amazing website."
+url: https://example.github.io
 # For pages (not blog posts) this is equivalant to /:title/
 permalink: /:year/:month/:day/:title/
 lang: en

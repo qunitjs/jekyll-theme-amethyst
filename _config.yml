@@ -13,9 +13,10 @@
 # Docs: https://jekyllrb.com/docs/configuration/
 title: Amethyst Demo
 description: "An amazing website."
+url: https://qunitjs.github.io
+baseurl: /jekyll-theme-amethyst
 # For pages (not blog posts) this is equivalant to /:title/
 permalink: /:year/:month/:day/:title/
-baseurl: /jekyll-theme-amethyst
 lang: en
 timezone: UTC
 # Disable theme inheritance since this repo contains its own theme top-level theme.

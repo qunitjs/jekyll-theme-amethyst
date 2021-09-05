@@ -6,7 +6,7 @@ This repository houses the Amethyst theme for Jekyll.
 
 ## Getting started
 
-To create a new site, use the [Getting started](docs/getting-started.md) guide,
+To create a new site, use the **[Getting started](docs/getting-started.md)** guide,
 or browse the minimal example in the [example](https://github.com/qunitjs/jekyll-theme-amethyst/tree/example) branch.
 
 ## Credits
@@ -19,7 +19,7 @@ Thanks to [Leo Balter](https://github.com/leobalter) for initiating the use of M
 
 Requirements:
 
-* [Ruby](https://www.ruby-lang.org/) (tested with Ruby 2.6+)
+* [Ruby](https://www.ruby-lang.org/) (tested with Ruby 2.7+)
 * [Bundler](https://bundler.io/) (if missing, install with `gem install bundler`)
 
 To install Jekyll and plugins the first time:
