@@ -6,7 +6,7 @@ This can be your amazing website.
 
 Requirements:
 
-* [Ruby](https://www.ruby-lang.org/) (Ruby 2.6 or later)
+* [Ruby](https://www.ruby-lang.org/) (Ruby 2.7 or later)
 * [Bundler](https://bundler.io/) (install with `gem install bundler`)
 
 To install Jekyll and plugins the first time:

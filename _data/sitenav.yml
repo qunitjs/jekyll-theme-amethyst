@@ -1,14 +1,19 @@
-- name: Guides
-  href: /guides/
-  sub:
-    - name: Getting Started
-      href: /intro/
-- name: Documentation
-  href: https://api.qunitjs.com
-  sub:
-    - name: Assertions
-      href: https://api.qunitjs.com/assert/
-    - name: Callback events
-      href: https://api.qunitjs.com/callbacks/
+# Site navigation
+#
+# Each item takes a "name" and "href"
+# - name: Link text.
+# - href: Link address, either a path URL within the same site,
+#         or an absolue URL to an external address.
+#
+# To create a sub menu, add a "sub" item, under with additional
+# name/href pairs can be nested.
+#
+- name: Getting Started
+  href: /intro/
 - name: About
   href: /about/
+  sub:
+    - name: About Amethyst
+      href: /about/
+    - name: Source code
+      href: https://github.com/qunitjs/jekyll-theme-amethyst/

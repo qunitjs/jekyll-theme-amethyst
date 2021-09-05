@@ -1,22 +1,45 @@
 # Site settings
 #
-# https://jekyllrb.com/docs/configuration/
+# Docs: https://jekyllrb.com/docs/configuration/
 title: Amethyst Demo
 description: An amazing website.
-permalink: :title/
+# For pages (not blog posts) this is equivalant to /:title/
+permalink: /:year/:month/:day/:title/
+lang: en
+timezone: UTC
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  toc_levels: "1,2"
+sass:
+  # https://jekyllrb.com/docs/assets/#sassscss
+  style: compressed
+  sourcemap: never
+exclude:
+  # Don't include these files in the website
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CONTRIBUTING.md
+  - CNAME
 
-plugins:
-  # https://help.github.com/articles/redirects-on-github-pages/
-  # https://github.com/jekyll/jekyll-redirect-from
-  - jekyll-redirect-from
 
 # Theme
 theme: null
-remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@415a52b
+remote_theme: https://github.com/qunitjs/jekyll-theme-amethyst@v0.1.0
+
+
+# Theme settings
+#
+# Amethyst theme options are documented at:
+# https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/config.md
+#
 amethyst:
-  edituri_base: https://github.com/qunitjs/jekyll-theme-amethyst/blob/example/
-  # Defaults to "/favicon.svg"
+  # Default: "/favicon.svg"
   favicon:
+  # Default: "/"
+  home_href:
   # Horizontal logo with text (SVG, or PNG that is at least 140px tall, for 70px@2x).
   # Set width/height for aspect ratio.
   #
@@ -29,11 +52,20 @@ amethyst:
   #   height: 70
   # ```
   header_logo:
+  # Base URI for "Edit this page" link in the footer.
+  # When set, this is combined with the relative path to the Markdown file in the repo.
+  #
+  # Example: https://github.com/qunitjs/qunitjs.com/blob/main/
+  edituri_base: https://github.com/qunitjs/jekyll-theme-amethyst/blob/example/
+  # Base URI for version links (e.g. "version added") on page-api layouts.
+  #
+  # Example: https://github.com/qunitjs/qunit/releases/tag/
+  release_base:
   # Mastodon account URL (e.g. "https://mastodon.technology/@qunitjs")
   mastodon:
   # Twitter.com username (without "@")
   twitter:
-  # GitHub.com organisation or username
+  # GitHub.com organisation or username (without "@")
   github: qunitjs
   # Gitter.im room (e.g. "qunitjs/qunit")
   gitter:
@@ -70,40 +102,37 @@ amethyst:
     # ```
     sources:
 
-# Conversion
-highlighter: rouge
-markdown: kramdown
-kramdown:
-  input: GFM
-  toc_levels: "1,2"
 
-# Sass
-# https://jekyllrb.com/docs/assets/#sassscss
-sass:
-  style: compressed
-  sourcemap: never
-
-# Backend search index
+# Backend search settings
 #
-# This applies to the 'jekyll algolia' command.
-# Requires the ALGOLIA_API_KEY secret environment variable.
-# This is invoked by CI to populate the search index.
+# This applies to the 'jekyll algolia' command, which is typically
+# run from an after a commit is merged. The settings are documented at:
+# https://github.com/algolia/jekyll-algolia
 #
-# See <https://github.com/algolia/jekyll-algolia>.
+# To learn how to set this up, refer to:
+# https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/getting-started.md#enable-algolia-search
+#
 algolia:
   application_id:
-  # Which index_name the Travis job will create or replace
-  # with the content of this site.
+  # Which index_name the 'jekyll algolia' command will create or update.
   index_name:
+  # By default only HTML paragraphs are indexed (and headings, albeit through a different mechanism).
+  # * Include list items (similar to paragraphs).
+  # * Include tables (index per row for better excerpts).
+  # * Include <pre> (typically code examples, omit if it "poisons" results too much).
+  nodes_to_index: 'p,li,tr,pre'
   # Pages not to suggest in search, e.g. if they are overviews
   # that only point to other pages and have no original content.
   files_to_exclude:
     # - something-overview.md
 
-# Don't serve from the web
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - README.md
-  - CONTRIBUTING.md
-  - CNAME
+
+# Blog archives
+#
+# Docs: https://github.com/jekyll/jekyll-archives/
+jekyll-archives:
+  enabled:
+    - year
+  layout: posts-year
+  permalinks:
+    year: "/:year/"
