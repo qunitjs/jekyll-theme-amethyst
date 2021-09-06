@@ -17,6 +17,7 @@ timezone: UTC
 # Amethyst theme options are documented at:
 # https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/config.md
 #
+theme: jekyll-theme-amethyst
 amethyst:
   # Default: "/favicon.svg"
   favicon:
