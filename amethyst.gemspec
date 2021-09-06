@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name     = "jekyll-theme-amethyst"
-  spec.version  = "0.2.0"
+  spec.version  = "0.1.1"
   spec.summary  = "https://github.com/qunitjs/jekyll-theme-amethyst"
   spec.authors  = ["Timo Tijhof", "Trent Willis"]
   spec.files    = `git ls-files -z`.split("\x0")
@@ -18,8 +18,6 @@ Gem::Specification.new do |spec|
   # For blog
   spec.add_runtime_dependency "jekyll-feed", "~> 0.15.1"
   spec.add_runtime_dependency "jekyll-archives", "~> 2.2.1"
-  # For search
-  spec.add_runtime_dependency "jekyll-algolia", "~> 1.7.0"
   # Temporary fix until there is a release with https://github.com/jekyll/jekyll/pull/8524/
   spec.add_runtime_dependency "webrick", "~> 1.7"
 end
