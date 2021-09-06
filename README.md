@@ -22,13 +22,7 @@ Requirements:
 * [Ruby](https://www.ruby-lang.org/) (tested with Ruby 2.7+)
 * [Bundler](https://bundler.io/) (if missing, install with `gem install bundler`)
 
-To install Jekyll and plugins the first time:
-
-```shell
-bundle install
-```
-
-To update Jekyll and any plugins (e.g. after changing `Gemfile`):
+To install or update Jekyll and plugins:
 
 ```shell
 bundle update
