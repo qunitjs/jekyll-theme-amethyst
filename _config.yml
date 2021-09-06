@@ -21,14 +21,17 @@ lang: en
 timezone: UTC
 # Files that will not be converted or published
 exclude:
-  # Exclude repo docs from site output and search index
+  # Exclude internal repo files from site output
   - docs
+  - lib
   # Avoid the following on GitHub CI:
   # > Error: could not read file
   # > vendor/jekyll/lib/site_template/_posts/0000-00-00-welcome-to-jekyll.markdown.erb:
   # > Invalid date '<%= Time.now.strftime('%Y-%m-%d %H:%M:%S %z') %>':
   # > Document does not have a valid date in the YAML front matter.
   - vendor
+plugins:
+  - jekyll-theme-amethyst
 
 
 # Theme settings
