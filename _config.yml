@@ -19,15 +19,6 @@ baseurl: /jekyll-theme-amethyst
 permalink: /:year/:month/:day/:title/
 lang: en
 timezone: UTC
-# Disable theme inheritance since this repo contains its own theme top-level theme.
-# This isn't needed for plain Jekyll, but because we use github-pages as basis
-# we otherwise inherit from the 'primer' theme.
-# This is a problem because, Jekyll/Sass/Primer fails to compile by default, yay.
-# - https://github.com/jekyll/jekyll/issues/7426
-# - https://github.com/jekyll/jekyll/issues/4268
-# - https://github.com/sindresorhus/gulp-ruby-sass/issues/232
-# – Workaround: https://github.com/github/pages-gem/issues/613
-theme: null
 # Files that will not be converted or published
 exclude:
   # Exclude repo docs from site output and search index
@@ -45,6 +36,7 @@ exclude:
 # Amethyst theme options are documented at:
 # https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/config.md
 #
+theme: jekyll-theme-amethyst
 amethyst:
   edituri_base: https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/
   release_base: https://github.com/qunitjs/qunit/releases/tag/

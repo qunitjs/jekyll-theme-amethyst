@@ -1,0 +1,30 @@
+name: Gem
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  gem-push:
+    runs-on: ubuntu-latest
+    permissions:
+      # https://docs.github.com/en/actions/reference/authentication-in-a-workflow
+      packages: write
+    steps:
+    - uses: actions/checkout@v2
+    - name: Publish Gem package
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      # Inspired by https://github.com/bodyshopbidsdotcom/gh-action-publish-gem-on-tag/blob/1.0.1/entrypoint.sh
+      run: |
+        GIT_VERSION=$(echo "$GITHUB_REF" | cut -d'/' -f 3-)
+        SPEC_VERSION=$(ruby -e 'require "rubygems"; gemspec = Dir.entries(".").find { |file| file =~ /.*\.gemspec/ }; spec = Gem::Specification::load(gemspec); puts spec.version')
+        if [[ "$GIT_VERSION" != "v${SPEC_VERSION}" ]]; then
+          echo "Ignoring, git tag version differs from gem spec version."
+          exit 2;
+        fi
+        mkdir -p ~/.gem
+        echo ":github: Bearer ${GITHUB_TOKEN}" > ~/.gem/credentials
+        chmod 600 ~/.gem/credentials
+        gem build *.gemspec
+        gem push --key github --host "https://rubygems.pkg.github.com/${{ github.repository_owner }}" *.gem
