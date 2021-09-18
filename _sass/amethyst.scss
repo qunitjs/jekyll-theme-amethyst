@@ -367,6 +367,7 @@ table {
     height: 100%;
     padding: $size-1;
     text-decoration: none;
+    cursor: pointer; // For non-link <span> with sub list
 
     @media (min-width: $screen-m) {
         color: $color-bright;
@@ -413,7 +414,21 @@ table {
     }
 }
 
-.site-nav-item.is-open .site-nav-sub-list {
+// Modern browsers support focus-within.
+// Open menu on clicking the entry link, and stay open until
+// a click outside the menu or a click on a different menu.
+// Specifically, when using accessibility tools to focus links
+// in the submenu (thus not focussing the entry link any more),
+// the menu must stay open.
+.site-nav-item:focus-within .site-nav-sub-list {
+    display: block;
+}
+// In older browsers, fall back to opening on click,
+// and trying to stay open so long as the cursor is within the menu.
+// This must be a separate selector block.
+// <https://css-tricks.com/solved-with-css-dropdown-menus/>
+.site-nav-link:focus ~ .site-nav-sub-list,
+.site-nav-sub-list:hover {
     display: block;
 }
 

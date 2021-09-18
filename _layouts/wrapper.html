@@ -21,13 +21,15 @@
             <nav class="site-nav"><ul class="site-nav-list">
                 {%- for item in site.data.sitenav -%}
                     <li class="site-nav-item{%- if item.sub %} has-sub-list{% endif %}">
-                        <a class="site-nav-link{%- if item.sub %} has-sub-list{% endif %}" href="{{ item.href | relative_url | escape }}">{{ item.name }}</a>
                         {%- if item.sub -%}
+                        <span class="site-nav-link has-sub-list" tabindex="0">{{ item.name | escape }}</span>
                         <ul class="site-nav-sub-list">
                             {%- for sub in item.sub -%}
                             <li><a class="site-sub-nav-link" href="{{ sub.href | relative_url | escape }}">{{ sub.name | escape }}</a></li>
                             {%- endfor -%}
                         </ul>
+                        {%- elsif item.href -%}
+                        <a class="site-nav-link" href="{{ item.href | relative_url | escape }}">{{ item.name | escape }}</a>
                         {%- endif -%}
                     </li>
                 {%- endfor -%}
@@ -104,29 +106,5 @@
 {%- if site.amethyst.algolia.search_only_api_key -%}
     {%- include search-js.html -%}
 {%- endif -%}
-<script type="module">
-window.addEventListener('DOMContentLoaded', function setupSubNav() {
-    const siteNav = document.querySelector('.site-nav-list');
-    const closeSubNav = () => {
-        const prevSub = siteNav.querySelector('.is-open');
-        if (prevSub) {
-            prevSub.classList.remove('is-open');
-        }
-    }
-    siteNav.addEventListener('click', (event) => {
-        if (event.target.classList.contains('has-sub-list')) {
-            event.preventDefault();
-            event.stopPropagation();
-
-            if (event.target.parentNode.classList.contains('is-open')) {
-                closeSubNav();
-            } else {
-                closeSubNav();
-                event.target.parentNode.classList.add('is-open');
-            }
-        }
-    });
-});
-</script>
 </body>
 </html>

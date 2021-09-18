@@ -1,10 +1,13 @@
 - name: Guides
-  href: /guides/
   sub:
     - name: Getting Started
       href: /intro/
 - name: Documentation
-  href: /api/
+  sub:
+    - name: Foobar
+      href: /api/foo/
+    - name: Lorem ipsum
+      href: /api/lorem/
 - name: Blog
   href: /blog/
 - name: About
