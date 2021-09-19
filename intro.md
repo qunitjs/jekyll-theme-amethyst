@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Getting Started
+amethyst:
+  toc: true
 ---
 
 <p class="lead" markdown="1">The following guide will get you up-and-running in just a few minutes.</p>
