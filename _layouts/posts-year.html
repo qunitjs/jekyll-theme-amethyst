@@ -3,7 +3,6 @@ layout: wrapper
 ---
 
 <div class="main main--columns wrapper">
-{% include sidebar.html blocks="sidebar_blog" %}
 {%- assign date_format = site.amethyst.date_format | default: "%e %B %Y" -%}
 {%- assign posts = page.posts -%}
 <div class="posts content">
@@ -21,4 +20,5 @@ layout: wrapper
 	</div>
 	{%- endfor -%}
 </div>
+{% include sidebar.html blocks="sidebar_blog" %}
 </div>

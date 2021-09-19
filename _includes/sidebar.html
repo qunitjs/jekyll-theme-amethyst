@@ -2,8 +2,11 @@
 
 Parameters:
 
-* blocks:
+* blocks: [Default: nil]
   Key in `site.data` corresponding to a `_data/*.yml` file.
+
+* toc: [Default: false]
+  Enable table of contents.
 
 Block data:
 
@@ -11,6 +14,7 @@ Block data:
   What type of block to add to the sidebar.
   - "group" to query a list of pages from a page group.
   - "list" to specify your own custom list.
+  - "link" to specify a single link.
   - "archive" to query a list of chronological pages based on their layout.
   - "tags" to query a list of alphabetical pages based on their layout.
 
@@ -36,7 +40,8 @@ Block data:
   - active: Expand when the current page is in the list.
 
 {%- endcomment -%}
-<section class="sidebar">
+<aside class="sidebar" role="complementary">
+{%- if include.blocks -%}
 {%- for block in site.data[include.blocks] -%}
 	{%- assign block_type = block.type | default: "group" -%}
 	{%- assign block_title = block.title -%}
@@ -58,6 +63,9 @@ Block data:
 		{%- assign block_contents = site.pages | where: "layout", "posts-year" | sort_natural: 'date' | reverse  -%}
 	{%- elsif block_type == "tags" -%}
 		{%- assign block_contents = site.pages | where: "layout", "posts-tag" | sort_natural: 'title'  -%}
+	{%- elsif block_type == "link" -%}
+		{%- assign block_contents = nil -%}
+		{%- assign block_expand = false -%}
 	{%- endif -%}
 
 	{%- if block_expand == "active" -%}
@@ -85,5 +93,17 @@ Block data:
 	{%- endfor -%}
 	</ul>
 	{%- endif -%}
-{%- endfor %}
-</section>
+{%- endfor -%}
+
+{%- if include.toc -%}
+<hr>
+{%- endif -%}
+{%- endif -%}
+
+{%- if include.toc -%}
+	<div class="toc-wrapper">
+	<h4>Table of contents</h4>
+	{%- include toc.html html=content sanitize=true h_max=3 ordered=true skip_no_ids=true class="toc" item_class="sidebar-item" -%}
+	</div>
+{%- endif -%}
+</aside>

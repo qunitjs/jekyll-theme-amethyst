@@ -1,9 +1,15 @@
 ---
 layout: wrapper
+
+# Parameters:
+#
+# - version_added: semver string (e.g. "1.2.3"). Can be linked by setting `site.amethyst.release_base`.
+# - version_deprecated: semver string
+# - version_removed: semver string
+#
 ---
 
 <div class="main main--columns wrapper">
-{% include sidebar.html blocks="sidebar_api" %}
 <div class="content" role="main">
     <h1>{{ page.title }}</h1>
     {%- if page.version_added or page.version_deprecated -%}
@@ -29,4 +35,5 @@ layout: wrapper
     {%- endif %}
     {{- content }}
 </div>
+{% include sidebar.html blocks="sidebar_api" toc=true %}
 </div>

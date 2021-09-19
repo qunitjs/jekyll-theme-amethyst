@@ -3,7 +3,6 @@ layout: wrapper
 ---
 
 <div class="main main--columns wrapper">
-{% include sidebar.html blocks="sidebar_blog" %}
 {%- assign date_format = site.amethyst.date_format | default: "%e %B %Y" -%}
 {%- assign posts = site.posts | slice: 0, 10 -%}
 <div class="posts content">
@@ -25,4 +24,5 @@ layout: wrapper
 		<a href="{{ archive_page.url | relative_url }}">Older posts</a>
 	{%- endif -%}
 </div>
+{% include sidebar.html blocks="sidebar_blog" %}
 </div>

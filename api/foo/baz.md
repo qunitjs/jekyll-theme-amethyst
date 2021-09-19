@@ -16,11 +16,9 @@ Hello world. This entry has some content and an added version.
 | `label` (string) | Label for this object. |
 
 
-## Description
-
 A long long sequence of words that continues until its end eventually wraps across to the next line on your screen.
 
-### Changelog
+## Changelog
 
 | [Xample 2.4](https://github.com/qunitjs/qunit/releases/tag/2.4.0) | The `module.only()`, `module.skip()`, and `module.todo()` aliases were introduced.
 | [Xample 2.0](https://github.com/qunitjs/qunit/releases/tag/2.0.0) | The `before` and `after` options were introduced.

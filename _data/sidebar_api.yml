@@ -3,11 +3,9 @@
 
 - group: lorem
 
-- type: list
-  title: Other
-  expand: true
-  list:
-    - url: /api/deprecated/
-      title: Deprecated
-    - url: /api/removed/
-      title: Removed
+- type: link
+  url: /api/deprecated/
+  title: Deprecated
+- type: link
+  url: /api/removed/
+  title: Removed

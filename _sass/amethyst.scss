@@ -160,6 +160,7 @@ iframe {
         min-width: 0;
     }
     .sidebar {
+        order: -1;
         display: block;
         flex: 0 0 220px;
         margin-right: 20px;
@@ -738,6 +739,30 @@ table {
     background: $color-bright;
     text-decoration: none;
 }
+
+.toc-wrapper {
+    position: sticky;
+    top: 0;
+}
+.toc,
+.toc ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.toc .sidebar-item {
+    border-left: 0;
+}
+
+// .toc,
+// .toc ol {
+//   counter-reset: section;
+// }
+// .toc li:before {
+//   counter-increment: section;
+//   // Combine with any parent section(s), separated by dot
+//   // content: counters(section, ".") ". ";
+// }
 
 /* Layout: page */
 
