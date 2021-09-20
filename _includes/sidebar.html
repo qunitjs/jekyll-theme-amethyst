@@ -33,11 +33,15 @@ Block data:
   When using a "list" block, an array of objects with "title"
   and "url" properties.
 
-* expand: [Default: active]
+* expand: [Default: "active"]
   Whether a block should be expanded.
   - true: Always expanded.
   - false: Never expanded.
   - active: Expand when the current page is in the list.
+  - initial: Expand on the home page, and when the current page is in the list.
+
+* initial: [Default: "/"]
+  Override which address the "initial" expand mode will compare to.
 
 {%- endcomment -%}
 <aside class="sidebar" role="complementary">
@@ -47,9 +51,10 @@ Block data:
 	{%- assign block_url = block.url -%}
 	{%- assign block_contents = block.list -%}
 	{%- assign block_expand = block.expand -%}
-	{%- if block_expand != true and block_expand != false -%}
+	{%- if block_expand != true and block_expand != false and block_expand != "initial" -%}
 		{%- assign block_expand = "active" -%}
 	{%- endif -%}
+	{%- assign block_initial = block.initial | default: "/" -%}
 
 	{%- if block_type == "group" -%}
 		{%- assign group_page = site.pages | where: "layout", "group" | where: "group", block.group | first -%}
@@ -65,6 +70,15 @@ Block data:
 	{%- elsif block_type == "link" -%}
 		{%- assign block_contents = nil -%}
 		{%- assign block_expand = false -%}
+	{%- endif -%}
+
+	{%- if block_expand == "initial" -%}
+		{%- assign block_expand = false -%}
+		{%- if page.url == block_initial -%}
+			{%- assign block_expand = true -%}
+		{%- else -%}
+			{%- assign block_expand = "active" -%}
+		{%- endif -%}
 	{%- endif -%}
 
 	{%- if block_expand == "active" -%}

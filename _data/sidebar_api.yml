@@ -1,11 +1,13 @@
 - group: foo
-  expand: true
+  expand: initial
+  initial: /api/
 
 - group: lorem
 
 - type: link
   url: /api/deprecated/
   title: Deprecated
+
 - type: link
   url: /api/removed/
   title: Removed
