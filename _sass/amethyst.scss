@@ -710,6 +710,10 @@ table {
     padding-left: 4px;
 }
 
+.sidebar hr {
+    margin-bottom: $size-spacing;
+}
+
 .sidebar-list {
     margin-top: 0;
     padding: 0;
@@ -750,7 +754,8 @@ table {
     margin: 0;
     padding: 0;
 }
-.toc .sidebar-item {
+.toc .sidebar-item,
+.toc .sidebar-item a {
     border-left: 0;
 }
 

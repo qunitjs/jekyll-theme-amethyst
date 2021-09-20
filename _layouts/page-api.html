@@ -35,5 +35,9 @@ layout: wrapper
     {%- endif %}
     {{- content }}
 </div>
-{% include sidebar.html blocks="sidebar_api" toc=true %}
+{%- assign toc = true -%}
+{%- if layout.amethyst.toc == false -%}
+    {%- assign toc = false -%}
+{%- endif %}
+{% include sidebar.html blocks="sidebar_api" toc=toc %}
 </div>

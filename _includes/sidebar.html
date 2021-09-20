@@ -41,7 +41,6 @@ Block data:
 
 {%- endcomment -%}
 <aside class="sidebar" role="complementary">
-{%- if include.blocks -%}
 {%- for block in site.data[include.blocks] -%}
 	{%- assign block_type = block.type | default: "group" -%}
 	{%- assign block_title = block.title -%}
@@ -96,14 +95,15 @@ Block data:
 {%- endfor -%}
 
 {%- if include.toc -%}
-<hr>
-{%- endif -%}
-{%- endif -%}
-
-{%- if include.toc -%}
-	<div class="toc-wrapper">
-	<h4>Table of contents</h4>
-	{%- include toc.html html=content sanitize=true h_max=3 ordered=true skip_no_ids=true class="toc" item_class="sidebar-item" -%}
-	</div>
-{%- endif -%}
+	{%- capture jekyll_toc -%}
+		{%- include toc.html html=content sanitize=true h_max=3 ordered=true skip_no_ids=true class="toc" item_class="sidebar-item" -%}
+	{%- endcapture -%}
+	{%- if jekyll_toc != '' -%}
+		{%- if include.blocks -%}
+		<hr>
+		{%- endif -%}
+		<div class="toc-wrapper">
+		<h4>Table of contents</h4>{{ jekyll_toc }}</div>
+	{%- endif -%}
+{%- endif %}
 </aside>
