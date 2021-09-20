@@ -805,6 +805,11 @@ table {
 
 /* Layout: page-api */
 
+.h-api-desc {
+    // Let anchor jump to page title
+    margin-top: -6rem;
+}
+
 .version-details {
     font-size: $size-sm;
     font-weight: bold;

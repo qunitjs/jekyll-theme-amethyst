@@ -6,9 +6,25 @@ layout: wrapper
 # - version_added: semver string (e.g. "1.2.3"). Can be linked by setting `site.amethyst.release_base`.
 # - version_deprecated: semver string
 # - version_removed: semver string
+# - amethyst.prepend_description_heading: boolean. Default: true.
 #
 ---
 
+{%- comment -%}
+Prepend "Description" header.
+This makes sure the accessibility tree is valid since we generally want to
+use H3 within the top section before later sections like "Changelog" and
+"Examples". But, visually we merge the page title and "Description" together.
+
+Rather than require a special class to be put on every page, we instead
+do that here for convenience.
+{%- endcomment -%}
+{%- unless page.amethyst.prepend_description_heading == false or layout.amethyst.prepend_description_heading == false -%}
+{%- capture content -%}
+<h2 id="description" class="screen-reader-text h-api-desc">Description</h2>
+{{ content }}
+{%- endcapture -%}
+{%- endunless -%}
 <div class="main main--columns wrapper">
 <div class="content" role="main">
     <h1>{{ page.title }}</h1>
