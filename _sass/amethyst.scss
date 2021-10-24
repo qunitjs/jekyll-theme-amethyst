@@ -748,6 +748,10 @@ table {
     position: sticky;
     top: 0;
 }
+.toc-wrapper .toc {
+    max-height: calc( 100vh - 2.5rem );
+    overflow-y: auto;
+}
 .toc,
 .toc ol {
     list-style-type: none;
