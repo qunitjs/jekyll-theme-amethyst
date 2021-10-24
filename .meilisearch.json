@@ -1,0 +1,20 @@
+{
+  "index_uid": "jekyll-theme-amethyst",
+  "start_urls": ["https://qunitjs.github.io/jekyll-theme-amethyst/"],
+  "stop_urls": [],
+  "selectors": {
+  	"default": {
+      "lvl0": {
+        "selector": ".sidebar-title-open",
+        "global": true,
+        "default_value": "Documentation"
+      },
+      "lvl1": "h1",
+      "lvl2": "h2",
+      "lvl3": "h3",
+      "lvl4": "h4",
+      "lvl5": "h5",
+      "content": "p,li,tr,pre"
+    }
+  }
+}

@@ -1,12 +1,24 @@
 name: Update search index
 on:
+  # For Algolia, we can update search right away in parallel
+  # with the github-pages build, since it pushes content
+  # into the index from the local working directory.
   push:
-    branches:
-      - main
+   branches:
+     - main
+  # For MeiliSearch, we crawl the site after it has been
+  # built and published by the github-pages workflow
+  workflow_run:
+    workflows:
+      - github-pages
+    types:
+      - completed
+  # Or manually
+  workflow_dispatch:
 
 jobs:
   run:
-    name: Update search index
+    name: Algolia
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -23,3 +35,19 @@ jobs:
         # working-directory: ./
         env:
           ALGOLIA_API_KEY: "${{ secrets.ALGOLIA_API_KEY }}"
+
+  meilisearch:
+    name: MeiliSearch
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run docs-scraper
+        env:
+          MEILISEARCH_HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
+          MEILISEARCH_API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
+        run: |
+          docker run -t --rm -e MEILISEARCH_HOST_URL=$MEILISEARCH_HOST_URL \
+            -e MEILISEARCH_API_KEY=$MEILISEARCH_API_KEY \
+            -v "$PWD/.meilisearch.json":/docs-scraper/config.json \
+            getmeili/docs-scraper:v0.11.0 pipenv run ./docs_scraper config.json
