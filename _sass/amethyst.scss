@@ -306,7 +306,7 @@ table {
     img {
         width: auto;
         height: $size-4;
-        margin-right: $size-spacing / 2;
+        margin-right:  calc($box-spacing / 2)
     }
 }
 
@@ -323,7 +323,7 @@ table {
     left: 0;
     right: 0;
     background: $color-white;
-    border-top: 1px solid $color-off-white;
+    border-top: 0px solid $color-off-white;
     z-index: 1;
 
     &.opened {
@@ -353,7 +353,7 @@ table {
 .site-nav-item {
     display: block;
     height: 100%;
-    border-bottom: 1px solid $color-off-white;
+    border-bottom: 0px solid $color-off-white;
 
     @media (min-width: $screen-m) {
         display: inline-block;
@@ -495,7 +495,7 @@ table {
     }
 
     @media (min-width: $screen-m) {
-        border-radius: 3px;
+        border-radius: 0px;
         &:not(:focus) {
             background: lighten($color-accent, 12%);
             color: $color-white;
@@ -570,7 +570,7 @@ table {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
     @media (min-width: $screen-m) {
-        border-radius: 3px;
+        border-radius: 0px;
         border-top: none;
         min-width: 500px;
         margin-top: $size-spacing;
@@ -618,7 +618,7 @@ table {
         vertical-align: top;
         // Nominal size is 485x120
         background: url(./logo-algolia.svg);
-        width: (485 / 120) * 0.8rem;
+        width: calc(485 / 120) * 0.8rem;
         height: 0.8rem;
     }
 }
@@ -706,7 +706,7 @@ table {
 
 .sidebar h4 {
     font-size: $size-1;
-    margin: $size-spacing 0 #{$box-spacing / 2} 0;
+    margin: $size-spacing 0 #{calc($box-spacing / 2)} 0;
     padding-left: 4px;
 }
 
@@ -731,7 +731,7 @@ table {
     // Larger and more consistent click target
     display: block;
 
-    padding: $box-spacing / 2 $box-spacing / 2;
+    padding: calc($box-spacing / 2) calc($box-spacing / 2);
 
     color: $color-accent;
     text-decoration: none;
