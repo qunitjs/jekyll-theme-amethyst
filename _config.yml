@@ -47,7 +47,7 @@ amethyst:
   gitter: qunitjs/qunit
   # https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/getting-started.md#enable-algolia-search
   algolia:
-    search_only_api_key: f37678e47d7730bbf340e904a81fbbbd
+    search_only_api_key: f93ac48385f4f5866ffe9227829b329e
 
 
 # Conversion settings
@@ -71,7 +71,7 @@ sass:
 #
 # Docs: https://github.com/algolia/jekyll-algolia
 algolia:
-  application_id: 4HMKKPGKKN
+  application_id: 2Q66ROFTLQ
   index_name: amethyst-demo
   # By default only HTML paragraphs are indexed (and headings, albeit through a different mechanism).
   # * Include list items (similar to paragraphs).
