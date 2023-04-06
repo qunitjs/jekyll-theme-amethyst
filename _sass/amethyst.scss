@@ -306,7 +306,7 @@ table {
     img {
         width: auto;
         height: $size-4;
-        margin-right: $size-spacing / 2;
+        margin-right: calc($size-spacing / 2);
     }
 }
 
@@ -618,7 +618,7 @@ table {
         vertical-align: top;
         // Nominal size is 485x120
         background: url(./logo-algolia.svg);
-        width: (485 / 120) * 0.8rem;
+        width: calc((485 / 120) * 0.8rem);
         height: 0.8rem;
     }
 }
@@ -706,7 +706,7 @@ table {
 
 .sidebar h4 {
     font-size: $size-1;
-    margin: $size-spacing 0 #{$box-spacing / 2} 0;
+    margin: $size-spacing 0 calc($box-spacing / 2) 0;
     padding-left: 4px;
 }
 
@@ -731,7 +731,7 @@ table {
     // Larger and more consistent click target
     display: block;
 
-    padding: $box-spacing / 2 $box-spacing / 2;
+    padding: calc($box-spacing / 2);
 
     color: $color-accent;
     text-decoration: none;
