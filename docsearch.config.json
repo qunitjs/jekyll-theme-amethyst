@@ -1,0 +1,60 @@
+{
+  "index_name": "amethyst_demo",
+  "start_urls": [
+    { "url": "https://qunitjs.github.io/jekyll-theme-amethyst/api/", "selectors_key": "api", "page_rank": 20 },
+    { "url": "https://qunitjs.github.io/jekyll-theme-amethyst/\\d{4}/", "selectors_key": "blog", "page_rank": 1 },
+    { "url": "https://qunitjs.github.io/jekyll-theme-amethyst/", "page_rank": 10 }
+  ],
+  "stop_content": [
+    "<meta name=\"docsearch:amethyst_pagetype_navigation\""
+  ],
+  "selectors": {
+    "default": {
+      "lvl0": "h1",
+      "lvl1": "h2",
+      "lvl2": "h3",
+      "lvl3": "h4",
+      "lvl4": "h5",
+      "lvl5": "h6",
+      "text": ".content p, .content li"
+    },
+    "api": {
+      "lvl0": {
+        "// selector": "This is like qSA('p.post-meta .category')[0], match the first category only",
+        "selector": "//article//p[contains(@class,'post-meta')]//*[contains(@class,'category')][1]",
+        "type": "xpath",
+        "global": true,
+        "default_value": "Documentation"
+      },
+      "lvl1": "h1",
+      "lvl2": "h2:not(.screen-reader-text)",
+      "lvl3": "h3:not(.screen-reader-text)",
+      "lvl4": "h4:not(.screen-reader-text)",
+      "lvl5": "h5:not(.screen-reader-text)",
+      "text": ".content p, .content li, .content tr, .content pre"
+    },
+    "blog": {
+      "lvl0": {
+        "selector": "",
+        "global": true,
+        "default_value": "Blog"
+      },
+      "lvl1": "h1",
+      "lvl2": "h2",
+      "lvl3": "h3",
+      "lvl4": "h4",
+      "lvl5": "h5",
+      "text": ".content p, .content li"
+    }
+  },
+  "custom_settings": {
+    "token_separators": ["_", "-", "."]
+  },
+  "selectors_exclude": [
+    "aside.sidebar",
+    ".toc-wrapper"
+  ],
+  "min_indexed_level": 1,
+  "scrape_start_urls": false
+}
+
