@@ -131,7 +131,9 @@ iframe {
 .wrapper {
     max-width: 65rem;
     margin: 0 auto;
-    padding: 0 $size-spacing;
+    @media (min-width: $screen-m) {
+        padding: 0 $size-spacing;
+    }
 }
 
 .main {
@@ -289,6 +291,8 @@ table {
 
 .site-header-wrapper {
     display: flex;
+    flex-flow: row wrap;
+    gap: 0 $size-spacing;
     justify-content: space-between;
     position: relative;
 }
@@ -299,7 +303,7 @@ table {
     align-items: center;
     font-size: $size-2;
     font-weight: bold;
-    padding: $size-1 0;
+    padding: $size-1 0 $size-1 $size-1;
     text-decoration: none;
     transition: color 0.3s;
 
@@ -445,227 +449,34 @@ table {
 
 /* Search */
 
-.site-search {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100vw;
-    height: 100%;
-    z-index: 1;
-    border-top: 1px solid $color-off-white;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+.tsmb-form {
+    --tsmb-color-base-background: #{lighten($color-accent, 12%)};
+    --tsmb-color-primary30: #{$color-accent};
+    --tsmb-color-primary50: #{$color-vibrant};
+    --tsmb-color-primary90: #{$color-bright};
+    --tsmb-color-base30: var(--tsmb-color-primary90);
+    --tsmb-color-base50: #{change-color($color-bright, $alpha: 0.6)}; // #a98dc1
+    --tsmb-color-base90: #{change-color($color-bright, $alpha: 0.6)};
 
-    &.opened {
-        display: block;
-    }
-
-    @media (min-width: $screen-m) {
-        display: block;
-        align-self: center;
-        position: relative;
-        flex: 1;
-        max-width: 20rem;
-        margin: 0 $size-spacing;
-        border: none;
-        box-shadow: none;
-    }
+    width: auto;
+    flex: 1;
+    align-self: center;
 }
-
-.algolia-autocomplete {
-    width: 100%;
-    height: 100%;
+.tsmb-form:not(:focus-within)::before {
+  filter: unquote("invert()");
 }
-
-.aa-input-search {
-    width: 100%;
-    height: 100%;
-    padding: 12px 28px 12px 12px;
-    border: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    font-size: $size-1;
-
-    &::-webkit-search-decoration,
-    &::-webkit-search-cancel-button,
-    &::-webkit-search-results-button,
-    &::-webkit-search-results-decoration {
+.tsmb-form input[type="search"] {
+  border: none;
+}
+@media (max-width: $screen-m) {
+    .tsmb-form {
         display: none;
-    }
-
-    @media (min-width: $screen-m) {
-        border-radius: 3px;
-        &:not(:focus) {
-            background: lighten($color-accent, 12%);
-            color: $color-white;
-        }
+        flex: 100%;
+        order: 10;
+        --tsmb-size-input: calc( var(--tsmb-size-base) * 2.0 );
     }
 }
 
-// On wide viewports, when the search field is not focussed,
-// the search field has a dark background. Override the default
-// user agent styles for placeholders (which are often mid-grey,
-// and thus blend into the background too much) to use a bright
-// color instead.
-//
-// When focussed, or when toggling on narrow viewports, the search
-// field has a bright background, so don't apply this there!
-@media (min-width: $screen-m) {
-    .site-search:not(:focus-within) .aa-input-search::placeholder {
-        color: $color-bright;
-        opacity: 0.6;
-    }
-}
-
-// Only displayed when the optional JS code was supported in the current browser
-// and run to completion. Also, don't show on narrow viewports (e.g. mobile)
-// where keyboard shortcuts are typically not used.
-// Avoid using device type or pointer support, because one can have a large
-// "mobile"-like device with external keyboard.
-.site-search--bound:not(:focus-within):after {
-    @media (min-width: $screen-m) {
-        content: '/';
-        display: inline-block;
-
-        font-size: 60%;
-        line-height: 2.5;
-        text-align: center;
-        width: 2.5em;
-        height: 2.5em;
-        position: absolute;
-        top: 50%;
-        right: 48px;
-        transform: translateY(-50%);
-
-        border-radius: 3px;
-        border: 1px solid $color-bright;
-        color: $color-bright;
-        opacity: 0.6;
-    }
-}
-
-.aa-input-icon {
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    top: 50%;
-    right: 16px;
-    transform: translateY(-50%);
-    fill: $color-accent;
-
-    @media (min-width: $screen-m) {
-        .site-search:not(:focus-within) & {
-            fill: $color-bright;
-        }
-    }
-}
-
-.aa-dropdown-menu {
-    background: $color-white;
-    border-top: 1px solid $color-off-white;
-    width: 100%;
-    max-height: 60vh;
-    overflow: auto;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-
-    @media (min-width: $screen-m) {
-        border-radius: 3px;
-        border-top: none;
-        min-width: 500px;
-        margin-top: $size-spacing;
-    }
-}
-
-.aa-footer {
-    // A sticky element is normally at the start of the content,
-    // but since this is a footer, the space of the sticky element
-    // is naturally preserved at the end of the list and thus won't
-    // overlap the last suggestion.
-    // If this were a ::before or -header instead, then this would need:
-    //   .aa-header {
-    //     margin-top: -2.4rem;
-    //   }
-    //
-    // and
-    //
-    //   .aa-dropdown-menu::after {
-    //     display: block;
-    //     content: "";
-    //     height: 2.4rem;
-    //   }
-    position: sticky;
-    left: 0;
-    right: 0;
-    box-shadow: 0 0 6px rgba(0,0,0,0.19);
-
-    top: calc(100% - 2.4rem);
-    padding: 0.8rem 1rem;
-    font-size: $size-sm;
-    line-height: 1;
-
-    color: $color-darkgrey;
-    text-align: right;
-
-    .aa-logo {
-        // Replace alt text with image
-        line-height: 0;
-        font-size: 0;
-    }
-    .aa-logo::after {
-        content: '';
-        display: inline-block;
-        vertical-align: top;
-        // Nominal size is 485x120
-        background: url(./logo-algolia.svg);
-        width: calc((485 / 120) * 0.8rem);
-        height: 0.8rem;
-    }
-}
-
-.aa-empty {
-    padding: $size-spacing;
-}
-
-.aa-suggestion {
-    padding: $box-spacing;
-    cursor: pointer;
-    border-top: 1px solid $color-off-white;
-    border-left: 2px solid transparent;
-
-    a {
-        // reset default link style
-        text-decoration: none;
-    }
-
-    &:hover,
-    &.aa-cursor {
-        background: $color-bright;
-        border-left: 2px solid $color-vibrant;
-    }
-}
-
-.ais-Highlight {
-    font-style: normal;
-    font-weight: bold;
-}
-
-.aa-suggestion_title,
-.aa-suggestion_content {
-    // reset paragraph margin
-    margin: 0;
-    // clip title chunks and content match to one line
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.aa-suggestion_title {
-    color: $color-accent;
-}
-.aa-suggestion_content {
-    font-size: $size-sm;
-    color: $color-darkgrey;
-}
 
 /* Site header: Mobile toggle controls */
 
@@ -698,7 +509,7 @@ table {
     transform: none;
 }
 
-.opened .icon {
+.toggle[aria-expanded="true"] .icon {
     fill: $color-white;
 }
 

@@ -45,9 +45,11 @@ amethyst:
   release_base: https://github.com/qunitjs/qunit/releases/tag/
   github: qunitjs
   gitter: qunitjs/qunit
-  # https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/getting-started.md#enable-algolia-search
-  algolia:
-    search_only_api_key: f93ac48385f4f5866ffe9227829b329e
+  # https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/getting-started.md#enable-typesense
+  typesense:
+    origin: https://typesense.jquery.com
+    collection: amethyst_demo
+    search_only_api_key: Zh8mMgohXECel9wjPwqT7lekLSG3OCgz
 
 
 # Conversion settings
@@ -65,19 +67,6 @@ kramdown:
 sass:
   style: compressed
   sourcemap: never
-
-
-# Backend search settings
-#
-# Docs: https://github.com/algolia/jekyll-algolia
-algolia:
-  application_id: 2Q66ROFTLQ
-  index_name: amethyst-demo
-  # By default only HTML paragraphs are indexed (and headings, albeit through a different mechanism).
-  # * Include list items (similar to paragraphs).
-  # * Include tables (index per row for better excerpts).
-  # * Include <pre> (typically code examples, omit if it "poisons" results too much).
-  nodes_to_index: "p,li,tr,pre"
 
 
 # Blog archives
