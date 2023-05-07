@@ -27,29 +27,38 @@ do that here for convenience.
 {%- endunless -%}
 <div class="main main--columns wrapper">
 <div class="content" role="main">
+<article>
+    <header>
     <h1>{{ page.title }}</h1>
-    {%- if page.version_added or page.version_deprecated -%}
+    {% if page.groups -%}
+    <p class="post-meta">Categories: {% comment %} space {% endcomment -%}
+        {%- for group in page.groups -%}
+            {%- if page.groups.first != group %}, {% endif -%}
+            {%- assign group_page = site.pages | where: "layout", "group" | where: "group", group | first -%}
+            <a class="category" href="{{ group_page.url | relative_url }}">{{ group_page.title | escape }}</a>
+        {%- endfor -%}
+    .</p>
+    {%- endif %}
+    </header>
+    {% if page.version_added or page.version_deprecated -%}
         {%- assign warning = false -%}
         {%- if page.version_added == "unreleased" or page.version_deprecated or page.version_removed -%}
             {%- assign warning = true -%}
         {%- endif -%}
-
-    <p class="version-details{% if warning %} note--warning{% endif %}">
-        {%- capture lines -%}
-            {%- if page.version_added %}
-                {% include version.html version=page.version_added label="version added" %}
-            {%- endif -%}
-            {%- if page.version_deprecated %}
-                {% include version.html version=page.version_deprecated label="deprecated" %}
-            {%- endif -%}
-            {%- if page.version_removed %}
-                {% include version.html version=page.version_removed label="removed" %}
-            {%- endif -%}
-        {%- endcapture -%}
-        {{ lines | strip | newline_to_br }}
-    </p>
+        <p class="version-details">
+        {%- if page.version_added %}
+            {% include version.html version=page.version_added label="version added" %}
+        {%- endif -%}
+        {%- if page.version_deprecated %}
+            {% include version.html version=page.version_deprecated label="deprecated" %}
+        {%- endif -%}
+        {%- if page.version_removed %}
+            {% include version.html version=page.version_removed label="removed" %}
+        {%- endif -%}
+        </p>
     {%- endif %}
-    {{- content }}
+    {{ content }}
+</article>
 </div>
 {%- assign toc = true -%}
 {%- if layout.amethyst.toc == false -%}

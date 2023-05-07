@@ -4,10 +4,14 @@
 
 - group: lorem
 
-- type: link
-  url: /api/deprecated/
+- group: deprecated
+  expand: false
   title: Deprecated
 
-- type: link
-  url: /api/removed/
+- group: removed
+  expand: false
   title: Removed
+
+- type: link
+  url: /api/foo/quux/
+  title: Quux

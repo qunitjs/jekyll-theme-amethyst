@@ -22,7 +22,7 @@ Parameters:
 {%- endif -%}
 
 {%- if include.version == "unreleased" -%}
-not yet released
+not yet released<span class="sep">.</span>
 {%- else -%}
-{{ include.label }}: {% if site.amethyst.release_base %}<a href="{{ site.amethyst.release_base }}{{ _full_version | escape }}">{{ include.version | escape }}</a>{% else %}{{ include.version | escape }}{% endif %}
+{{ include.label }}: {% if site.amethyst.release_base %}<a href="{{ site.amethyst.release_base }}{{ _full_version | escape }}">{{ include.version | escape }}</a>{% else %}{{ include.version | escape }}{% endif %}<span class="sep">.</span>
 {%- endif -%}

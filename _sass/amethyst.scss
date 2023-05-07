@@ -826,9 +826,16 @@ table {
         text-align: left;
         border-width: 1px;
         border-style: solid;
+
+        .sep {
+            display: block;
+            width: 0px;
+            height: 0px;
+            overflow: hidden;
+        }
     }
 }
-.version-details:not(.note--warning) {
+.version-details {
     background: $color-light;
     border-color: $color-off-white;
 }
