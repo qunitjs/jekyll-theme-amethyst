@@ -44,13 +44,13 @@ bundle exec jekyll serve
   ```
   git add -p
   git commit
-    # Tag 0.0.0
+    # Tag v0.0.0
   git push
   ```
 * Create a signed semver tag, and push it:
   ```
-  git tag -s 0.0.0
-  # Tag 0.0.0
+  git tag -s v0.0.0
+  # Tag v0.0.0
   git push --tags
   ```
 * CI will create and publish a new package to <https://rubygems.org/gems/jekyll-theme-amethyst>.
