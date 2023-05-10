@@ -3,7 +3,9 @@ Gem::Specification.new do |spec|
   spec.version  = "0.5.1"
   spec.summary  = "https://github.com/qunitjs/jekyll-theme-amethyst"
   spec.authors  = ["Timo Tijhof", "Trent Willis"]
-  spec.files    = `git ls-files -z`.split("\x0")
+  spec.files    = `git ls-files -z`.split("\x0").select do |f|
+      f.match(%r{^(_includes/|_layouts/|_sass/|assets/|lib/|LICENSE)}i)
+    end
 
   spec.license   = "MIT"
   spec.homepage  = "https://github.com/qunitjs/jekyll-theme-amethyst"
