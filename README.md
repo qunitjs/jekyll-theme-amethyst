@@ -1,4 +1,5 @@
 [![Build Status: spider-check](https://github.com/qunitjs/jekyll-theme-amethyst/actions/workflows/spider-check.yaml/badge.svg)](https://github.com/qunitjs/jekyll-theme-amethyst/actions/workflows/spider-check.yaml)
+[![rubygems.org: jekyll-theme-amethyst](https://badge.fury.io/rb/jekyll-theme-amethyst.svg)](https://rubygems.org/gems/jekyll-theme-amethyst)
 
 # Amethyst theme
 
@@ -17,6 +18,8 @@ Thanks to [Leo Balter](https://github.com/leobalter) for initiating the use of M
 
 ## Contributing
 
+### Local development
+
 Requirements:
 
 * [Ruby](https://www.ruby-lang.org/) (tested with Ruby 2.7+)
@@ -33,3 +36,9 @@ To generate the site and serve it locally at <http://localhost:4000/>:
 ```shell
 bundle exec jekyll serve
 ```
+
+### Releasing
+
+* Create a signed tag in Git, named as a semver number like `vX.Y.Z`.
+* Push the tag.
+* CI will create and publish a new package to <https://rubygems.org/gems/jekyll-theme-amethyst>.
