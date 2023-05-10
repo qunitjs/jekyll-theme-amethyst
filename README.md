@@ -39,6 +39,18 @@ bundle exec jekyll serve
 
 ### Releasing
 
-* Create a signed tag in Git, named as a semver number like `vX.Y.Z`.
-* Push the tag.
+* Edit `amethyst.gemspec` and set the next release number.
+* Stage and commit the changes:
+  ```
+  git add -p
+  git commit
+    # Tag 0.0.0
+  git push
+  ```
+* Create a signed semver tag, and push it:
+  ```
+  git tag -s 0.0.0
+  # Tag 0.0.0
+  git push --tags
+  ```
 * CI will create and publish a new package to <https://rubygems.org/gems/jekyll-theme-amethyst>.

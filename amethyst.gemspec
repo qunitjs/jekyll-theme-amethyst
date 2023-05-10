@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name     = "jekyll-theme-amethyst"
-  spec.version  = "0.4.2"
+  spec.version  = "0.5.0"
   spec.summary  = "https://github.com/qunitjs/jekyll-theme-amethyst"
   spec.authors  = ["Timo Tijhof", "Trent Willis"]
   spec.files    = `git ls-files -z`.split("\x0")
