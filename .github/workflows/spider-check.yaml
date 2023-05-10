@@ -18,35 +18,17 @@ jobs:
     env:
       # Site address to crawl
       #
-      # If empty, will be derived from a CNAME file or the repo name.
-      #
-      # MY_SITE: https://example.org
-      # MY_SITE: https://example.github.io
-      # MY_SITE: https://example.github.io/my-project/
-      #
-      MY_SITE:
+      # Example:
+      # - https://example.org
+      # - https://example.github.io/
+      # - https://example.github.io/my-project/
+      MY_SITE: https://example.org
     runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'qunitjs' }} # skip on forks
     steps:
       - uses: actions/checkout@v2
         with:
           repository: jquery/hydra-link-checker
-          ref: v1.0.2
-
-      - name: Get site address
-        run: |
-          if [[ "$MY_SITE" == "" ]]; then
-            MY_SITE=$(cat CNAME 2>/dev/null || echo "")
-            if [[ "$MY_SITE" == "" ]]; then
-              REPO_BASENAME=$(echo "$GITHUB_REPOSITORY" | cut -d'/' -f 2)
-              REPO_OWNER=$(echo "$GITHUB_REPOSITORY" | cut -d'/' -f 1)
-              if [[ "$REPO_BASENAME" == "${REPO_OWNER}.github.io" ]]; then
-                MY_SITE="${REPO_OWNER}.github.io"
-              else
-                MY_SITE="${REPO_OWNER}.github.io/${REPO_BASENAME}"
-              fi
-            fi
-            echo "MY_SITE=https://${MY_SITE}" >> $GITHUB_ENV
-          fi
-
+          ref: v2.0.0
       - name: Run hydra-link-checker
         run: python3 hydra.py "$MY_SITE"
