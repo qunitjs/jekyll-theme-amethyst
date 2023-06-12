@@ -47,7 +47,7 @@
 
 
 {% if layout.amethyst.pagetype == "navigation" %}
-<meta name="robots" content="{{ layout.amethyst.robots | default: 'noindex,follow' }}">
+<meta name="robots" content="{{ page.amethyst.robots | default: layout.amethyst.robots | default: 'noindex,follow' }}">
 <meta name="docsearch:amethyst_pagetype_navigation" content="1">
 {% endif %}
 
