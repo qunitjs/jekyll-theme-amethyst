@@ -16,8 +16,8 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll", ">= 4.3", "< 5.0"
   spec.add_runtime_dependency "kramdown-parser-gfm", "~> 1.1.0"
   spec.add_runtime_dependency "jekyll-redirect-from", "~> 0.16.0"
-  spec.add_runtime_dependency "jekyll-relative-links", "~> 0.6.1"
+  spec.add_runtime_dependency "jekyll-relative-links", "~> 0.7.0"
   # For blog
-  spec.add_runtime_dependency "jekyll-feed", "~> 0.15.1"
+  spec.add_runtime_dependency "jekyll-feed", "~> 0.17.0"
   spec.add_runtime_dependency "jekyll-archives", "~> 2.2.1"
 end
