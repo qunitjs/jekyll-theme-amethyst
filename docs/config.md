@@ -44,7 +44,7 @@ amethyst:
   #
   # Example: https://github.com/qunitjs/qunit/releases/tag/
   release_base:
-  # Mastodon account URL (e.g. "https://mastodon.technology/@qunitjs")
+  # Mastodon account URL (e.g. "https://example.org/@qunitjs")
   mastodon:
   # Twitter.com username (without "@")
   twitter:

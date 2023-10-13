@@ -38,7 +38,7 @@ home_secondary_btn:
 
 ## Join the Community
 
-<p class="lead lead--center" markdown="1">Join us on [Mastodon](https://mastodon.technology/@qunitjs), [Twitter](https://twitter.com/qunitjs), or [Gitter chat](https://gitter.im/qunitjs/qunit).</p>
+<p class="lead lead--center" markdown="1">Follow us on [Mastodon](https://qunitjs.com#mastodon), or join our [Matrix chat](https://qunitjs.com#matrix).</p>
 
 To contribute:
 
