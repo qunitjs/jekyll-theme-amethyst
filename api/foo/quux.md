@@ -6,4 +6,6 @@ groups:
 - foo
 ---
 
-Hello. Where was I? This entry has no version information.
+That's weird. So, where was I? Oh, that's right, Barcelona!
+
+This entry has no version information.
