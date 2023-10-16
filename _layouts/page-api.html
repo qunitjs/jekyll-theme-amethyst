@@ -41,10 +41,6 @@ do that here for convenience.
     {%- endif %}
     </header>
     {% if page.version_added or page.version_deprecated -%}
-        {%- assign warning = false -%}
-        {%- if page.version_added == "unreleased" or page.version_deprecated or page.version_removed -%}
-            {%- assign warning = true -%}
-        {%- endif -%}
         <p class="version-details">
         {%- if page.version_added %}
             {% include version.html version=page.version_added label="version added" %}
