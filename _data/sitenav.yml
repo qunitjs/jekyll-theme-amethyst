@@ -1,6 +1,6 @@
 - name: Guides
   sub:
-    - name: Getting Started
+    - name: Content styles
       href: /intro/
 - name: Documentation
   sub:

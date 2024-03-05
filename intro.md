@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Getting Started
+title: Content styles
 amethyst:
   toc: true
 ---
@@ -35,9 +35,34 @@ Check out the [API documentation](https://api.qunitjs.com) or run `qunit --help`
 
 ---
 
+## List
+
+* Lorem Ipsum
+* **Cupcake Ipsum**
+* Bacon Ipsum
+* Samuel L. Ipsum
+* Hipster Ipsum
+* DeLorean Ipsum
+* Office Ipsum
+* Sagan Ipsum
+
+## Blockquote
+
+From cupcake ipsum:
+
+> Cupcake ipsum dolor sit amet dragée jelly beans topping **cake**. Gingerbread oat **cake** I _love_ marshmallow topping.
+>
+> * jelly
+> * **cake**
+> * _love_
+>
+> The _last_ paragraph of the quote.
+
+Text after the quote.
+
 ## Table
 
-| Sequence | 1 | 2 | 3 | 4
-|--|--
 | Foobar | Foo | Bar | Baz | Quux
+|--|--
+| Sequence | 1 | 2 | 3 | 4
 | Lorem ipsum | Lorem | Ipsum | Dolor | Sit

@@ -116,6 +116,19 @@ pre.highlight {
     background: transparent;
 }
 
+blockquote {
+    border-left: 4px solid $color-off-white;
+    background: $color-light;
+    color: $color-darkgrey;
+    margin: 0 0 $size-spacing 0;
+    padding: $box-spacing;
+    font-style: normal;
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
 hr {
     margin: $size-5 0;
     border: none;
