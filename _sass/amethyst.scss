@@ -68,20 +68,22 @@ a {
         text-decoration: underline;
     }
 }
-.content a:not(.button) {
-    border-bottom: 0.1em solid currentColor;
+.content a:not(.button),
+footer a {
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+    text-decoration-skip-ink: auto;
+    text-underline-position: under;
+    text-underline-offset: 0em;
 
     &:active,
     &:hover,
     &:focus {
-        text-decoration: none;
-
-        box-shadow: 0px 0px 0px 4px $color-bright;
+        box-shadow: 0px 2px 0px 4px $color-bright;
         background-color: $color-bright;
         color: $color-accent;
-        border-bottom-color: $color-vibrant;
-        border-bottom-width: 0.13em;
-
+        text-decoration-color: $color-vibrant;
+        text-decoration-thickness: 0.12em;
         code {
             background-color: transparent;
         }
@@ -775,7 +777,8 @@ article > header {
 
 .external-links a {
     // Larger click target for mobile
-    padding: 1rem 0.5rem;
+    display: inline-block;
+    padding: 0 0.5em;
 }
 
 .cta {

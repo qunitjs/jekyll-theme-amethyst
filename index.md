@@ -42,9 +42,8 @@ home_secondary_btn:
 
 To contribute:
 
-* [Watch the repository](https://github.com/qunitjs/qunit) to learn about release, new requests, or bug reports.
-* The source of this website, is in the [qunitjs.com](https://github.com/qunitjs/qunitjs.com) repository.
-* The source of the Documentation site, is in the ["docs/" directory](https://github.com/qunitjs/qunit/tree/master/docs).
+* [Watch the repository](https://github.com/qunitjs/jekyll-theme-amethyst) to learn about release, new requests, or bug reports.
+* The source of this website, is in the [jekyll-theme-amethyst](https://github.com/qunitjs/jekyll-theme-amethyst) repository.
 
 ---
 
