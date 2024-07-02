@@ -89,7 +89,9 @@
                 {%- if site.amethyst.twitter %}
                 <a href="https://twitter.com/{{ site.amethyst.twitter | escape }}" target="_blank" rel="noopener">Twitter</a>
                 {% endif -%}
-                {%- if site.amethyst.gitter %}
+                {%- if site.amethyst.chat %}
+                <a href="{{ site.amethyst.chat | escape }}" target="_blank" rel="noopener">Chat</a>
+                {%- elsif site.amethyst.gitter %}
                 <a href="https://gitter.im/{{ site.amethyst.gitter | escape }}" target="_blank" rel="noopener">Chat</a>
                 {%- endif %}
             </p>

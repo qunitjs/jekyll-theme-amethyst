@@ -44,7 +44,7 @@ amethyst:
   edituri_base: https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/
   release_base: https://github.com/qunitjs/qunit/releases/tag/
   github: qunitjs
-  gitter: qunitjs/qunit
+  chat: https://app.element.io/#/room/#qunitjs_qunit:gitter.im
   # https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/getting-started.md#enable-typesense
   typesense:
     origin: https://typesense.jquery.com

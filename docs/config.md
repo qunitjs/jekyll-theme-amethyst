@@ -50,8 +50,8 @@ amethyst:
   twitter:
   # GitHub.com organisation or username (without "@")
   github:
-  # Gitter.im room (e.g. "qunitjs/qunit")
-  gitter:
+  # Chat room, e.g. https://app.element.io/#/room/#qunitjs_qunit:gitter.im
+  chat:
   # Search powered by Typesense
   #
   # https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/getting-started.md#enable-typesense
