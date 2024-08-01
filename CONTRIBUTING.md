@@ -7,3 +7,13 @@
 3. Tag commit and push tag.
 
 CI will create the package and upload it to rubygems.org.
+
+## Update vendored dependencies
+
+* typesense-minibar
+
+See also [Makefile](./Makefile).
+
+```sh
+make deps
+```

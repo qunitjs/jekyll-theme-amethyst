@@ -49,7 +49,7 @@
                 </button>
                 <script type="module">
                 const searchToggle = document.querySelector('.search-toggle');
-                const searchForm = document.querySelector('form[role=search]');
+                const searchForm = document.querySelector('typesense-minibar');
                 const searchInput = searchForm.querySelector('input[type=search]');
                 function searchFn(newState) {
                     searchToggle.setAttribute('aria-expanded', String(newState));

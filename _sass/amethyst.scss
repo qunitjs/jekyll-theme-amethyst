@@ -464,7 +464,7 @@ table {
 
 /* Search */
 
-.tsmb-form {
+typesense-minibar {
     --tsmb-color-base-background: #{lighten($color-accent, 12%)};
     --tsmb-color-primary30: #{$color-accent};
     --tsmb-color-primary50: #{$color-vibrant};
@@ -473,22 +473,26 @@ table {
     --tsmb-color-base50: #{change-color($color-bright, $alpha: 0.6)}; // #a98dc1
     --tsmb-color-base90: #{change-color($color-bright, $alpha: 0.6)};
 
-    width: auto;
     flex: 1;
     align-self: center;
 }
-.tsmb-form:not(:focus-within)::before {
+typesense-minibar form {
+    width: auto;
+}
+typesense-minibar form:not(:focus-within)::before {
   filter: unquote("invert()");
 }
-.tsmb-form input[type="search"] {
+typesense-minibar input[type="search"] {
   border: none;
 }
 @media (max-width: $screen-m) {
-    .tsmb-form {
-        display: none;
+    typesense-minibar {
+        --tsmb-size-input: calc( var(--tsmb-size-base) * 2.0 );
+
         flex: 100%;
         order: 10;
-        --tsmb-size-input: calc( var(--tsmb-size-base) * 2.0 );
+        /* changed by button.search-toggle in wrapper.html */
+        display: none;
     }
 }
 
