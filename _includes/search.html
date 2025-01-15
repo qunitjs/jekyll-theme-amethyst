@@ -4,3 +4,25 @@
     <input type="hidden" name="sites" value="{{ site.url | remove_first: 'http://' | remove_first: 'https://' }}">
 </form>
 </typesense-minibar>
+{%- if jekyll.environment == "development" %}
+<script type="module">
+/* global Response, URL */
+// Override URLs in search results to be relative to localhost,
+// by replacing "https://production.example/path" with "/path",
+// in any responses that look like they are from Typesense.
+const parent = Response.prototype.json;
+Response.prototype.json = function () {
+  return parent.call(this).then(function (obj) {
+    if (obj && obj.grouped_hits) {
+      for (const group of obj.grouped_hits) {
+        for (const hit of group.hits) {
+          const url = new URL(hit.document.url);
+          hit.document.url = url.pathname + url.hash;
+        }
+      }
+    }
+    return obj;
+  });
+};
+</script>
+{%- endif %}
