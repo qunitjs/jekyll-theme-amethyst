@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/jekyll-theme-amethyst/favicon.svg">
-<link rel="stylesheet" href="/jekyll-theme-amethyst/assets/styles.css?v=c57acf61" media="screen">
+<link rel="stylesheet" href="/jekyll-theme-amethyst/assets/styles.css?v=d593d2e8" media="screen">
 <link rel="alternate" type="application/rss+xml" href="/jekyll-theme-amethyst/feed.xml" title="Amethyst Demo">
 <title>Example.dolor() | Amethyst Demo</title>
 <meta property="og:title" content="Example.dolor()"><meta name="description" content="Soon to be removed."><meta property="og:description" content="Soon to be removed."><meta name="twitter:card" content="summary_large_image">
@@ -16,6 +16,26 @@
     <input type="hidden" name="sites" value="qunitjs.github.io">
 </form>
 </typesense-minibar>
+<script type="module">
+/* global Response, URL */
+// Override URLs in search results to be relative to localhost,
+// by replacing "https://production.example/path" with "/path",
+// in any responses that look like they are from Typesense.
+const parent = Response.prototype.json;
+Response.prototype.json = function () {
+  return parent.call(this).then(function (obj) {
+    if (obj && obj.grouped_hits) {
+      for (const group of obj.grouped_hits) {
+        for (const hit of group.hits) {
+          const url = new URL(hit.document.url);
+          hit.document.url = url.pathname + url.hash;
+        }
+      }
+    }
+    return obj;
+  });
+};
+</script>
 <nav class="site-nav"><ul class="site-nav-list"><li class="site-nav-item has-sub-list"><span class="site-nav-link has-sub-list" tabindex="0">Guides</span>
                         <ul class="site-nav-sub-list"><li><a class="site-sub-nav-link" href="/jekyll-theme-amethyst/intro/">Content styles</a></li></ul></li><li class="site-nav-item has-sub-list"><span class="site-nav-link has-sub-list" tabindex="0">Documentation</span>
                         <ul class="site-nav-sub-list"><li><a class="site-sub-nav-link" href="/jekyll-theme-amethyst/api/foo/">Foobar</a></li><li><a class="site-sub-nav-link" href="/jekyll-theme-amethyst/api/lorem/">Lorem ipsum</a></li></ul></li><li class="site-nav-item"><a class="site-nav-link" href="/jekyll-theme-amethyst/blog/">Blog</a></li><li class="site-nav-item"><a class="site-nav-link" href="/jekyll-theme-amethyst/about/">About</a></li></ul></nav>
@@ -117,5 +137,5 @@
             </p>
             <p class="copyright">Copyright <a href="https://openjsf.org/" target="_blank" rel="noopener">OpenJS Foundation</a> and contributors.<br><a href="https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/api/lorem/dolor.md">Edit this page</a></p>
         </div>
-    </footer><script defer type="module" src="/jekyll-theme-amethyst/assets/typesense-minibar.js?v=220ed8ba"></script></body>
+    </footer><script defer type="module" src="/jekyll-theme-amethyst/assets/typesense-minibar.js?v=830f1ee1"></script></body>
 </html>
