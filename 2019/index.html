@@ -16,26 +16,6 @@
     <input type="hidden" name="sites" value="qunitjs.github.io">
 </form>
 </typesense-minibar>
-<script type="module">
-/* global Response, URL */
-// Override URLs in search results to be relative to localhost,
-// by replacing "https://production.example/path" with "/path",
-// in any responses that look like they are from Typesense.
-const parent = Response.prototype.json;
-Response.prototype.json = function () {
-  return parent.call(this).then(function (obj) {
-    if (obj && obj.grouped_hits) {
-      for (const group of obj.grouped_hits) {
-        for (const hit of group.hits) {
-          const url = new URL(hit.document.url);
-          hit.document.url = url.pathname + url.hash;
-        }
-      }
-    }
-    return obj;
-  });
-};
-</script>
 <nav class="site-nav"><ul class="site-nav-list"><li class="site-nav-item has-sub-list"><span class="site-nav-link has-sub-list" tabindex="0">Guides</span>
                         <ul class="site-nav-sub-list"><li><a class="site-sub-nav-link" href="/jekyll-theme-amethyst/intro/">Content styles</a></li></ul></li><li class="site-nav-item has-sub-list"><span class="site-nav-link has-sub-list" tabindex="0">Documentation</span>
                         <ul class="site-nav-sub-list"><li><a class="site-sub-nav-link" href="/jekyll-theme-amethyst/api/foo/">Foobar</a></li><li><a class="site-sub-nav-link" href="/jekyll-theme-amethyst/api/lorem/">Lorem ipsum</a></li></ul></li><li class="site-nav-item"><a class="site-nav-link" href="/jekyll-theme-amethyst/blog/">Blog</a></li><li class="site-nav-item"><a class="site-nav-link" href="/jekyll-theme-amethyst/about/">About</a></li></ul></nav>
@@ -88,7 +68,7 @@ Response.prototype.json = function () {
     <div class="main main--columns wrapper"><div class="posts content">
 	<h1>Archive: 2019</h1><div class="post-row">
 		<h2><a href="/jekyll-theme-amethyst/2019/10/18/foo-341/">Foo 3.4.1</a></h2>
-		<p class="post-meta">Posted on <time datetime="2019-10-18T00:00:00+00:00">18 October 2019</time> by </p>
+		<p class="post-meta">Posted on <time datetime="2019-10-18T00:00:00+00:00">18 October 2019</time> by James Lind</p>
 		<div class="post"><p>Tristique vehicula ut sit amet sem.</p>
 
 			<a class="screen-reader-text" href="/jekyll-theme-amethyst/2019/10/18/foo-341/">Continue reading "Foo 3.4.1".</a></div>
