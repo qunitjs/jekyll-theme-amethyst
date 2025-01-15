@@ -31,6 +31,8 @@ jobs:
       - name: Jekyll build
         # If your site is in a subdirectory
         # working-directory: ./
+        env:
+          JEKYLL_ENV: production
         run: bundle exec jekyll build
 
       - name: Push to branch
