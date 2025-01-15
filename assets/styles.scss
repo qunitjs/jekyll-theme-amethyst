@@ -3,7 +3,6 @@
 
 @use "typesense-minibar.css";
 
-@import "amethyst-variables";
-@import "amethyst";
-@import "highlight";
-@import "custom";
+@use "amethyst";
+@use "highlight";
+@use "custom";

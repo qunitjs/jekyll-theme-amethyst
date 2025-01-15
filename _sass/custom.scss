@@ -1,2 +1,8 @@
 // Add custom styles via a local `_sass/custom.scss` file
 // in your website.
+//
+// To import the same variables as used in amethyst.scss,
+// start your file with this line:
+//
+//   @use "amethyst-variables-all" as *;
+//
