@@ -1,6 +1,0 @@
-{%- assign author_page = site.pages | where: "layout", "posts-author" | where: "author", include.author | first -%}
-{%- if author_page -%}
-  {{ author_page.title | escape }}
-{%- else -%}
-  {{ include.author | escape }}
-{%- endif -%}

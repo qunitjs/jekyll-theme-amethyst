@@ -37,3 +37,37 @@ module Jekyll
 end
 
 Liquid::Template.register_filter(Jekyll::AmethystFilters)
+
+module AmethystPlugin
+
+	class AuthorPageWithoutAFile < Jekyll::PageWithoutAFile
+		def template
+			# The template of the permalink, can be customized e.g. to "/blog/author/:author/"
+			# for sites with both API docs and a blog.
+			site.config["amethyst"]["author_permalink"] || "/author/:author"
+		end
+
+		def url_placeholders
+			super.merge({
+				"author" => data["author"]
+			})
+		end
+	end
+
+	class AuthorPageGenerator < Jekyll::Generator
+		safe true
+
+		def generate(site)
+			site.data["authors"].each do |slug, name|
+				site.pages << AuthorPageWithoutAFile.new(site, site.source, 'author', "#{slug}.html").tap do |page|
+					page.data.merge!(
+						"layout" => "posts-author",
+						"title" => name,
+						"author" => slug
+					)
+				end
+			end
+		end
+	end
+
+end

@@ -12,7 +12,7 @@ amethyst:
 	{%- for post in posts -%}
 	<div class="post-row">
 		<h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
-		<p class="post-meta">Posted on <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>{% if post.author %} by {% include author-text.html author=post.author %}{% endif %}</p>
+		<p class="post-meta">Posted on <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>{% if post.author %} by {{ site.data.authors[include.author] | default: include.author | escape }}{% endif %}</p>
 		<div class="post">
 			{{- post.excerpt -}}
 			{%- if post.excerpt != post.content %}

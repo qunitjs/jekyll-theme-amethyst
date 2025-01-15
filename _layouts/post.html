@@ -11,8 +11,8 @@ layout: wrapper
 		<p class="post-meta byline">Posted on <a href="{{ page.url | relative_url }}" rel="bookmark"><time itemprop="pubdate" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time></a>{% if page.author %} by <span class="vcard"><span class="fn n" rel="author">
         {%- assign author_page = site.pages | where: "layout", "posts-author" | where: "author", page.author | first -%}
         {%- if author_page -%}
-	        <a href="{{ author_page.url | relative_url }}">{{ author_page.title | escape }}</a>
-        {%- else -%}{{ page.author | escape }}
+	        <a href="{{ author_page.url | relative_url }}">{{ site.data.authors[page.author] | default: page.author | escape }}</a>
+        {%- else -%}{{ site.data.authors[page.author] | default: page.author | escape}}
 	    {%- endif -%}</span></span>{% endif %}</p>
 	</header>
 	{{ content }}
