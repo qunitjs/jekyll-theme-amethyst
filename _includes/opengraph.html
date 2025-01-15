@@ -45,10 +45,15 @@
 {% endif %}
 <meta name="twitter:card" content="summary_large_image">
 
-
 {% if layout.amethyst.pagetype == "navigation" %}
 <meta name="robots" content="{{ page.amethyst.robots | default: layout.amethyst.robots | default: 'noindex,follow' }}">
 <meta name="docsearch:amethyst_pagetype_navigation" content="1">
+{% endif %}
+
+{% if page.layout == "post" and page.date and page.author %}
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+<meta name="author" content="{% include author-text.html author=page.author %}">
 {% endif %}
 
 {% endcapture -%}
