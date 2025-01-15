@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Announcing the blog!
-author: Alice Fitzgerald
+author: alice
 tags:
 - event
 ---

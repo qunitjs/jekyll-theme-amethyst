@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Hello, World!
-author: Alice Fitzgerald
+author: jlind
 tags:
 - event
 amethyst:
