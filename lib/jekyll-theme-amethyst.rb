@@ -58,7 +58,7 @@ module AmethystPlugin
 		safe true
 
 		def generate(site)
-			site.data["authors"].each do |slug, name|
+			site.data["authors"]&.each do |slug, name|
 				site.pages << AuthorPageWithoutAFile.new(site, site.source, 'author', "#{slug}.html").tap do |page|
 					page.data.merge!(
 						"layout" => "posts-author",
