@@ -3,7 +3,7 @@
 
 # Amethyst theme
 
-This repository houses the Amethyst theme for Jekyll.
+This repository houses the Amethyst theme for [Jekyll](https://jekyllrb.com/).
 
 ## Getting started
 
