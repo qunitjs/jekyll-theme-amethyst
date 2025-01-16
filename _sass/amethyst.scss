@@ -147,7 +147,7 @@ iframe {
 }
 
 .wrapper {
-    max-width: 65rem;
+    max-width: 1100px;
     margin: 0 auto;
     @media (min-width: $screen-m) {
         padding: 0 $size-spacing;
@@ -159,12 +159,10 @@ iframe {
 }
 
 // Allow layouts to have a sidebar
-.sidebar {
-    display: none;
-}
 @media (min-width: $screen-m) {
     .main--columns {
         display: flex;
+        gap: 20px;
     }
     .content {
         // Take up available space even if the lines of text are short.
@@ -182,8 +180,11 @@ iframe {
     .sidebar {
         order: -1;
         display: block;
-        flex: 0 0 220px;
-        margin-right: 20px;
+        // between 185px and 275px
+        // =26% of 768px (-2x21px padding, -16px scrollbar)
+        // =26% of 1100px (-2x21px padding)
+        flex: 0 0 26%;
+        background-image: radial-gradient(ellipse at right, $color-light, $color-white 80%);
     }
 }
 
