@@ -5,19 +5,15 @@ amethyst:
 ---
 
 <div class="main main--columns wrapper">
-{%- assign date_format = site.amethyst.date_format | default: "%e %B %Y" -%}
+{%- assign date_format_archive = site.amethyst.date_format_archive | default: "%B %Y" -%}
 {%- assign posts = site.posts | where: 'author', page.author -%}
 <div class="posts content">
 	<h1>Author: {{ page.title | escape }}</h1>
-	{%- for post in posts -%}
-	<div class="post-row">
-		<h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
-		<p class="post-meta">Posted on <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time></p>
-		<div class="post">
-			{{- post.excerpt -}}
-		</div>
-	</div>
+	<ul>
+	{% for post in posts -%}
+		<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>, <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format_archive }}</time></li>
 	{%- endfor -%}
+	</ul>
 </div>
 {% include sidebar.html blocks="sidebar_blog" %}
 </div>

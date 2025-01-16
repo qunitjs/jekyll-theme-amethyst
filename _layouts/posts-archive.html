@@ -5,13 +5,20 @@ amethyst:
 ---
 
 <div class="main main--columns wrapper">
-{%- assign date_format = site.amethyst.date_format | default: "%e %B %Y" -%}
+{%- assign date_format_archive = site.amethyst.date_format_archive | default: "%B %Y" -%}
 {%- assign posts = site.posts -%}
+{%- assign prev_year = false -%}
 <div class="posts content">
 	<h1>{{ page.title }}</h1>
-	<ul>
 	{% for post in posts -%}
-		<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>, <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>.</li>
+		{%- assign post_year = post.date | date: '%Y' -%}
+		{%- if post_year != prev_year -%}
+		{%- if prev_year != false %}</ul>{% endif %}
+		<p id="{{ post_year | escape }}"><strong>{{ post_year | escape }}</strong></p>
+		<ul>
+		{%- assign prev_year = post_year -%}
+		{%- endif %}
+		<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>, <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format_archive }}</time></li>
 	{%- endfor -%}
 	</ul>
 </div>

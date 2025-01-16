@@ -17,6 +17,7 @@
 #     ```
 #
 require "digest"
+require "set"
 
 module Jekyll
 	module AmethystFilters
@@ -67,6 +68,16 @@ module AmethystPlugin
 					)
 				end
 			end
+		end
+	end
+
+	class YearDataGenerator < Jekyll::Generator
+		safe true
+
+		def generate(site)
+			s = Set.new()
+			site.posts&.docs&.each { |post| s.add(post.date.strftime('%Y')) }
+			site.data["amethyst_post_years"] = s.to_a.sort!.reverse!
 		end
 	end
 

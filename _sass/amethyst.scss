@@ -759,6 +759,9 @@ article > header {
 
 /* Layout: posts */
 
+.posts > ul > li::marker {
+    color: $color-off-white;
+}
 
 .post-row h2 {
     margin-bottom: $size-1;
@@ -766,6 +769,15 @@ article > header {
 
 .post-row .post-meta {
     margin-bottom: $size-sm;
+}
+
+.post-read-more {
+    // avoid spanning "continue" "reading" over two different lines
+    // prefer inline if it fits, otherwise on the next line
+    // but, don't force `white-space: nowrap` either
+    display: inline-block;
+    font-size: $size-sm;
+    vertical-align: text-bottom;
 }
 
 /* Site footer */

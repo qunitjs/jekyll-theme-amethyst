@@ -1,4 +1,4 @@
 ---
 layout: posts
-title: Blog
+title: Amethyst Demo Blog
 ---

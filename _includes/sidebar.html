@@ -15,7 +15,11 @@ Block data:
   - "group" to query a list of pages from a page group.
   - "list" to specify your own custom list.
   - "link" to specify a single link.
-  - "archive" to query a list of chronological pages based on their layout.
+  - "archive" to query a list of chronological pages using the 'posts-year' layout.
+    This is designed for use with the jekyll-archives plugin, with a separate
+    archive page for each year.
+  - "archive-flat" to generate links to anchors on a singular flat 'posts-archive' page.
+    This is designed for blogs with less than ~1,000 posts.
   - "tags" to query a list of alphabetical pages based on their layout.
 
 * title: [Default: group_page.title or ""]
@@ -67,6 +71,9 @@ Block data:
 		{%- assign block_contents = site.pages | where: "layout", "posts-year" | sort_natural: 'date' | reverse  -%}
 		{%- assign group_page = site.pages | where: "layout", "posts-archive" | first -%}
 		{%- assign block_url = block.url | default: group_page.url -%}
+	{%- elsif block_type == "archive-flat" -%}
+		{%- assign group_page = site.pages | where: "layout", "posts-archive" | first -%}
+		{%- assign block_url = block.url | default: group_page.url -%}
 	{%- elsif block_type == "tags" -%}
 		{%- assign block_contents = site.pages | where: "layout", "posts-tag" | sort_natural: 'title'  -%}
 	{%- elsif block_type == "link" -%}
@@ -95,6 +102,12 @@ Block data:
 	<h4 {%- if block_expand %} class="sidebar-title-open"{% endif %}>{% if block_url %}<a href="{{ block_url | relative_url }}">{{ block_title }}</a>{% else %}{{ block_title }}{% endif %}</h4>
 	{% if block_expand -%}
 	<ul class="sidebar-list">
+	{%- if block_type == "archive-flat" -%}
+		{%- for year in site.data.amethyst_post_years -%}
+			{%- assign year_page = site.pages | where: "layout", "posts-year" | sort_natural: 'title' -%}
+		<li class="sidebar-item"><a href="{{ block_url | relative_url }}#{{ year | escape }}">{{ year | escape }}</a></li>
+		{%- endfor -%}
+	{%- else -%}
 	{%- for entry in block_contents -%}
 	<li class="sidebar-item{% if page.url == entry.url %} sidebar-item-active{% endif %}">
 		<a href="{{ entry.url | relative_url }}">
@@ -102,10 +115,11 @@ Block data:
 			{%- if entry.title == nil and entry.date -%}
 				{%- assign entry_title = entry.date | date: '%Y' -%}
 			{%- endif -%}
-			{{- entry_title -}}
+			{{- entry_title | escape -}}
 		</a>
 	</li>
 	{%- endfor -%}
+	{%- endif -%}
 	</ul>
 	{%- endif -%}
 {%- endfor -%}
