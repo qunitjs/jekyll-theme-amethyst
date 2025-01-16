@@ -39,46 +39,47 @@ end
 
 Liquid::Template.register_filter(Jekyll::AmethystFilters)
 
-module AmethystPlugin
+module Jekyll
+	module AmethystPlugin
+		class AuthorPageWithoutAFile < Jekyll::PageWithoutAFile
+			def template
+				# The permalink template, e.g. customize to "/blog/author/:author/"
+				# on sites with both API docs and a blog.
+				author_permalink = site.config["amethyst"]["author_permalink"] || "/author/:author"
+				Utils.add_permalink_suffix(author_permalink, site.permalink_style)
+			end
 
-	class AuthorPageWithoutAFile < Jekyll::PageWithoutAFile
-		def template
-			# The template of the permalink, can be customized e.g. to "/blog/author/:author/"
-			# for sites with both API docs and a blog.
-			site.config["amethyst"]["author_permalink"] || "/author/:author"
+			def url_placeholders
+				super.merge({
+					"author" => data["author"]
+				})
+			end
 		end
 
-		def url_placeholders
-			super.merge({
-				"author" => data["author"]
-			})
-		end
-	end
+		class AuthorPageGenerator < Jekyll::Generator
+			safe true
 
-	class AuthorPageGenerator < Jekyll::Generator
-		safe true
-
-		def generate(site)
-			site.data["authors"]&.each do |slug, name|
-				site.pages << AuthorPageWithoutAFile.new(site, site.source, 'author', "#{slug}.html").tap do |page|
-					page.data.merge!(
-						"layout" => "posts-author",
-						"title" => name,
-						"author" => slug
-					)
+			def generate(site)
+				site.data["authors"]&.each do |slug, name|
+					site.pages << AuthorPageWithoutAFile.new(site, site.source, 'author', "#{slug}.html").tap do |page|
+						page.data.merge!(
+							"layout" => "posts-author",
+							"title" => name,
+							"author" => slug
+						)
+					end
 				end
 			end
 		end
-	end
 
-	class YearDataGenerator < Jekyll::Generator
-		safe true
+		class YearDataGenerator < Jekyll::Generator
+			safe true
 
-		def generate(site)
-			s = Set.new()
-			site.posts&.docs&.each { |post| s.add(post.date.strftime('%Y')) }
-			site.data["amethyst_post_years"] = s.to_a.sort!.reverse!
+			def generate(site)
+				s = Set.new()
+				site.posts&.docs&.each { |post| s.add(post.date.strftime('%Y')) }
+				site.data["amethyst_post_years"] = s.to_a.sort!.reverse!
+			end
 		end
 	end
-
 end
