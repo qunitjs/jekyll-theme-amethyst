@@ -67,6 +67,29 @@ kramdown:
 sass:
   style: compressed
   sourcemap: never
+  # Sass has deprecated `@import` but I failed to find a way to make
+  # the new Sass module system do what we need via `@use`.
+  #
+  # Previous attempt at [1] was rolled back because while it was
+  # workable for the demo, it fell apart when using it in a production
+  # site like qunitjs.com because `@use` seems to favor nearby files
+  # even after you have left the site.
+  # Example: `assets/styles.scss`, defined in theme.
+  # - `assets/styles.scss` @use `amethyst`, defined in theme.
+  # - `amethyst.scss` @use `amethyst-variables-all`, defined in theme.
+  # - `amethyst-variables-all` @use `amethyst-variables` which is
+  #    overridden by the current site, but while @import prefers
+  #    the site directory, @use seems to favour the nearest, thus
+  #    making extension points impossible.
+  #
+  # Silence the deprecation for now, and let's hope this matures
+  # and gets better documented some time before Oct 2026 [2].
+  #
+  # [1]: https://github.com/qunitjs/jekyll-theme-amethyst/commit/356962ef961c8d06741147fb4e4b2e56d917a080
+  # [2] https://sass-lang.com/blog/import-is-deprecated/
+  # [3] https://sass-lang.com/blog/the-module-system-is-launched/
+  # [4] https://github.com/jekyll/minima/issues/815
+  quiet_deps: true
 
 
 # Blog archives

@@ -2,9 +2,28 @@
 
 // Amethyst theme for Jekyll
 
-@use "amethyst-variables-all" as *;
 @use "sass:color";
 @use "sass:string";
+
+$size-sm: 0.8rem;
+$size-1: 1rem;
+$size-2: 1.333rem;
+$size-3: 1.777rem;
+$size-4: 2.369rem;
+$size-5: 3.157rem;
+$size-spacing: $size-2;
+$box-spacing: $size-1;
+
+$color-white: #fff;
+$color-light: #f4f4f4;
+$color-off-white: #cdcdcd;
+$color-darkgrey: #63676d; // based on 2015 api.jquery.com design
+$color-black: #333;
+
+$screen-s: 480px;
+$screen-m: 768px;
+$screen-l: 992px;
+$screen-xl: 1200px;
 
 * {
     box-sizing: border-box;
@@ -449,13 +468,13 @@ table {
 /* Search */
 
 typesense-minibar {
-    --tsmb-color-base-background: #{color.adjust($color-accent, $lightness: 12%)};
+    --tsmb-color-base-background: #{lighten($color-accent, 12%)};
     --tsmb-color-primary30: #{$color-accent};
     --tsmb-color-primary50: #{$color-vibrant};
     --tsmb-color-primary90: #{$color-bright};
     --tsmb-color-base30: var(--tsmb-color-primary90);
-    --tsmb-color-base50: #{color.change($color-bright, $alpha: 0.6)}; // #a98dc1
-    --tsmb-color-base90: #{color.change($color-bright, $alpha: 0.6)};
+    --tsmb-color-base50: #{change-color($color-bright, $alpha: 0.6)}; // #a98dc1
+    --tsmb-color-base90: #{change-color($color-bright, $alpha: 0.6)};
 
     flex: 1;
     align-self: center;
@@ -464,7 +483,7 @@ typesense-minibar form {
     width: auto;
 }
 typesense-minibar form:not(:focus-within)::before {
-  filter: string.unquote("invert()");
+  filter: unquote("invert()");
 }
 typesense-minibar input[type="search"] {
   border: none;
@@ -591,8 +610,8 @@ typesense-minibar input[type="search"] {
 
 .hero {
     margin-bottom: $size-spacing;
-    background-color: color.adjust($color-vibrant, $lightness: -12%);
-    background-image: linear-gradient(135deg, color.adjust($color-vibrant, $lightness: -12%), $color-vibrant );
+    background-color: darken($color-vibrant, 12%);
+    background-image: linear-gradient(135deg, darken($color-vibrant, 12%), $color-vibrant );
     padding: ($size-4 * 2) 0;
     text-align: center;
 }
