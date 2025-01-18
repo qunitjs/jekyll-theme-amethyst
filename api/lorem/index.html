@@ -5,8 +5,8 @@
 <link rel="icon" href="/jekyll-theme-amethyst/favicon.svg">
 <link rel="stylesheet" href="/jekyll-theme-amethyst/assets/styles.css?v=f705e356" media="screen">
 <link rel="alternate" type="application/rss+xml" href="/jekyll-theme-amethyst/feed.xml" title="Amethyst Demo">
-<title>Lorem ipsum | Amethyst Demo</title>
-<meta property="og:title" content="Lorem ipsum"><meta name="twitter:card" content="summary_large_image"><meta name="robots" content="noindex,follow"><meta name="docsearch:amethyst_pagetype_navigation" content="1">
+<title>Lorem with TOC | Amethyst Demo</title>
+<meta property="og:title" content="Lorem with TOC"><meta name="twitter:card" content="summary_large_image"><meta name="robots" content="noindex,follow"><meta name="docsearch:amethyst_pagetype_navigation" content="1">
 <body>
     <header class="site-header" role="banner">
         <div class="site-header-wrapper wrapper">
@@ -69,21 +69,29 @@
 <div class="content" role="main">
 <article>
     <header>
-    <h1>Lorem ipsum</h1>
+    <h1>Lorem with TOC</h1>
     
     </header>
     
-    
+    <p>This page enables the TOC feature of the sidebar.</p>
+
+<h2 id="heading">Heading</h2>
+
+<p>Note that this page uses the “group” layout.</p>
+
+<h2 id="another">Another</h2>
+
+<p>And, the “group” layout disables the TOC by default.</p>
 
 
 <div class="posts">
-<h2 id="example-amet"><a href="/jekyll-theme-amethyst/api/lorem/amet/">Example.amet()</a></h2>
+<h2 id="example-amet" class="no_toc"><a href="/jekyll-theme-amethyst/api/lorem/amet/">Example.amet()</a></h2>
 <p><strong>DEPRECATED</strong> I'll be deprecated soon.</p>
 
-<h2 id="example-dolor"><a href="/jekyll-theme-amethyst/api/lorem/dolor/">Example.dolor()</a></h2>
+<h2 id="example-dolor" class="no_toc"><a href="/jekyll-theme-amethyst/api/lorem/dolor/">Example.dolor()</a></h2>
 <p><strong>DEPRECATED</strong> Soon to be removed.</p>
 
-<h2 id="example-sit"><a href="/jekyll-theme-amethyst/api/lorem/sit/">Example.sit()</a></h2>
+<h2 id="example-sit" class="no_toc"><a href="/jekyll-theme-amethyst/api/lorem/sit/">Example.sit()</a></h2>
 <p><strong>REMOVED</strong> Hello, I've been through it all.</p>
 </div>
 
@@ -91,10 +99,10 @@
 </div>
 <aside class="sidebar" role="complementary">
 
-	<h4><a href="/jekyll-theme-amethyst/api/foo/">Foobar</a></h4>
+	<h4><a href="/jekyll-theme-amethyst/api/foo/">Foobar without TOC</a></h4>
 	
 
-	<h4 class="sidebar-title-open"><a href="/jekyll-theme-amethyst/api/lorem/">Lorem ipsum</a></h4>
+	<h4 class="sidebar-title-open"><a href="/jekyll-theme-amethyst/api/lorem/">Lorem with TOC</a></h4>
 	<ul class="sidebar-list"><li class="sidebar-item">
 		<a href="/jekyll-theme-amethyst/api/lorem/amet/">Example.amet()</a>
 	</li><li class="sidebar-item">
@@ -110,7 +118,8 @@
 	
 
 	<h4><a href="/jekyll-theme-amethyst/api/foo/quux/">Quux</a></h4>
-	
+	<hr><div class="toc-wrapper">
+		<h4>Table of contents</h4><ol class="toc"><li class="sidebar-item"><a href="#heading">Heading</a></li><li class="sidebar-item"><a href="#another">Another</a></li></ol></div>
 </aside>
 
 </div>

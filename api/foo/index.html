@@ -5,8 +5,8 @@
 <link rel="icon" href="/jekyll-theme-amethyst/favicon.svg">
 <link rel="stylesheet" href="/jekyll-theme-amethyst/assets/styles.css?v=f705e356" media="screen">
 <link rel="alternate" type="application/rss+xml" href="/jekyll-theme-amethyst/feed.xml" title="Amethyst Demo">
-<title>Foobar | Amethyst Demo</title>
-<meta property="og:title" content="Foobar"><meta name="twitter:card" content="summary_large_image"><meta name="robots" content="noindex,follow"><meta name="docsearch:amethyst_pagetype_navigation" content="1">
+<title>Foobar without TOC | Amethyst Demo</title>
+<meta property="og:title" content="Foobar without TOC"><meta name="twitter:card" content="summary_large_image"><meta name="robots" content="noindex,follow"><meta name="docsearch:amethyst_pagetype_navigation" content="1">
 <body>
     <header class="site-header" role="banner">
         <div class="site-header-wrapper wrapper">
@@ -69,21 +69,29 @@
 <div class="content" role="main">
 <article>
     <header>
-    <h1>Foobar</h1>
+    <h1>Foobar without TOC</h1>
     
     </header>
     
-    
+    <p>This is a page without any TOC.</p>
+
+<h2 id="heading">Heading</h2>
+
+<p>This page uses the “group” layout.</p>
+
+<h2 id="another">Another</h2>
+
+<p>And, the “group” layout disables the TOC by default.</p>
 
 
 <div class="posts">
-<h2 id="baz"><a href="/jekyll-theme-amethyst/api/foo/baz/">.baz()</a></h2>
+<h2 id="baz" class="no_toc"><a href="/jekyll-theme-amethyst/api/foo/baz/">.baz()</a></h2>
 <p>Hello world with some content.</p>
 
-<h2 id="egg"><a href="/jekyll-theme-amethyst/api/foo/egg/">.egg()</a></h2>
+<h2 id="egg" class="no_toc"><a href="/jekyll-theme-amethyst/api/foo/egg/">.egg()</a></h2>
 <p>I'm new, and unreleased.</p>
 
-<h2 id="quuz"><a href="/jekyll-theme-amethyst/api/foo/quux/">.quuz()</a></h2>
+<h2 id="quuz" class="no_toc"><a href="/jekyll-theme-amethyst/api/foo/quux/">.quuz()</a></h2>
 <p>Hello, where was I?</p>
 </div>
 
@@ -91,7 +99,7 @@
 </div>
 <aside class="sidebar" role="complementary">
 
-	<h4 class="sidebar-title-open"><a href="/jekyll-theme-amethyst/api/foo/">Foobar</a></h4>
+	<h4 class="sidebar-title-open"><a href="/jekyll-theme-amethyst/api/foo/">Foobar without TOC</a></h4>
 	<ul class="sidebar-list"><li class="sidebar-item">
 		<a href="/jekyll-theme-amethyst/api/foo/baz/">.baz()</a>
 	</li><li class="sidebar-item">
@@ -100,7 +108,7 @@
 		<a href="/jekyll-theme-amethyst/api/foo/quux/">.quuz()</a>
 	</li></ul>
 
-	<h4><a href="/jekyll-theme-amethyst/api/lorem/">Lorem ipsum</a></h4>
+	<h4><a href="/jekyll-theme-amethyst/api/lorem/">Lorem with TOC</a></h4>
 	
 
 	<h4><a href="/jekyll-theme-amethyst/api/deprecated/">Deprecated</a></h4>
