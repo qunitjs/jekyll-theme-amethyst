@@ -56,8 +56,23 @@ do that here for convenience.
     {{ content }}
 </article>
 </div>
+{%- comment -%}
+
+* Pages that directly use "page-api" layout always have a TOC,
+  and this cannot be disabled.
+  E.g. all /api/*/*/ pages such as /api/foo/egg/.
+
+* Custom layouts may extend "page-api" and may use `layout.amethyst.toc: false`
+  to disable the TOC on their pages by default.
+  The "group" layout does this, e.g. /api/foo/.
+
+* Pages that use such custom layout may set `page.amethyst.toc: true`
+  to enable the TOC.
+  The "lorem" group index does this, at /api/lorem/.
+
+{%- endcomment -%}
 {%- assign toc = true -%}
-{%- if layout.amethyst.toc == false -%}
+{%- if layout.amethyst.toc == false and page.amethyst.toc != true -%}
     {%- assign toc = false -%}
 {%- endif %}
 {% include sidebar.html blocks="sidebar_api" toc=toc %}

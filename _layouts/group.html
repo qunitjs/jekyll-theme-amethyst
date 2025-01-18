@@ -15,7 +15,7 @@ amethyst:
 <div class="posts">
 {%- assign pages = site.pages | where: 'groups', page.group | sort_natural: 'title' -%}
 {% for page in pages %}
-<h2 id="{{ page.title | slugify }}"><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h2>
+<h2 id="{{ page.title | slugify }}" class="no_toc"><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h2>
 <p>
 	{%- if page.version_removed %}<strong>REMOVED</strong> {% endif -%}
 	{%- if page.version_removed == nil and page.version_deprecated %}<strong>DEPRECATED</strong> {% endif -%}
