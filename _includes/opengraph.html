@@ -44,10 +44,6 @@
 {% if site.amethyst.mastodon %}
 <link rel="me" href="{{ site.amethyst.mastodon | escape }}">
 {% endif %}
-{% if site.amethyst.twitter %}
-<meta name="twitter:creator" content="@{{ site.amethyst.twitter | escape }}">
-<meta name="twitter:site" content="@{{ site.amethyst.twitter | escape }}">
-{% endif %}
 <meta name="twitter:card" content="summary_large_image">
 
 {% if layout.amethyst.pagetype == "navigation" %}
