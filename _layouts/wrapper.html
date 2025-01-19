@@ -83,17 +83,20 @@
         <div class="wrapper">
             <p class="external-links">
                 <a href="https://github.com/{{ site.amethyst.github | escape }}" target="_blank" rel="noopener">GitHub</a>
-                {%- if site.amethyst.mastodon %}
-                <a href="{{ site.amethyst.mastodon | escape }}" target="_blank" rel="noopener">Mastodon</a>
-                {% endif -%}
-                {%- if site.amethyst.twitter %}
-                <a href="https://twitter.com/{{ site.amethyst.twitter | escape }}" target="_blank" rel="noopener">Twitter</a>
-                {% endif -%}
                 {%- if site.amethyst.chat %}
                 <a href="{{ site.amethyst.chat | escape }}" target="_blank" rel="noopener">Chat</a>
                 {%- elsif site.amethyst.gitter %}
                 <a href="https://gitter.im/{{ site.amethyst.gitter | escape }}" target="_blank" rel="noopener">Chat</a>
                 {%- endif %}
+                {%- if site.amethyst.mastodon %}
+                <a href="{{ site.amethyst.mastodon | escape }}" target="_blank" rel="noopener">Mastodon</a>
+                {% endif -%}
+                {%- if site.amethyst.bluesky %}
+                <a href="https://twitter.com/{{ site.amethyst.twitter | escape }}" target="_blank" rel="noopener">Twitter</a>
+                {% endif -%}
+                {%- if site.amethyst.bluesky %}
+                <a href="{{ site.amethyst.bluesky | escape }}" target="_blank" rel="noopener">Bluesky</a>
+                {% endif -%}
             </p>
             <p class="copyright">Copyright <a href="https://openjsf.org/" target="_blank" rel="noopener">OpenJS Foundation</a> and contributors.
                 {%- comment -%}

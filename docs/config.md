@@ -46,11 +46,13 @@ amethyst:
   release_base:
   # Mastodon account URL (e.g. "https://example.org/@qunitjs")
   mastodon:
+  # Bluesky profile URL (e.g. "https://bsky.app/profile/qunitjs.com")
+  bluesky:
   # Twitter.com username (without "@")
   twitter:
   # GitHub.com organisation or username (without "@")
   github:
-  # Chat room, e.g. https://app.element.io/#/room/#qunitjs_qunit:gitter.im
+  # Chat room, e.g. https://app.gitter.im/#/room/#qunitjs_qunit:gitter.im
   chat:
   # Search powered by Typesense
   #
