@@ -19,13 +19,18 @@
 
 {%- comment -%}
     See https://ogp.me/
-{%- endcomment %}
+{%- endcomment -%}
+{%- capture newline %}
+{% endcapture -%}
 {% capture opengraph %}
 
 <meta property="og:title" content="{{ page_title | default: site.title | escape }}">
 
 {% if page.excerpt %}
-    {%- assign excerpt = page.excerpt %}
+    {% assign excerpt = page.excerpt %}
+    {% if page.layout != 'post' %}
+        {% assign excerpt = page.excerpt | split: newline | first | markdownify %}
+    {% endif %}
 {% elsif page.layout == "home" %}
     {% assign excerpt = site.description %}
 {% else %}
