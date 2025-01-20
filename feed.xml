@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://qunitjs.github.io/jekyll-theme-amethyst/feed.xml" rel="self" type="application/atom+xml" /><link href="https://qunitjs.github.io/jekyll-theme-amethyst/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-01-19T21:33:07+00:00</updated><id>https://qunitjs.github.io/jekyll-theme-amethyst/feed.xml</id><title type="html">Amethyst Demo</title><subtitle>An amazing website.</subtitle><entry><title type="html">Hello, World!</title><link href="https://qunitjs.github.io/jekyll-theme-amethyst/2021/04/01/hello-world/" rel="alternate" type="text/html" title="Hello, World!" /><published>2021-04-01T00:00:00+00:00</published><updated>2021-04-01T00:00:00+00:00</updated><id>https://qunitjs.github.io/jekyll-theme-amethyst/2021/04/01/hello-world</id><content type="html" xml:base="https://qunitjs.github.io/jekyll-theme-amethyst/2021/04/01/hello-world/"><![CDATA[<p>Lorem ipsum <a href="https://en.wikipedia.org/wiki/Lorem_ipsum">dolor sit amet</a>, consectetur adipiscing elit.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://qunitjs.github.io/jekyll-theme-amethyst/feed.xml" rel="self" type="application/atom+xml" /><link href="https://qunitjs.github.io/jekyll-theme-amethyst/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-01-20T23:36:29+00:00</updated><id>https://qunitjs.github.io/jekyll-theme-amethyst/feed.xml</id><title type="html">Amethyst Demo</title><subtitle>An amazing website.</subtitle><entry><title type="html">Hello, World!</title><link href="https://qunitjs.github.io/jekyll-theme-amethyst/2021/04/01/hello-world/" rel="alternate" type="text/html" title="Hello, World!" /><published>2021-04-01T00:00:00+00:00</published><updated>2021-04-01T00:00:00+00:00</updated><id>https://qunitjs.github.io/jekyll-theme-amethyst/2021/04/01/hello-world</id><content type="html" xml:base="https://qunitjs.github.io/jekyll-theme-amethyst/2021/04/01/hello-world/"><![CDATA[<p>Lorem ipsum <a href="https://en.wikipedia.org/wiki/Lorem_ipsum">dolor sit amet</a>, consectetur adipiscing elit.</p>
 
 <h3 id="duis-fringilla">Duis fringilla</h3>
 
-<p>Aliquam efficitur <em>arcu a nisl</em> egestas molestie. Nulla ut neque quis ante tristique vehicula ut sit amet sem. Aliquam turpis enim, elementum volutpat auctor in, scelerisque sed quam. Morbi vulputate mattis vehicula. Etiam volutpat fringilla arcu, in vehicula lorem facilisis sed. In gravida enim arcu. Mauris <strong>elit</strong> purus, congue id dignissim a, vestibulum auctor neque.</p>
+<p>Aliquam efficitur <em>arcu a nisl</em> egestas molestie. Nulla ut neque quis ante tristique vehicula ut sit amet sem. Aliquam turpis enim, elementum volutpat auctor in, scelerisque sed quam. Morbi vulputate mattis vehicula. Etiam volutpat fringilla arcu, in vehicula lorem facilisis sed. In gravida enim arcu. Mauris <strong>elit</strong> purus, congue id dignissim a, vestibulum auctor neque. <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">[1]</a></sup></p>
 
 <h2 id="cras-maximus">Cras maximus</h2>
 
@@ -18,7 +18,7 @@
 <ul>
   <li>In a augue accumsan, dictum libero at, fringilla erat.</li>
   <li>Quisque ante massa, rutrum et scelerisque eu, varius sed orci.</li>
-  <li>Fusce eget erat lacinia, fringilla tellus et.</li>
+  <li>Fusce eget erat lacinia, fringilla tellus et. <sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">[2]</a></sup></li>
   <li>Sed a massa leo.</li>
 </ul>
 
@@ -32,7 +32,18 @@
 
 <h3 id="nunc-tristique">Nunc tristique</h3>
 
-<p>Integer et tempus lectus. Vivamus risus tellus, porta in aliquet ac, egestas sed risus. Aliquam bibendum ac dui eu tempus. Mauris rutrum et enim a viverra. Nunc ac sapien dolor. Vestibulum ultrices nibh vel tortor congue, nec tempus lacus sagittis. Cras a turpis eros. Nulla facilisi. Aenean ac lobortis libero. Quisque sagittis ultricies congue. Proin id velit sit amet ipsum euismod laoreet quis ac lacus. Praesent ut pellentesque ex. Sed dolor nulla, consectetur ac arcu id, placerat pharetra justo.</p>]]></content><author><name>James Lind</name></author><category term="event" /><summary type="html"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit.]]></summary></entry><entry><title type="html">Foo 3.5.1</title><link href="https://qunitjs.github.io/jekyll-theme-amethyst/2020/10/18/foo-351/" rel="alternate" type="text/html" title="Foo 3.5.1" /><published>2020-10-18T00:00:00+00:00</published><updated>2020-10-18T00:00:00+00:00</updated><id>https://qunitjs.github.io/jekyll-theme-amethyst/2020/10/18/foo-351</id><content type="html" xml:base="https://qunitjs.github.io/jekyll-theme-amethyst/2020/10/18/foo-351/"><![CDATA[<p>Tristique vehicula ut sit amet sem.</p>
+<p>Integer et tempus lectus. Vivamus risus tellus, porta in aliquet ac, egestas sed risus. Aliquam bibendum ac dui eu tempus. Mauris rutrum et enim a viverra. Nunc ac sapien dolor. Vestibulum ultrices nibh vel tortor congue, nec tempus lacus sagittis. Cras a turpis eros. Nulla facilisi. Aenean ac lobortis libero. Quisque sagittis ultricies congue. Proin id velit sit amet ipsum euismod laoreet quis ac lacus. Praesent ut pellentesque ex. Sed dolor nulla, consectetur ac arcu id, placerat pharetra justo.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>This is a footnote. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>This is a <strong>another</strong> footnote with <a href="https://example.org/">a link</a> as well. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>James Lind</name></author><category term="event" /><summary type="html"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit.]]></summary></entry><entry><title type="html">Foo 3.5.1</title><link href="https://qunitjs.github.io/jekyll-theme-amethyst/2020/10/18/foo-351/" rel="alternate" type="text/html" title="Foo 3.5.1" /><published>2020-10-18T00:00:00+00:00</published><updated>2020-10-18T00:00:00+00:00</updated><id>https://qunitjs.github.io/jekyll-theme-amethyst/2020/10/18/foo-351</id><content type="html" xml:base="https://qunitjs.github.io/jekyll-theme-amethyst/2020/10/18/foo-351/"><![CDATA[<p>Tristique vehicula ut sit amet sem.</p>
 
 <h2 id="integer-et-tempus">Integer et tempus</h2>
 
