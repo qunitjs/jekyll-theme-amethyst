@@ -12,7 +12,7 @@
 #
 # Docs: https://jekyllrb.com/docs/configuration/
 title: Amethyst Demo
-description: "An amazing website."
+description: 'An amazing website.'
 url: https://qunitjs.github.io
 baseurl: /jekyll-theme-amethyst
 # For pages (not blog posts) this is equivalant to /:title/
@@ -58,7 +58,8 @@ highlighter: rouge
 markdown: kramdown
 kramdown:
   input: GFM
-  toc_levels: "1,2"
+  toc_levels: '1,2'
+  footnote_link_text: '[%s]'
 
 
 # Sass settings
@@ -100,4 +101,4 @@ jekyll-archives:
     - year
   layout: posts-year
   permalinks:
-    year: "/:year/"
+    year: '/:year/'

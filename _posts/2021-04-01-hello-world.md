@@ -21,7 +21,7 @@ Lorem ipsum [dolor sit amet](https://en.wikipedia.org/wiki/Lorem_ipsum), consect
 
 ### Duis fringilla
 
-Aliquam efficitur _arcu a nisl_ egestas molestie. Nulla ut neque quis ante tristique vehicula ut sit amet sem. Aliquam turpis enim, elementum volutpat auctor in, scelerisque sed quam. Morbi vulputate mattis vehicula. Etiam volutpat fringilla arcu, in vehicula lorem facilisis sed. In gravida enim arcu. Mauris **elit** purus, congue id dignissim a, vestibulum auctor neque.
+Aliquam efficitur _arcu a nisl_ egestas molestie. Nulla ut neque quis ante tristique vehicula ut sit amet sem. Aliquam turpis enim, elementum volutpat auctor in, scelerisque sed quam. Morbi vulputate mattis vehicula. Etiam volutpat fringilla arcu, in vehicula lorem facilisis sed. In gravida enim arcu. Mauris **elit** purus, congue id dignissim a, vestibulum auctor neque. [^1]
 
 ## Cras maximus
 
@@ -37,7 +37,7 @@ elem1.on( "maximus", function() {
 
 * In a augue accumsan, dictum libero at, fringilla erat.
 * Quisque ante massa, rutrum et scelerisque eu, varius sed orci.
-* Fusce eget erat lacinia, fringilla tellus et.
+* Fusce eget erat lacinia, fringilla tellus et. [^2]
 * Sed a massa leo.
 
 ### Cras venenatis
@@ -49,3 +49,6 @@ elem1.on( "maximus", function() {
 ### Nunc tristique
 
 Integer et tempus lectus. Vivamus risus tellus, porta in aliquet ac, egestas sed risus. Aliquam bibendum ac dui eu tempus. Mauris rutrum et enim a viverra. Nunc ac sapien dolor. Vestibulum ultrices nibh vel tortor congue, nec tempus lacus sagittis. Cras a turpis eros. Nulla facilisi. Aenean ac lobortis libero. Quisque sagittis ultricies congue. Proin id velit sit amet ipsum euismod laoreet quis ac lacus. Praesent ut pellentesque ex. Sed dolor nulla, consectetur ac arcu id, placerat pharetra justo.
+
+[^1]: This is a footnote.
+[^2]: This is a **another** footnote with [a link](https://example.org/) as well.
