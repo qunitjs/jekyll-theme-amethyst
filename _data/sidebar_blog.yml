@@ -1,13 +1,9 @@
-- type: link
-  title: Amethyst Demo Blog
-  url: /blog/
+- type: recent
+  title: Recent posts
+  expand: true
 
 - type: tags
   title: Tags
-  expand: true
-
-- type: recent
-  title: Recent posts
   expand: true
 
 - type: archive-flat

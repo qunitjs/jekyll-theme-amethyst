@@ -11,7 +11,8 @@ amethyst:
 	<h1>Tag: {{ page.title | escape }}</h1>
 	<ul>
 	{% for post in posts -%}
-		<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>, <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format_archive }}</time></li>
+		<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a><br><span class="post-meta">Posted <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format_archive }}</time>{% if post.author %} by {{ site.data.authors[post.author] | default: post.author | escape }}{% endif %}</span>
+		</li>
 	{%- endfor -%}
 	</ul>
 </div>

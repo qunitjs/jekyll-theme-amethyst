@@ -17,11 +17,11 @@ amethyst:
         Great, thanks for the release, upgraded without any issues, which is one of the many advantages of jQuery.
 ---
 
-Lorem ipsum [dolor sit amet](https://en.wikipedia.org/wiki/Lorem_ipsum), consectetur adipiscing elit.
+Lorem ipsum [dolor sit amet](https://en.wikipedia.org/wiki/Lorem_ipsum), consectetur adipiscing elit. Aliquam efficitur _arcu a nisl_ egestas molestie. Nulla ut neque quis ante tristique vehicula ut sit amet sem. Aliquam turpis enim, elementum volutpat auctor in, scelerisque sed quam.
 
 ## Duis fringilla
 
-Aliquam efficitur _arcu a nisl_ egestas molestie. Nulla ut neque quis ante tristique vehicula ut sit amet sem. Aliquam turpis enim, elementum volutpat auctor in, scelerisque sed quam. Morbi vulputate mattis vehicula. Etiam volutpat fringilla arcu, in vehicula lorem facilisis sed. In gravida enim arcu. Mauris **elit** purus, congue id dignissim a, vestibulum auctor neque. [^1]
+Morbi vulputate mattis vehicula. Etiam volutpat fringilla arcu, in vehicula lorem facilisis sed. In gravida enim arcu. Mauris **elit** purus, congue id dignissim a, vestibulum auctor neque. [^1]
 
 ## Cras maximus
 

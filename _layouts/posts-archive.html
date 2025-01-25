@@ -14,11 +14,11 @@ amethyst:
 		{%- assign post_year = post.date | date: '%Y' -%}
 		{%- if post_year != prev_year -%}
 		{%- if prev_year != false %}</ul>{% endif %}
-		<p id="{{ post_year | escape }}"><strong>{{ post_year | escape }}</strong></p>
+		<h3 id="{{ post_year | escape }}">{{ post_year | escape }}</h3>
 		<ul>
 		{%- assign prev_year = post_year -%}
 		{%- endif %}
-		<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>, <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format_archive }}</time></li>
+		<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a><br><span class="post-meta">Posted <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format_archive }}</time>{% if post.author %} by {{ site.data.authors[post.author] | default: post.author | escape }}{% endif %}</span>
 	{%- endfor -%}
 	</ul>
 </div>

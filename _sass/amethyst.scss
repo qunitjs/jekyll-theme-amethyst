@@ -9,7 +9,7 @@ $size-sm: 0.8rem;
 $size-1: 1rem;
 $size-2: 1.25rem;
 $size-3: 1.5rem;
-$size-4: 2.25rem;
+$size-4: 2.1rem;
 $size-5: 3.157rem;
 $size-spacing: $size-2;
 $box-spacing: $size-1;
@@ -779,6 +779,15 @@ article > header {
 
 .posts > ul > li::marker {
     color: $color-off-white;
+}
+
+.posts > ul > li {
+    color: $color-darkgrey;
+    margin-bottom: $size-sm;
+}
+
+.posts > ul > li > a {
+    font-weight: bold;
 }
 
 .post-row h2 {

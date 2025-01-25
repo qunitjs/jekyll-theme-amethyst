@@ -66,6 +66,8 @@ Block data:
 		{%- assign block_url = block.url | default: group_page.url -%}
 		{%- assign block_contents = site.pages | where: 'groups', block.group | sort_natural: 'title' -%}
 	{%- elsif block_type == "recent" -%}
+		{%- assign group_page = site.pages | where: "layout", "posts" | first -%}
+		{%- assign block_url = block.url | default: group_page.url -%}
 		{%- assign block_contents = site.posts | slice: 0, 5 -%}
 	{%- elsif block_type == "archive" -%}
 		{%- assign block_contents = site.pages | where: "layout", "posts-year" | sort_natural: 'date' | reverse  -%}

@@ -8,12 +8,17 @@ layout: wrapper
 	<header>
 		<h1>{{ page.title | escape }}</h1>
 		{%- assign date_format = site.amethyst.date_format | default: "%e %B %Y" -%}
-		<p class="post-meta byline">Posted on <a href="{{ page.url | relative_url }}" rel="bookmark"><time itemprop="pubdate" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time></a>{% if page.author %} by <span class="vcard"><span class="fn n" rel="author">
-        {%- assign author_page = site.pages | where: "layout", "posts-author" | where: "author", page.author | first -%}
-        {%- if author_page -%}
-	        <a href="{{ author_page.url | relative_url }}">{{ site.data.authors[page.author] | default: page.author | escape }}</a>
-        {%- else -%}{{ site.data.authors[page.author] | default: page.author | escape}}
-	    {%- endif -%}</span></span>{% endif %}</p>
+		<p class="post-meta byline">Posted on <time pubdate datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
+			{%- if page.author %} by <span class="author vcard">
+		        {%- assign author_page = site.pages | where: "layout", "posts-author" | where: "author", page.author | first -%}
+		        {%- if author_page -%}
+			        <a rel="author" class="url fn n" href="{{ author_page.url | relative_url }}">{{ site.data.authors[page.author] | default: page.author | escape }}</a>
+		        {%- else -%}
+			        <span rel="author" class="fn n">{{ site.data.authors[page.author] | default: page.author | escape}}</span>
+			    {%- endif -%}
+				</span>
+			{%- endif -%}
+		</p>
 	</header>
 	{{ content }}
 </article>
