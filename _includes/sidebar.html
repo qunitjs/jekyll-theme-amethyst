@@ -41,7 +41,11 @@ Block data:
   Whether a block should be expanded.
   - true: Always expanded.
   - false: Never expanded.
-  - active: Expand when the current page is in the list.
+  - active: Expand when the current page is in the list,
+            unless another block has already been expanded for the current page.
+            (If a page is in multiple categories, only expand the first and
+            presumed most-important once. The others can be navigated by clicking
+            on the category atop the page and/or in the sidebar instead.)
   - initial: Expand on the home page, and when the current page is in the list.
 
 * initial: [Default: "/"]
@@ -49,6 +53,7 @@ Block data:
 
 {%- endcomment -%}
 <aside class="sidebar" role="complementary">
+{%- assign block_expand_active_once = false -%}
 {%- for block in site.data[include.blocks] -%}
 	{%- assign block_type = block.type | default: "group" -%}
 	{%- assign block_title = block.title -%}
@@ -94,8 +99,9 @@ Block data:
 
 	{%- if block_expand == "active" -%}
 		{%- assign self_in_contents = block_contents | where: 'url', page.url | size -%}
-		{%- if page.url == block_url or self_in_contents > 0 -%}
+		{%- if page.url == block_url or self_in_contents > 0 and block_expand_active_once == false -%}
 			{%- assign block_expand = true -%}
+			{%- assign block_expand_active_once = true -%}
 		{%- else -%}
 			{%- assign block_expand = false -%}
 		{%- endif -%}

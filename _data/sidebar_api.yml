@@ -4,6 +4,8 @@
 
 - group: lorem
 
+- group: quux
+
 - group: deprecated
   expand: false
   title: Deprecated
