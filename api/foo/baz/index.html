@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/jekyll-theme-amethyst/favicon.svg">
-<link rel="stylesheet" href="/jekyll-theme-amethyst/assets/styles.css?v=7c69cf04" media="screen">
+<link rel="stylesheet" href="/jekyll-theme-amethyst/assets/styles.css?v=cda1a39a" media="screen">
 <link rel="alternate" type="application/rss+xml" href="/jekyll-theme-amethyst/feed.xml" title="Amethyst Demo">
 <title>.baz() | Amethyst Demo</title><meta property="og:title" content=".baz()"><meta name="description" content="Hello world with some content."><meta property="og:description" content="Hello world with some content."><meta name="twitter:card" content="summary_large_image">
 <body>
@@ -120,6 +120,20 @@
   </tbody>
 </table>
 
+<h2 id="filler">Filler</h2>
+
+<h3 id="huey">Huey</h3>
+
+<p>…</p>
+
+<h3 id="dewey">Dewey</h3>
+
+<p>…</p>
+
+<h3 id="louie">Louie</h3>
+
+<p>…</p>
+
 <h2 id="examples">Examples</h2>
 
 <h3 id="example-ultimate-object">Example: Ultimate object</h3>
@@ -138,6 +152,40 @@
 <span class="nx">x</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span> <span class="o">-</span><span class="mi">1</span> <span class="p">);</span>
 </code></pre></div></div>
 
+<h3 id="E0002">Error: Long heading that wraps to the next line in the table of contents</h3>
+
+<p>If you encounter this error, it means you have called <code class="language-plaintext highlighter-rouge">hooks.beforeEach()</code> or <code class="language-plaintext highlighter-rouge">hooks.afterEach()</code> on the “hooks” parameter of a module outside the current module scope. Detection of this issue was <a href="https://github.com/qunitjs/qunit/issues/1576">introduced</a> in QUnit 3.0.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: Long time no see.
+</code></pre></div></div>
+
+<p>This can happen if you use a module scope and forget to specify the <code class="language-plaintext highlighter-rouge">hooks</code> parameter on the inner scope:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">QUnit</span><span class="p">.</span><span class="nf">module</span><span class="p">(</span><span class="dl">'</span><span class="s1">MyGroup</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">hooks</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">QUnit</span><span class="p">.</span><span class="nf">module</span><span class="p">(</span><span class="dl">'</span><span class="s1">Child</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">//                  ^ Oops, forgot "hooks" here!</span>
+
+    <span class="nx">hooks</span><span class="p">.</span><span class="nf">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// ...</span>
+    <span class="p">});</span>
+
+    <span class="nx">QUnit</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">example</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Another way that this might happen is if you have named them differently, or perhaps mispelled one, and are referring to the outer parameter from the inner module. Is is recommended to name hooks parameters the same, as this will naturally refer to the correct and closest one always, thus avoiding any mistake.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">QUnit</span><span class="p">.</span><span class="nf">module</span><span class="p">(</span><span class="dl">'</span><span class="s1">MyGroup</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">hooksOuter</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">QUnit</span><span class="p">.</span><span class="nf">module</span><span class="p">(</span><span class="dl">'</span><span class="s1">Child</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">hooksInner</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">hooksOuter</span><span class="p">.</span><span class="nf">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// ^ Oops, used "hooksOuter" instead of "hooksInner"!</span>
+    <span class="p">});</span>
+
+    <span class="nx">QUnit</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">example</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div></div>
 
 </article>
 </div>
@@ -163,7 +211,7 @@
 
 	<h4><a href="/jekyll-theme-amethyst/api/foo/quux/">Quux</a></h4>
 	<hr><div class="toc-wrapper">
-		<h4>Table of contents</h4><ol class="toc"><li class="sidebar-item"><a href="#description">Description</a></li><li class="sidebar-item"><a href="#changelog">Changelog</a></li><li class="sidebar-item"><a href="#examples">Examples</a><ol><li class="sidebar-item"><a href="#example-ultimate-object">Example: Ultimate object</a></li><li class="sidebar-item"><a href="#example-penultimate-object">Example: Penultimate object</a></li></ol></li></ol></div>
+		<h4>Table of contents</h4><ol class="toc"><li class="sidebar-item"><a href="#description">Description</a></li><li class="sidebar-item"><a href="#changelog">Changelog</a></li><li class="sidebar-item"><a href="#filler">Filler</a><ol><li class="sidebar-item"><a href="#huey">Huey</a></li><li class="sidebar-item"><a href="#dewey">Dewey</a></li><li class="sidebar-item"><a href="#louie">Louie</a></li></ol></li><li class="sidebar-item"><a href="#examples">Examples</a><ol><li class="sidebar-item"><a href="#example-ultimate-object">Example: Ultimate object</a></li><li class="sidebar-item"><a href="#example-penultimate-object">Example: Penultimate object</a></li><li class="sidebar-item"><a href="#E0002">Error: Long heading that wraps to the next line in the table of contents</a></li></ol></li></ol></div><script defer type="module" src="/jekyll-theme-amethyst/assets/toc.js?v=348e5a95"></script>
 </aside>
 
 </div>
