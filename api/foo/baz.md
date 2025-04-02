@@ -25,6 +25,20 @@ A long long sequence of words that continues until its end eventually wraps acro
 | [Xample 1.20](https://github.com/qunitjs/qunit/releases/tag/1.20.0) | The `nested` scope feature was introduced.
 | [Xample 1.16](https://github.com/qunitjs/qunit/releases/tag/1.16.0) | The `beforeEach` and `afterEach` options were introduced.<br/>The `setup` and `teardown` options were deprecated.
 
+## Filler
+
+### Huey
+
+…
+
+### Dewey
+
+…
+
+### Louie
+
+…
+
 ## Examples
 
 ### Example: Ultimate object
@@ -45,3 +59,40 @@ A short sequence of words on your screen.
 x.bar( -1 );
 ```
 
+### Error: Long heading that wraps to the next line in the table of contents {#E0002}
+
+If you encounter this error, it means you have called `hooks.beforeEach()` or `hooks.afterEach()` on the "hooks" parameter of a module outside the current module scope. Detection of this issue was [introduced](https://github.com/qunitjs/qunit/issues/1576) in QUnit 3.0.
+
+```
+Error: Long time no see.
+```
+
+This can happen if you use a module scope and forget to specify the `hooks` parameter on the inner scope:
+
+```js
+QUnit.module('MyGroup', (hooks) => {
+  QUnit.module('Child', () => {
+    //                  ^ Oops, forgot "hooks" here!
+
+    hooks.beforeEach(() => {
+      // ...
+    });
+
+    QUnit.test('example');
+  });
+});
+```
+
+Another way that this might happen is if you have named them differently, or perhaps mispelled one, and are referring to the outer parameter from the inner module. Is is recommended to name hooks parameters the same, as this will naturally refer to the correct and closest one always, thus avoiding any mistake.
+
+```js
+QUnit.module('MyGroup', (hooksOuter) => {
+  QUnit.module('Child', (hooksInner) => {
+    hooksOuter.beforeEach(() => {
+      // ^ Oops, used "hooksOuter" instead of "hooksInner"!
+    });
+
+    QUnit.test('example');
+  });
+});
+```

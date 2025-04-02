@@ -585,6 +585,7 @@ typesense-minibar input[type="search"] {
 .toc-wrapper .toc {
     max-height: calc( 100vh - 2.5rem );
     overflow-y: auto;
+    scroll-behavior: smooth;
 }
 .toc,
 .toc ol {
@@ -595,6 +596,9 @@ typesense-minibar input[type="search"] {
 .toc .sidebar-item,
 .toc .sidebar-item a {
     border-left: 0;
+}
+.toc-item-current > a {
+    font-weight: bold;
 }
 
 // .toc,
