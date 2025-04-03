@@ -35,7 +35,11 @@ Check out the [API documentation](https://api.qunitjs.com) or run `qunit --help`
 
 ---
 
-## List
+## Text style
+
+Cupcake ipsum dolor sit amet dragée **jelly beans** topping cake. Gingerbread oat **cake** I _love_ marshmallow topping.
+
+I shall try _these_ sources in <abbr title="first-in, first-out">FIFO</abbr> order:
 
 * Lorem Ipsum
 * **Cupcake Ipsum**
@@ -50,7 +54,7 @@ Check out the [API documentation](https://api.qunitjs.com) or run `qunit --help`
 
 From cupcake ipsum:
 
-> Cupcake ipsum dolor sit amet dragée jelly beans topping **cake**. Gingerbread oat **cake** I _love_ marshmallow topping.
+> Cupcake ipsum dolor sit amet dragée **jelly beans** topping cake. Gingerbread oat **cake** I _love_ marshmallow topping.
 >
 > * jelly
 > * **cake**

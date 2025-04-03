@@ -134,6 +134,10 @@ blockquote {
     }
 }
 
+abbr {
+    cursor: help;
+}
+
 hr {
     margin: $size-5 0;
     border: none;
