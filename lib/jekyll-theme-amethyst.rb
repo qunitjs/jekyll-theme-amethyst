@@ -1,3 +1,6 @@
+require "digest"
+require "set"
+
 # The "file_version_query" Liquid filter appends a query parameter with a file hash.
 #
 # Example: Basic
@@ -16,9 +19,29 @@
 #     <link href="/assets/style.css?v=01234567">
 #     ```
 #
-require "digest"
-require "set"
-
+# The "reject_include" Liquid filter applies to an iterable collection of items
+# that may have a given `property` with an array as value. It removes items
+# where `property` contains one or more values from `values`.
+#
+# This is similar to the built-in "where" filter, except negated, and for array
+# properties rather than string properties.
+#
+# Example: Exclude posts where "tags" contains an excluded tag
+#
+#     ```
+#     tags_excluded = [ "foo", "bar" ]
+#     posts = [
+#  	  	{ id: 1 }, // property may not exist
+#  	  	{ id: 2, tags: [ "quux" ] }, // property does not include "foo" or "bar"
+#  	  	{ id: 2, tags: [ "quux", "bar" ] // rejected
+#  	  }
+#     filtered = posts | reject_include: "tags", tags_excluded
+#
+#     filtered === [
+#  	  	{ id: 1 },
+#  	  	{ id: 2, tags: [ "quux" ] }
+#  	  }
+#     ```
 module Jekyll
 	module AmethystFilters
 		def file_version_query(input, *filenames)
@@ -33,6 +56,12 @@ module Jekyll
 			end
 			hex = hexes.length > 1 ? Digest::MD5.hexdigest(hexes.join(" ")) : hexes[0]
 			"#{input}?v=#{hex[0..7]}"
+		end
+		def reject_include(input, property, values)
+			ary = Liquid::StandardFilters::InputIterator.new(input)
+			ary.reject do |item|
+				values.intersect? item[property]
+			end
 		end
 	end
 end
