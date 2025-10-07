@@ -145,7 +145,7 @@ hr {
 }
 
 iframe {
-    width: 100%;
+    max-width: 100%;
     border: 1px solid #ddd;
     border-radius: 3px;
 }
@@ -696,11 +696,6 @@ typesense-minibar input[type="search"] {
 
 .home-highlights {
     text-align: center;
-}
-
-.example-result iframe,
-.example-result pre {
-    height: 360px;
 }
 
 /* Layout: post, posts */
