@@ -24,6 +24,7 @@
 {% endcapture -%}
 {% capture opengraph %}
 
+<meta property="og:site_name" content="{{ site.title | escape }}">
 <meta property="og:title" content="{{ page_title | default: site.title | escape }}">
 
 {% if page.excerpt %}
