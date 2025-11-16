@@ -2,6 +2,7 @@
 layout: post
 title: Hello, World!
 author: jlind
+image: /assets/Amethyst.jpg
 tags:
 - event
 amethyst:
@@ -22,6 +23,11 @@ Lorem ipsum [dolor sit amet](https://en.wikipedia.org/wiki/Lorem_ipsum), consect
 ## Duis fringilla
 
 Morbi vulputate mattis vehicula. Etiam volutpat fringilla arcu, in vehicula lorem facilisis sed. In gravida enim arcu. Mauris **elit** purus, congue id dignissim a, vestibulum auctor neque. [^1]
+
+<figure>
+  <img src="{{ "/assets/Amethyst.jpg" | relative_url}}" width="640" height="360">
+  <figcaption>The inside of an amethyst geode. Photo by Wiki8fishy, via <a href="https://commons.wikimedia.org/wiki/File:Amethyst_Quartz.jpg">Wikimedia Commons</a>.</figcaption>
+</figure>
 
 ## Cras maximus
 

@@ -45,7 +45,6 @@
 {% if site.amethyst.mastodon %}
 <link rel="me" href="{{ site.amethyst.mastodon | escape }}">
 {% endif %}
-<meta name="twitter:card" content="summary_large_image">
 
 {% if layout.amethyst.pagetype == "navigation" %}
 <meta name="robots" content="{{ page.amethyst.robots | default: layout.amethyst.robots | default: 'noindex,follow' }}">
@@ -56,6 +55,10 @@
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
 <meta name="author" content="{{ site.data.authors[page.author] | default: page.author | escape }}">
+{% endif %}
+{% if page.image %}
+<meta property="twitter:card" content="summary_large_image">
+<meta property="og:image" content="{{ page.image | relative_url | escape }}">
 {% endif %}
 
 {% endcapture -%}
