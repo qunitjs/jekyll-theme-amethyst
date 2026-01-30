@@ -59,6 +59,9 @@
 {% if page.image %}
 <meta property="twitter:card" content="summary_large_image">
 <meta property="og:image" content="{{ page.image | relative_url | escape }}">
+{% elsif page.layout == "post" and page.date and site.amethyst.post_image_default %}
+<meta property="twitter:card" content="summary_large_image">
+<meta property="og:image" content="{{ site.amethyst.post_image_default | relative_url | escape }}">
 {% endif %}
 
 {% endcapture -%}

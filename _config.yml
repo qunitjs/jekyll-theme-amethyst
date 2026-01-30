@@ -43,6 +43,7 @@ theme: jekyll-theme-amethyst
 amethyst:
   edituri_base: https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/
   release_base: https://github.com/qunitjs/qunit/releases/tag/
+  post_image_default: /assets/post-image-default.png
   github: qunitjs
   chat: https://app.gitter.im/#/room/#qunitjs_qunit:gitter.im
   # https://github.com/qunitjs/jekyll-theme-amethyst/blob/main/docs/getting-started.md#enable-typesense

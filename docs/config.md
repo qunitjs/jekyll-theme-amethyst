@@ -44,6 +44,12 @@ amethyst:
   #
   # Example: https://github.com/qunitjs/qunit/releases/tag/
   release_base:
+  # Default image for link previews of blog posts ("og:image").
+  #
+  # Pages have no image by default, unless the `image` key is set
+  # in front matter. For blog posts specifically, a default can
+  # be set here. This default will only apply to posts, not pages.
+  post_image_default:
   # Mastodon account URL (e.g. "https://example.org/@qunitjs")
   mastodon:
   # Bluesky profile URL (e.g. "https://bsky.app/profile/qunitjs.com")
