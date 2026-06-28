@@ -18,6 +18,17 @@ layout: wrapper
 			    {%- endif -%}
 				</span>
 			{%- endif -%}
+			{%- if page.tags.first %} in {% endif -%}
+			{%- for tag in page.tags -%}
+				{%- if page.tags.first != tag %}, {% endif -%}
+				{%- assign tagpage = site.pages | where: "tag", tag | first -%}
+				{%- if tagpage -%}
+					{%- assign tagtitle = tagpage.title | default: tag -%}
+					<a rel="tag" class="post-tag" href="{{ tagpage.url | relative_url }}">{{ tagtitle | escape }}</a>
+				{%- else -%}
+					<span class="post-tag">{{ tag | escape }}</span>
+			    {%- endif -%}
+			{%- endfor -%}
 		</p>
 	</header>
 	{{ content }}
